@@ -78,58 +78,8 @@ const Hero = () => {
         ease: "sine.inOut",
       });
 
-      // Scroll-triggered parallax
-      gsap.to(titleRef.current, {
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            gsap.to(titleRef.current, {
-              y: -200 * progress,
-              opacity: 1 - progress,
-              scale: 0.8 + 0.2 * (1 - progress),
-              duration: 0,
-            });
-          },
-        },
-      });
-
-      gsap.to(subtitleRef.current, {
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            gsap.to(subtitleRef.current, {
-              y: -150 * progress,
-              opacity: 1 - progress,
-              duration: 0,
-            });
-          },
-        },
-      });
-
-      gsap.to(ctaRef.current, {
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            gsap.to(ctaRef.current, {
-              y: -100 * progress,
-              opacity: 1 - progress,
-              duration: 0,
-            });
-          },
-        },
-      });
+      // Keep elements visible - no parallax fade out
+      // The tagline stays visible at all times
     });
 
     return () => ctx.revert();
