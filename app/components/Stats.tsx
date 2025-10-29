@@ -81,34 +81,34 @@ const Stats = () => {
   const stats = [
     {
       icon: <Users className="w-8 h-8" />,
-      value: 500,
+      value: 100,
       suffix: "+",
-      label: "Happy Clients",
-      description: "Brands we've helped succeed",
+      label: "Tradesmen Helped",
+      description: "Plumbers, electricians, builders & more",
       gradient: "from-orange-500 to-red-500",
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      value: 250,
-      suffix: "%",
-      label: "Average ROI",
-      description: "Growth for our clients",
+      value: 25,
+      suffix: " Years",
+      label: "Combined Experience",
+      description: "Tech expertise meets sales mastery",
       gradient: "from-red-500 to-pink-500",
     },
     {
       icon: <Award className="w-8 h-8" />,
-      value: 50,
-      suffix: "+",
-      label: "Industry Awards",
-      description: "Recognition for excellence",
+      value: 7,
+      suffix: " Days",
+      label: "Average Launch",
+      description: "From start to live website",
       gradient: "from-pink-500 to-purple-500",
     },
     {
       icon: <Rocket className="w-8 h-8" />,
-      value: 1000,
-      suffix: "+",
-      label: "Campaigns Launched",
-      description: "Successful projects delivered",
+      value: 98,
+      suffix: "%",
+      label: "Client Satisfaction",
+      description: "Real results, real reviews",
       gradient: "from-purple-500 to-indigo-500",
     },
   ];
@@ -127,11 +127,12 @@ const Stats = () => {
         {/* Section header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Results That <span className="gradient-text">Speak Volumes</span>
+            Built By People Who <span className="gradient-text">Get It</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-400">
-            Numbers don&apos;t lie. Here&apos;s the impact we&apos;ve made for
-            brands across the globe.
+          <p className="text-lg md:text-xl text-gray-400 mb-8">
+            25 years of combined expertise in tech, sales, and getting tradesmen real results.
+            We come from tech and marketing backgrounds. We understand your business because
+            we know what works, and we deliver it fast.
           </p>
         </div>
 
@@ -200,8 +201,8 @@ const Stats = () => {
         {/* Bottom text */}
         <div className="mt-16 text-center">
           <p className="text-gray-500 text-sm max-w-2xl mx-auto">
-            These metrics represent real results from our partnerships with
-            leading brands. Your success story could be next.
+            We&apos;re not here to impress you with buzzwords. We&apos;re here to get you more customers,
+            more bookings, and more revenue. Simple as that.
           </p>
         </div>
       </div>

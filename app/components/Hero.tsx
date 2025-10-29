@@ -85,10 +85,16 @@ const Hero = () => {
           start: "top top",
           end: "bottom top",
           scrub: 1,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            gsap.to(titleRef.current, {
+              y: -200 * progress,
+              opacity: 1 - progress,
+              scale: 0.8 + 0.2 * (1 - progress),
+              duration: 0,
+            });
+          },
         },
-        y: -200,
-        opacity: 0,
-        scale: 0.8,
       });
 
       gsap.to(subtitleRef.current, {
@@ -97,9 +103,15 @@ const Hero = () => {
           start: "top top",
           end: "bottom top",
           scrub: 1,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            gsap.to(subtitleRef.current, {
+              y: -150 * progress,
+              opacity: 1 - progress,
+              duration: 0,
+            });
+          },
         },
-        y: -150,
-        opacity: 0,
       });
 
       gsap.to(ctaRef.current, {
@@ -108,9 +120,15 @@ const Hero = () => {
           start: "top top",
           end: "bottom top",
           scrub: 1,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            gsap.to(ctaRef.current, {
+              y: -100 * progress,
+              opacity: 1 - progress,
+              duration: 0,
+            });
+          },
         },
-        y: -100,
-        opacity: 0,
       });
     });
 
@@ -134,7 +152,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20"
     >
       {/* Animated gradient orbs */}
       <div ref={gradientRef1} className="blur-gradient-orange top-20 left-20" />
@@ -157,7 +175,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8 animate-pulse-slow">
             <Sparkles className="w-4 h-4 text-orange-500" />
             <span className="text-sm font-medium text-gray-300">
-              #1 Marketing Agency of the Year 2024
+              Built for Tradesmen, By Tradesmen Who Get It
             </span>
           </div>
 
@@ -166,12 +184,12 @@ const Hero = () => {
             ref={titleRef}
             className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
           >
-            We Create{" "}
+            Get Found.{" "}
             <span className="gradient-text text-glow inline-block">
-              Unforgettable
+              Get Booked.
             </span>
             <br />
-            Brand Experiences
+            Get BuzzBold.
           </h1>
 
           {/* Subtitle */}
@@ -179,23 +197,23 @@ const Hero = () => {
             ref={subtitleRef}
             className="text-lg md:text-xl lg:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            Transform your brand with data-driven marketing strategies that
-            captivate audiences and drive exponential growth. We don&apos;t just
-            market—we create movements.
+            We help tradesmen dominate their local market with powerful websites,
+            SEO that actually works, and social media that brings in real customers.
+            No fluff. No jargon. Just results you can measure.
           </p>
 
           {/* CTAs */}
           <div
             ref={ctaRef}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col gap-4 items-center w-full"
           >
             <Button
               size="lg"
               onClick={handleCtaClick}
-              className="btn-primary px-8 py-6 text-lg font-bold group relative overflow-hidden"
+              className="btn-primary px-8 py-6 text-lg font-bold group relative overflow-hidden rounded-full"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Start Your Journey
+                Get Started
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Button>
@@ -212,10 +230,10 @@ const Hero = () => {
           {/* Stats bar */}
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { value: "500+", label: "Brands Launched" },
-              { value: "98%", label: "Client Satisfaction" },
-              { value: "$2B+", label: "Revenue Generated" },
-              { value: "50+", label: "Industry Awards" },
+              { value: "25 Years", label: "Combined Experience" },
+              { value: "100+", label: "Tradesmen Helped" },
+              { value: "7 Days", label: "Average Launch Time" },
+              { value: "5-Star", label: "Customer Reviews" },
             ].map((stat, index) => (
               <div
                 key={index}

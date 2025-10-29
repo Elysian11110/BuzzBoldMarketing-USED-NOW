@@ -63,51 +63,27 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechVision Inc.",
-      image: "https://i.pravatar.cc/150?img=1",
+      name: "Marcus Thompson",
+      role: "Roofer, London",
+      image: "https://i.pravatar.cc/150?img=33",
       content:
-        "BuzzBold transformed our brand identity completely. Their strategic approach and creative execution exceeded all expectations. Within 6 months, we saw a 300% increase in brand engagement.",
+        "My old website looked like it was from 2005. BuzzBold built me a proper one that looks professional and brings in quality leads. Phone hasn't stopped ringing since.",
       rating: 5,
     },
     {
-      name: "Michael Chen",
-      role: "Marketing Director, GrowthLabs",
-      image: "https://i.pravatar.cc/150?img=12",
+      name: "David Mitchell",
+      role: "Landscaper, Bristol",
+      image: "https://i.pravatar.cc/150?img=51",
       content:
-        "Working with BuzzBold was a game-changer. Their data-driven marketing strategies helped us scale from $1M to $10M in revenue. The ROI speaks for itself.",
+        "These guys really know their stuff. They helped me get on Google Maps and now I'm getting jobs from people searching for landscapers near them. Game changer for my business.",
       rating: 5,
     },
     {
-      name: "Emily Rodriguez",
-      role: "Founder, EcoStyle",
-      image: "https://i.pravatar.cc/150?img=5",
+      name: "James Parker",
+      role: "Plumber, Manchester",
+      image: "https://i.pravatar.cc/150?img=52",
       content:
-        "The team at BuzzBold doesn't just execute—they innovate. Their creative campaigns helped us stand out in a crowded market and build a loyal customer base.",
-      rating: 5,
-    },
-    {
-      name: "David Thompson",
-      role: "CMO, FinanceFlow",
-      image: "https://i.pravatar.cc/150?img=13",
-      content:
-        "Exceptional attention to detail and results-driven approach. BuzzBold helped us launch our rebrand and the response has been overwhelming. Highly recommend!",
-      rating: 5,
-    },
-    {
-      name: "Lisa Anderson",
-      role: "VP Marketing, HealthPlus",
-      image: "https://i.pravatar.cc/150?img=9",
-      content:
-        "From strategy to execution, BuzzBold delivers excellence. They took the time to understand our business and created campaigns that truly resonated with our audience.",
-      rating: 5,
-    },
-    {
-      name: "James Williams",
-      role: "Founder, StartupHub",
-      image: "https://i.pravatar.cc/150?img=14",
-      content:
-        "BuzzBold is more than an agency—they're a strategic partner. Their insights and expertise have been invaluable to our growth journey. Can't imagine working with anyone else.",
+        "Straight-talking team that delivered exactly what they promised. My phone's been buzzing with new customers since they got my SEO sorted. Best decision I made this year.",
       rating: 5,
     },
   ];
@@ -125,11 +101,11 @@ const Testimonials = () => {
         {/* Section header */}
         <div ref={titleRef} className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Loved by <span className="gradient-text">Industry Leaders</span>
+            Real Tradesmen, <span className="gradient-text">Real Results</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400">
-            Don&apos;t just take our word for it. Here&apos;s what our clients
-            have to say about partnering with BuzzBold.
+            Don&apos;t just take our word for it. Here&apos;s what tradesmen across the UK
+            are saying about working with BuzzBold Marketing.
           </p>
         </div>
 
@@ -197,22 +173,22 @@ const Testimonials = () => {
         {/* Trust badges */}
         <div className="mt-16 pt-16 border-t border-gray-800">
           <p className="text-center text-gray-500 mb-8">
-            Trusted by leading brands worldwide
+            Helping tradesmen across the UK get found and get booked
           </p>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-50">
             {[
-              "TechVision",
-              "GrowthLabs",
-              "EcoStyle",
-              "FinanceFlow",
-              "HealthPlus",
-              "StartupHub",
-            ].map((brand, index) => (
+              "Plumbers",
+              "Electricians",
+              "Builders",
+              "Roofers",
+              "Landscapers",
+              "HVAC",
+            ].map((trade, index) => (
               <div
                 key={index}
                 className="text-2xl font-bold text-gray-600 hover:text-gray-400 transition-colors"
               >
-                {brand}
+                {trade}
               </div>
             ))}
           </div>

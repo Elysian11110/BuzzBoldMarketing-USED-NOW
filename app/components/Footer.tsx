@@ -15,6 +15,7 @@ import {
   Sparkles,
   ArrowRight,
 } from "lucide-react";
+import Logo from "./Logo";
 
 const Footer = () => {
   const handleScroll = (target: string) => {
@@ -38,16 +39,16 @@ const Footer = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6">
               <Mail className="w-4 h-4 text-orange-500" />
               <span className="text-sm font-medium text-gray-300">
-                Join 10,000+ Marketers
+                Join 100+ Successful Tradesmen
               </span>
             </div>
             <h3 className="text-3xl md:text-4xl font-black mb-4">
-              Get Marketing Insights{" "}
-              <span className="gradient-text">Weekly</span>
+              Get Marketing Tips for{" "}
+              <span className="gradient-text">Tradesmen</span>
             </h3>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              Subscribe to our newsletter for exclusive tips, industry trends,
-              and strategies to grow your brand.
+              No fluff. Just practical advice on getting more customers, improving
+              your online presence, and growing your trade business.
             </p>
             <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
               <Input
@@ -70,20 +71,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-6 group cursor-pointer">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-pink-500 blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-                <Sparkles className="w-8 h-8 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 relative z-10" />
-              </div>
-              <h3 className="text-2xl font-black">
+            <div className="flex items-center gap-1 mb-6 group cursor-pointer">
+              <h3 className="text-2xl font-black flex items-center gap-1">
+                <Logo size={32} className="inline-block" />
                 <span className="gradient-text">Buzz</span>
-                <span className="text-white">Bold</span>
+                <span className="text-white">BoldMarketing</span>
               </h3>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              We&apos;re a world-class marketing agency that transforms brands
-              through innovative strategies and creative excellence. Let&apos;s
-              build something extraordinary together.
+              We help UK tradesmen dominate their local market with websites, SEO,
+              and social media that brings in real customers. We get you, and we get you results.
             </p>
             <div className="flex gap-3">
               {[
@@ -159,12 +156,12 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 text-white">Services</h4>
             <ul className="space-y-4">
               {[
-                "Brand Strategy",
-                "Digital Marketing",
-                "Web Development",
-                "Content Creation",
-                "Growth Marketing",
-                "SEO & Analytics",
+                "Professional Websites",
+                "Local SEO",
+                "Social Media",
+                "Google My Business",
+                "Web Presence",
+                "Branding & Design",
               ].map((service, index) => (
                 <li key={index}>
                   <a
@@ -188,18 +185,14 @@ const Footer = () => {
               <li className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
                 <span>
-                  123 Marketing Street
+                  Serving Tradesmen
                   <br />
-                  San Francisco, CA 94102
+                  Across the United Kingdom
                 </span>
               </li>
               <li className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
-                <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <a href="tel:+15551234567">+1 (555) 123-4567</a>
-              </li>
-              <li className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
                 <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <a href="mailto:hello@buzzbold.com">hello@buzzbold.com</a>
+                <a href="mailto:Support@buzzboldmarketing.com">Support@buzzboldmarketing.com</a>
               </li>
             </ul>
           </div>
@@ -209,8 +202,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm text-center md:text-left">
-              &copy; 2025 BuzzBold. All rights reserved. Crafted with{" "}
-              <span className="text-red-500">♥</span> by the BuzzBold Team.
+              &copy; 2025 BuzzBold Marketing. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <a

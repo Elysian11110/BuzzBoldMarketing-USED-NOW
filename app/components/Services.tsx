@@ -69,45 +69,45 @@ const Services = () => {
 
   const services = [
     {
-      icon: <Palette className="w-10 h-10" />,
-      title: "Brand Strategy",
+      icon: <Globe className="w-10 h-10" />,
+      title: "Professional Websites",
       description:
-        "We craft compelling brand identities that resonate with your audience and stand the test of time. From logo design to complete brand guidelines.",
+        "Lightning-fast websites built in 7 days. Mobile-friendly, easy to update, and designed to turn visitors into customers. No technical headaches, we handle everything.",
       gradient: "from-orange-500 to-red-500",
     },
     {
       icon: <Target className="w-10 h-10" />,
-      title: "Digital Marketing",
+      title: "Local SEO That Works",
       description:
-        "Data-driven campaigns across all digital channels. SEO, PPC, social media, and content marketing strategies that deliver measurable results.",
+        "Get found on Google when customers search for your trade. We'll get you on Page 1 for local searches so the phone starts ringing with real jobs, not tire-kickers.",
       gradient: "from-red-500 to-pink-500",
     },
     {
-      icon: <Globe className="w-10 h-10" />,
-      title: "Web Development",
+      icon: <MessageSquare className="w-10 h-10" />,
+      title: "Social Media Management",
       description:
-        "Custom websites and applications built with cutting-edge technology. Beautiful, fast, and optimized for conversions and user experience.",
+        "Show off your best work where customers are looking. We create posts that showcase your expertise, build trust, and bring in leads without you lifting a finger.",
       gradient: "from-pink-500 to-purple-500",
     },
     {
-      icon: <MessageSquare className="w-10 h-10" />,
-      title: "Content Creation",
+      icon: <Zap className="w-10 h-10" />,
+      title: "Google My Business Setup",
       description:
-        "Engaging content that tells your story. From video production to copywriting, we create content that captivates and converts.",
+        "Own your local Google listings. We optimize your profile so you show up in map searches, collect 5-star reviews, and beat your competitors to the call.",
       gradient: "from-purple-500 to-indigo-500",
     },
     {
       icon: <TrendingUp className="w-10 h-10" />,
-      title: "Growth Marketing",
+      title: "Complete Web Presence",
       description:
-        "Scalable growth strategies powered by analytics and experimentation. We help you achieve rapid, sustainable business growth.",
+        "From online directories to review management, we make sure customers can find you everywhere. One package, total coverage, real results.",
       gradient: "from-indigo-500 to-blue-500",
     },
     {
-      icon: <Zap className="w-10 h-10" />,
-      title: "Performance Optimization",
+      icon: <Palette className="w-10 h-10" />,
+      title: "Branding & Design",
       description:
-        "Maximize your ROI with continuous optimization. We analyze, test, and refine every aspect of your marketing funnel.",
+        "Stand out from the competition with a professional look. Logo, business cards, van graphics, everything that makes customers remember you and trust you.",
       gradient: "from-blue-500 to-cyan-500",
     },
   ];
@@ -125,12 +125,11 @@ const Services = () => {
         {/* Section header */}
         <div ref={titleRef} className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Our <span className="gradient-text">Services</span>
+            Services Built For <span className="gradient-text">Tradesmen</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400">
-            Comprehensive marketing solutions tailored to elevate your brand and
-            drive measurable results. We combine creativity with data to deliver
-            excellence.
+            Everything you need to dominate your local market. We understand your business
+            because we come from tech and sales backgrounds, we know what works, and we deliver it fast.
           </p>
         </div>
 
@@ -200,10 +199,10 @@ const Services = () => {
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <p className="text-gray-400 mb-6 text-lg">
-            Can&apos;t find what you&apos;re looking for?
+            Not sure which service you need? We get it, marketing can be confusing.
           </p>
           <button className="px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300">
-            Let&apos;s Talk Custom Solutions
+            Let&apos;s Chat About Your Business
           </button>
         </div>
       </div>

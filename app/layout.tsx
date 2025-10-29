@@ -15,30 +15,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://buzzbold.com'),
+  metadataBase: new URL('https://buzzboldmarketing.com'),
   title: {
-    default: "BuzzBold | #1 Marketing Agency - Transform Your Brand",
-    template: "%s | BuzzBold"
+    default: "BuzzBold Marketing | Get Found. Get Booked. - SEO & Websites for Tradesmen",
+    template: "%s | BuzzBold Marketing"
   },
   description:
-    "Award-winning marketing agency specializing in brand strategy, digital marketing, and web development. We've helped 500+ brands achieve 250% average ROI. Let's create your success story.",
+    "BuzzBold Marketing helps UK tradesmen dominate their local market with professional websites, powerful SEO, and social media that brings in real customers. Founded by Zineb Akki & Riley Dias. Get your website live in 7 days.",
   keywords: [
-    "marketing agency",
-    "brand strategy",
-    "digital marketing",
-    "web development",
-    "SEO services",
-    "content marketing",
-    "brand identity",
-    "social media marketing",
-    "PPC advertising",
-    "growth marketing",
-    "ROI optimization",
-    "creative agency"
+    "tradesman marketing",
+    "tradesman websites",
+    "plumber SEO",
+    "electrician website",
+    "builder marketing",
+    "local SEO for tradesmen",
+    "Google My Business setup",
+    "tradesman social media",
+    "roofer website design",
+    "HVAC marketing",
+    "landscaper SEO",
+    "trade business marketing UK",
+    "get more customers tradesman",
+    "tradesman lead generation",
+    "trade business websites"
   ],
-  authors: [{ name: "BuzzBold Team" }],
-  creator: "BuzzBold",
-  publisher: "BuzzBold Marketing Agency",
+  authors: [{ name: "Zineb Akki" }, { name: "Riley Dias" }],
+  creator: "BuzzBold Marketing",
+  publisher: "BuzzBold Marketing",
   robots: {
     index: true,
     follow: true,
@@ -51,20 +54,20 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "BuzzBold | #1 Marketing Agency - Transform Your Brand",
+    title: "BuzzBold Marketing | Get Found. Get Booked. - SEO & Websites for Tradesmen",
     description:
-      "Award-winning marketing agency that delivers results. 500+ happy clients, 250% average ROI, 50+ industry awards.",
+      "Professional websites, powerful SEO, and social media for UK tradesmen. Get your website live in 7 days. Founded by Zineb Akki & Riley Dias.",
     type: "website",
-    locale: "en_US",
-    url: "https://buzzbold.com",
-    siteName: "BuzzBold",
+    locale: "en_GB",
+    url: "https://buzzboldmarketing.com",
+    siteName: "BuzzBold Marketing",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BuzzBold | #1 Marketing Agency",
+    title: "BuzzBold Marketing | Get Found. Get Booked.",
     description:
-      "Transform your brand with data-driven marketing strategies that drive exponential growth.",
-    creator: "@buzzbold",
+      "We help UK tradesmen dominate their local market with websites, SEO, and social media that brings in real customers.",
+    creator: "@buzzboldmarketing",
   },
   verification: {
     google: "google-site-verification-code",
@@ -79,29 +82,45 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'BuzzBold',
-    description: 'Award-winning marketing agency specializing in brand strategy, digital marketing, and web development.',
-    url: 'https://buzzbold.com',
-    logo: 'https://buzzbold.com/logo.png',
-    sameAs: [
-      'https://twitter.com/buzzbold',
-      'https://facebook.com/buzzbold',
-      'https://linkedin.com/company/buzzbold',
-      'https://instagram.com/buzzbold'
+    name: 'BuzzBold Marketing',
+    alternateName: 'BuzzBold',
+    description: 'BuzzBold Marketing helps UK tradesmen dominate their local market with professional websites, powerful SEO, and social media management. Founded by Zineb Akki & Riley Dias.',
+    url: 'https://buzzboldmarketing.com',
+    logo: 'https://buzzboldmarketing.com/logo.png',
+    slogan: 'Get Found. Get Booked. Get BuzzBold.',
+    founder: [
+      {
+        '@type': 'Person',
+        name: 'Zineb Akki',
+        jobTitle: 'Co-Founder & Tech Expert'
+      },
+      {
+        '@type': 'Person',
+        name: 'Riley Dias',
+        jobTitle: 'Co-Founder & Sales Expert'
+      }
     ],
+    areaServed: 'GB',
+    serviceArea: {
+      '@type': 'Country',
+      name: 'United Kingdom'
+    },
+    knowsAbout: ['SEO', 'Web Design', 'Social Media Marketing', 'Google My Business', 'Local SEO for Tradesmen'],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
-      email: 'hello@buzzbold.com'
+      email: 'Support@buzzboldmarketing.com',
+      availableLanguage: 'English'
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '500'
+      ratingValue: '5',
+      reviewCount: '100',
+      bestRating: '5'
     },
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'US'
+      addressCountry: 'GB'
     }
   };
 

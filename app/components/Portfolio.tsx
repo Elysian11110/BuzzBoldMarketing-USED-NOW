@@ -12,64 +12,64 @@ gsap.registerPlugin(ScrollTrigger);
 const portfolioItems = [
   {
     id: 1,
-    title: "TechVision Rebrand",
-    category: "Branding",
+    title: "Manchester Plumber",
+    category: "Plumbing",
     imageUrl:
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=800&h=600&fit=crop",
     description:
-      "Complete brand identity overhaul for a Fortune 500 tech company",
-    results: "300% increase in brand recognition",
+      "Local plumbing service got website and SEO boost",
+    results: "Est. £85K additional revenue in 12 months",
     gradient: "from-orange-500 to-red-500",
   },
   {
     id: 2,
-    title: "EcoCommerce Platform",
-    category: "Web Design",
+    title: "Birmingham Electrician",
+    category: "Electrical",
     imageUrl:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    description: "Award-winning e-commerce platform with sustainable focus",
-    results: "150% conversion rate improvement",
-    gradient: "from-green-500 to-teal-500",
+      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&h=600&fit=crop",
+    description: "Complete online presence for growing electrical business",
+    results: "Est. 3x customer inquiries, £120K revenue growth",
+    gradient: "from-yellow-500 to-orange-500",
   },
   {
     id: 3,
-    title: "FinanceFlow Campaign",
-    category: "Marketing",
+    title: "Leeds Builder",
+    category: "Construction",
     imageUrl:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    description: "Multi-channel marketing campaign for fintech startup",
-    results: "$5M in new customer acquisition",
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop",
+    description: "Website and Google My Business for construction company",
+    results: "Est. £200K in new project leads",
     gradient: "from-blue-500 to-indigo-500",
   },
   {
     id: 4,
-    title: "HealthPlus Identity",
-    category: "Branding",
+    title: "London Roofer",
+    category: "Roofing",
     imageUrl:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop",
-    description: "Modern brand identity for healthcare innovation leader",
-    results: "90% positive brand sentiment",
-    gradient: "from-pink-500 to-purple-500",
+      "https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800&h=600&fit=crop",
+    description: "SEO and social media for roofing specialist",
+    results: "Est. £95K revenue increase from online leads",
+    gradient: "from-red-500 to-pink-500",
   },
   {
     id: 5,
-    title: "StartupHub Website",
-    category: "Web Design",
+    title: "Bristol Landscaper",
+    category: "Landscaping",
     imageUrl:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop",
-    description: "Dynamic web platform for startup ecosystem",
-    results: "500K+ monthly active users",
-    gradient: "from-yellow-500 to-orange-500",
+      "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=600&fit=crop",
+    description: "Professional website and local SEO for landscaping business",
+    results: "Est. £110K in additional bookings",
+    gradient: "from-green-500 to-teal-500",
   },
   {
     id: 6,
-    title: "GrowthLabs Launch",
-    category: "Marketing",
+    title: "Glasgow HVAC",
+    category: "HVAC",
     imageUrl:
-      "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop",
-    description: "Product launch campaign reaching 10M+ impressions",
-    results: "250% ROI in first quarter",
-    gradient: "from-red-500 to-pink-500",
+      "https://images.unsplash.com/photo-1607400201515-c2c41c07d307?w=800&h=600&fit=crop",
+    description: "Complete digital marketing for heating and cooling company",
+    results: "Est. £150K revenue growth from web presence",
+    gradient: "from-purple-500 to-indigo-500",
   },
 ];
 
@@ -126,7 +126,7 @@ const Portfolio = () => {
     return () => ctx.revert();
   }, [filter]);
 
-  const categories = ["All", "Branding", "Web Design", "Marketing"];
+  const categories = ["All", "Plumbing", "Electrical", "Construction", "Roofing", "Landscaping", "HVAC"];
   const filteredItems =
     filter === "All"
       ? portfolioItems
@@ -146,11 +146,11 @@ const Portfolio = () => {
         {/* Section header */}
         <div ref={titleRef} className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Our <span className="gradient-text">Portfolio</span>
+            Real <span className="gradient-text">Results</span> for Real Tradesmen
           </h2>
           <p className="text-lg md:text-xl text-gray-400">
-            Explore our latest work and see how we&apos;ve helped brands achieve
-            remarkable results through innovative marketing strategies.
+            See how tradesmen across the UK have scaled their businesses with our
+            websites, SEO, and marketing services. Estimated revenue increases shown.
           </p>
         </div>
 
@@ -219,12 +219,15 @@ const Portfolio = () => {
                     {item.results}
                   </p>
 
-                  {/* View project button - shows on hover */}
+                  {/* Learn more button - shows on hover */}
                   <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-150">
-                    <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-colors">
-                      View Project
+                    <a
+                      href="tel:+447000000000"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-colors"
+                    >
+                      Learn More
                       <ArrowUpRight className="w-4 h-4" />
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -245,11 +248,11 @@ const Portfolio = () => {
         <div className="mt-20 text-center">
           <div className="max-w-2xl mx-auto mb-8">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Create Your Success Story?
+              Ready to Scale Your Trade Business?
             </h3>
             <p className="text-gray-400 text-lg">
-              Let&apos;s collaborate to build something extraordinary that
-              drives real business results.
+              Get more customers, more bookings, and more revenue with a website and
+              marketing that actually works. No BS. Just results.
             </p>
           </div>
           <button
@@ -261,7 +264,7 @@ const Portfolio = () => {
             }}
             className="px-10 py-5 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
           >
-            Start Your Project
+            Get Started Today
             <ExternalLink className="w-5 h-5" />
           </button>
         </div>

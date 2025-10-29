@@ -9,6 +9,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { Menu, X, Sparkles } from "lucide-react";
+import Logo from "./Logo";
 
 export default function NewHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,25 +51,18 @@ export default function NewHeader() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-black/90 backdrop-blur-xl border-b border-white/10 shadow-2xl"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300"
       >
         <div className="container mx-auto flex items-center justify-between p-4 md:p-6">
           {/* Logo */}
           <div
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-1 cursor-pointer group"
             onClick={() => handleScroll("#home")}
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-pink-500 blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-              <Sparkles className="w-8 h-8 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 relative z-10" />
-            </div>
-            <h1 className="text-2xl md:text-3xl font-black">
+            <h1 className="text-2xl md:text-3xl font-black flex items-center gap-1">
+              <Logo size={32} className="inline-block" />
               <span className="gradient-text">Buzz</span>
-              <span className="text-white">Bold</span>
+              <span className="text-white">BoldMarketing</span>
             </h1>
           </div>
 

@@ -1,0 +1,17 @@
+Vercel CLI 48.6.6
+WARN! `--confirm` is deprecated, please use `--yes` instead
+Retrieving project…
+Deploying elysian11110s-projects/buzzbold
+Uploading [--------------------] (0.0B/20.7KB)
+Uploading [=====---------------] (5.6KB/20.7KB)
+Uploading [==============------] (14.6KB/20.7KB)
+Uploading [====================] (20.7KB/20.7KB)
+Inspect: https://vercel.com/elysian11110s-projects/buzzbold/3nwfLqjaT6SwC9mZcjaYoQxTPVMc [4s]
+Production: https://buzzbold-reqc0g82l-elysian11110s-projects.vercel.app [4s]
+https://buzzbold-reqc0g82l-elysian11110s-projects.vercel.appQueued
+Building
+Completing
+
+Common next commands:
+- `vercel inspect buzzbold-reqc0g82l-elysian11110s-projects.vercel.app --logs`
+- `vercel redeploy buzzbold-reqc0g82l-elysian11110s-projects.vercel.app`

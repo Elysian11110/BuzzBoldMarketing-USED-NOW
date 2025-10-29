@@ -38,11 +38,17 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Let&apos;s Build Something Bold
+            Ready to Get More Customers?
           </h2>
-          <p className="text-lg text-gray-400 mb-12">
-            Have a project in mind? We&apos;d love to hear about it. Fill out
-            the form below and we&apos;ll get back to you as soon as possible.
+          <p className="text-lg text-gray-400 mb-6">
+            Let&apos;s chat about your business. No sales pitch, no pressure, just honest advice
+            on how to get your phone ringing with real jobs.
+          </p>
+          <p className="text-md text-gray-500 mb-12">
+            Email us directly at{" "}
+            <a href="mailto:Support@buzzboldmarketing.com" className="text-orange-500 hover:text-orange-400 font-semibold">
+              Support@buzzboldmarketing.com
+            </a>
           </p>
         </div>
         <div className="max-w-xl mx-auto">

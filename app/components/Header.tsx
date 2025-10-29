@@ -10,6 +10,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import Logo from './Logo';
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -17,15 +18,8 @@ const Header = () => {
   const headerRef = useRef(null);
 
   useEffect(() => {
-    gsap.to(headerRef.current, {
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
-      scrollTrigger: {
-        trigger: "body",
-        start: "top top",
-        end: "top top",
-        toggleActions: "play none none reverse"
-      }
-    });
+    // Header is always visible with fixed background
+    // No animation needed, it stays consistent
   }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, target: string) => {
@@ -34,9 +28,15 @@ const Header = () => {
   };
 
   return (
-    <header ref={headerRef} className="fixed top-0 left-0 w-full bg-transparent text-white p-4 z-50">
+    <header ref={headerRef} className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white p-4 z-50 border-b border-white/10">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold text-red-500">BuzzBold</div>
+        <div className="flex items-center gap-2">
+          <span className="text-2xl font-bold flex items-center gap-1">
+            <span className="gradient-text">Buzz</span>
+            <Logo size={32} className="inline-block" />
+            <span className="text-white">BoldMarketing</span>
+          </span>
+        </div>
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
