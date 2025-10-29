@@ -173,9 +173,17 @@ const Services = () => {
                     {service.description}
                   </p>
 
-                  {/* Learn more link */}
-                  <div className="mt-6 flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
-                    <span>Learn more</span>
+                  {/* Get in touch link */}
+                  <div
+                    onClick={() => {
+                      const element = document.querySelector("#contact");
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className="mt-6 flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                  >
+                    <span>Get in touch to learn more</span>
                     <svg
                       className="w-4 h-4 text-orange-500 group-hover:translate-x-1 transition-transform"
                       fill="none"
@@ -201,9 +209,12 @@ const Services = () => {
           <p className="text-gray-400 mb-6 text-lg">
             Not sure which service you need? We get it, marketing can be confusing.
           </p>
-          <button className="px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300">
+          <a
+            href="mailto:support@buzzboldmarketing.com"
+            className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
             Let&apos;s Chat About Your Business
-          </button>
+          </a>
         </div>
       </div>
     </section>
