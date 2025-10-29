@@ -102,7 +102,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-32 md:pt-20"
     >
       {/* Animated gradient orbs */}
       <div ref={gradientRef1} className="blur-gradient-orange top-20 left-20" />
@@ -125,7 +125,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8 animate-pulse-slow">
             <Sparkles className="w-4 h-4 text-orange-500" />
             <span className="text-sm font-medium text-gray-300">
-              Built for Tradesmen, By Tradesmen Who Get It
+              Built for Tradesmen, by experts who get it
             </span>
           </div>
 

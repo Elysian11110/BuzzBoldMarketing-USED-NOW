@@ -211,6 +211,8 @@ const Services = () => {
           </p>
           <a
             href="mailto:support@buzzboldmarketing.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Let&apos;s Chat About Your Business

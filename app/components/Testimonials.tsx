@@ -63,24 +63,24 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "Roofer from London",
-      role: "Roofing Services",
+      name: "Mitch A.",
+      role: "Roofer from London",
       image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=150&h=150&fit=crop&auto=format",
       content:
         "My old website looked like it was from 2005. BuzzBold built me a proper one that looks professional and brings in quality leads. Phone hasn't stopped ringing since.",
       rating: 5,
     },
     {
-      name: "Landscaper from Bristol",
-      role: "Landscaping Services",
+      name: "Dylan M.",
+      role: "Landscaper from Bristol",
       image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=150&h=150&fit=crop&auto=format",
       content:
         "These guys really know their stuff. They helped me get on Google Maps and now I'm getting jobs from people searching for landscapers near them. Game changer for my business.",
       rating: 5,
     },
     {
-      name: "Plumber from Manchester",
-      role: "Plumbing Services",
+      name: "Ron J.",
+      role: "Plumber from Manchester",
       image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=150&h=150&fit=crop&auto=format",
       content:
         "Straight-talking team that delivered exactly what they promised. My phone's been buzzing with new customers since they got my SEO sorted. Best decision I made this year.",

@@ -33,37 +33,28 @@ const Footer = () => {
       <div className="blur-gradient-pink bottom-0 right-0 opacity-30" />
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Top Section - Newsletter */}
+        {/* Top Section - Call Us Now */}
         <div className="bg-gradient-to-r from-orange-600/10 via-red-600/10 to-pink-600/10 border border-white/10 rounded-3xl p-8 md:p-12 mb-16 backdrop-blur-sm">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6">
-              <Mail className="w-4 h-4 text-orange-500" />
+              <Phone className="w-4 h-4 text-orange-500" />
               <span className="text-sm font-medium text-gray-300">
-                Join 100+ Successful Tradesmen
+                Ready to Grow Your Trade Business?
               </span>
             </div>
             <h3 className="text-3xl md:text-4xl font-black mb-4">
-              Get Marketing Tips for{" "}
-              <span className="gradient-text">Tradesmen</span>
+              Call Us <span className="gradient-text">Now</span>
             </h3>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              No fluff. Just practical advice on getting more customers, improving
-              your online presence, and growing your trade business.
+              Speak with our team today. No pressure, just honest advice on how we can help your business grow.
             </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 bg-black/50 border-2 border-gray-700 rounded-full px-6 py-6 text-white placeholder:text-gray-500 focus:border-orange-500 transition-colors"
-              />
-              <Button
-                type="submit"
-                className="btn-primary px-8 py-6 rounded-full font-bold group whitespace-nowrap"
-              >
-                Subscribe
-                <ArrowRight className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </form>
+            <a
+              href="tel:02012345678"
+              className="inline-flex items-center gap-3 px-10 py-6 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              <Phone className="w-6 h-6" />
+              020 1234 5678
+            </a>
           </div>
         </div>
 
