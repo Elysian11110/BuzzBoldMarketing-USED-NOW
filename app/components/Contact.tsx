@@ -1,26 +1,107 @@
+"use client";
 
-import React from 'react';
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      gsap.fromTo(
+        sectionRef.current,
+        { opacity: 0, y: 100 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    }
+  }, []);
+
   return (
-    <section className="bg-white text-black py-20">
-      <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">Contact Us</h2>
-        <form className="max-w-xl mx-auto">
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-lg font-bold mb-2">Name</label>
-            <input type="text" id="name" className="w-full p-3 border border-black rounded-lg" />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-lg font-bold mb-2">Email</label>
-            <input type="email" id="email" className="w-full p-3 border border-black rounded-lg" />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="message" className="block text-lg font-bold mb-2">Message</label>
-            <textarea id="message" rows={5} className="w-full p-3 border border-black rounded-lg"></textarea>
-          </div>
-          <button type="submit" className="bg-red-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-600">Send Message</button>
-        </form>
+    <section ref={sectionRef} className="bg-black text-white py-20">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Let&apos;s Build Something Bold
+          </h2>
+          <p className="text-lg text-gray-400 mb-12">
+            Have a project in mind? We&apos;d love to hear about it. Fill out
+            the form below and we&apos;ll get back to you as soon as possible.
+          </p>
+        </div>
+        <div className="max-w-xl mx-auto">
+          <form className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <Label
+                  htmlFor="name"
+                  className="text-sm font-semibold text-gray-400"
+                >
+                  Full Name
+                </Label>
+                <Input
+                  type="text"
+                  id="name"
+                  placeholder="John Doe"
+                  className="bg-gray-900/50 border-2 border-gray-800 rounded-lg p-3 focus:border-red-500 transition-colors"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label
+                  htmlFor="email"
+                  className="text-sm font-semibold text-gray-400"
+                >
+                  Email Address
+                </Label>
+                <Input
+                  type="email"
+                  id="email"
+                  placeholder="your.email@example.com"
+                  className="bg-gray-900/50 border-2 border-gray-800 rounded-lg p-3 focus:border-red-500 transition-colors"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label
+                htmlFor="message"
+                className="text-sm font-semibold text-gray-400"
+              >
+                Your Message
+              </Label>
+              <Textarea
+                id="message"
+                placeholder="Tell us about your project..."
+                rows={6}
+                className="bg-gray-900/50 border-2 border-gray-800 rounded-lg p-3 focus:border-red-500 transition-colors"
+              />
+            </div>
+            <div className="text-center">
+              <Button
+                type="submit"
+                size="lg"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300"
+              >
+                Send Message
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
