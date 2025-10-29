@@ -65,7 +65,7 @@ const Testimonials = () => {
     {
       name: "Mitch A.",
       role: "Roofer from London",
-      image: "https://images.unsplash.com/photo-1590845947670-c009801ffa74?w=150&h=150&fit=crop&auto=format",
+      image: "https://images.unsplash.com/photo-1565008576549-57569a49371d?w=150&h=150&fit=crop&auto=format",
       content:
         "My old website looked like it was from 2005. BuzzBold built me a proper one that looks professional and brings in quality leads. Phone hasn't stopped ringing since.",
       rating: 5,
