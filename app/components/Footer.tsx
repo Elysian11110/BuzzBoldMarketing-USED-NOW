@@ -257,12 +257,14 @@ const Footer = () => {
         </button>
 
         {/* Calendly Popup Modal */}
-        <PopupModal
-          url="https://calendly.com/buzzboldmarketing"
-          onModalClose={() => setIsCalendlyOpen(false)}
-          open={isCalendlyOpen}
-          rootElement={document.getElementById("root") as HTMLElement}
-        />
+        {typeof window !== 'undefined' && (
+          <PopupModal
+            url="https://calendly.com/buzzboldmarketing"
+            onModalClose={() => setIsCalendlyOpen(false)}
+            open={isCalendlyOpen}
+            rootElement={document.body}
+          />
+        )}
       </div>
     </footer>
   );
