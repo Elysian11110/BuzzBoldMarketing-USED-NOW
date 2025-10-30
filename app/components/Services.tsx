@@ -70,45 +70,18 @@ const Services = () => {
   const services = [
     {
       icon: <Globe className="w-10 h-10" />,
-      title: "Fast, SEO-Ready Websites",
-      description:
-        "Modern, mobile-first websites designed to convert visitors into paying customers. Every site includes lead capture forms, clear calls-to-action, and is optimized for local search from day one. Built in days, not months.",
+      title: "High Quality, Fully Responsive Websites",
       gradient: "from-orange-500 to-red-500",
     },
     {
       icon: <Target className="w-10 h-10" />,
-      title: "Local SEO & Google My Business",
-      description:
-        "Dominate local search results and Google Maps with expert SEO and Google Business Profile optimization. We get you in front of customers searching for what you offer right when they're ready to buy.",
+      title: "Local SEO to Dominate",
       gradient: "from-red-500 to-pink-500",
     },
     {
       icon: <MessageSquare className="w-10 h-10" />,
-      title: "Review & Reputation Management",
-      description:
-        "Get more reviews, respond to feedback, and build the online reputation that makes customers choose you over competitors. Powered by BrightLocal's trusted review management platform.",
+      title: "Account Management",
       gradient: "from-pink-500 to-purple-500",
-    },
-    {
-      icon: <Zap className="w-10 h-10" />,
-      title: "Business Listing Management",
-      description:
-        "Ensure your business shows up accurately across 100+ online directories, review sites, and local platforms. One dashboard. Total control. Powered by white-label BrightLocal technology.",
-      gradient: "from-purple-500 to-indigo-500",
-    },
-    {
-      icon: <TrendingUp className="w-10 h-10" />,
-      title: "Social Media Posting",
-      description:
-        "Consistent, professional social media posting that keeps your brand visible, builds credibility, and drives traffic to your website without you lifting a finger.",
-      gradient: "from-indigo-500 to-blue-500",
-    },
-    {
-      icon: <Palette className="w-10 h-10" />,
-      title: "Complete Online Presence Packages",
-      description:
-        "Get the full package: website, local SEO, listings, reviews, and social all managed under one roof. Perfect for businesses ready to own their local market.",
-      gradient: "from-blue-500 to-cyan-500",
     },
   ];
 
@@ -168,37 +141,6 @@ const Services = () => {
                   </CardTitle>
                 </CardHeader>
 
-                <CardContent className="relative z-10 px-8 pb-8">
-                  <p className="text-gray-400 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* Get in touch link */}
-                  <div
-                    onClick={() => {
-                      const element = document.querySelector("#contact");
-                      if (element) {
-                        element.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }}
-                    className="mt-6 flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-                  >
-                    <span>Get in touch to learn more</span>
-                    <svg
-                      className="w-4 h-4 text-orange-500 group-hover:translate-x-1 transition-transform"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </CardContent>
               </Card>
             </div>
           ))}

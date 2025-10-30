@@ -13,36 +13,28 @@ const processSteps = [
     id: 1,
     icon: Target,
     title: "Discovery & Strategy",
-    headline: "We Understand Your Business Needs",
-    description:
-      "Every business is different. We start with a strategy call to understand your goals, your market, and your competition. Then we build a custom plan designed to get you maximum visibility and leads.",
+    headline: "Understand Your Business Needs",
     gradient: "from-orange-500 to-red-500",
   },
   {
     id: 2,
     icon: Rocket,
     title: "Build & Optimize",
-    headline: "We Build Your Online Presence",
-    description:
-      "Whether it's a brand-new website, local SEO setup, or listing management across 100+ directories, we handle the technical heavy lifting. Fast turnaround. Industry-leading tools. Zero hassle.",
+    headline: "Build Your Online Presence",
     gradient: "from-red-500 to-pink-500",
   },
   {
     id: 3,
     icon: TrendingUp,
     title: "Launch & Grow",
-    headline: "We Review",
-    description:
-      "Once you're live, we monitor, optimize, and scale. You'll see more traffic, more reviews, more bookings, and a clear return on your investment. We track it all so you can focus on growing your business.",
+    headline: "Review",
     gradient: "from-pink-500 to-purple-500",
   },
   {
     id: 4,
     icon: Headset,
     title: "Ongoing Support",
-    headline: "We Grow With You",
-    description:
-      "Marketing isn't set-it-and-forget-it. We provide ongoing support, updates, and optimization to keep you ahead of competitors and top-of-mind with customers.",
+    headline: "Grow With You",
     gradient: "from-purple-500 to-indigo-500",
   },
 ];
@@ -166,12 +158,6 @@ const Portfolio = () => {
                       {step.headline}
                     </CardTitle>
                   </CardHeader>
-
-                  <CardContent className="relative z-10 px-8 pb-8">
-                    <p className="text-gray-400 leading-relaxed text-lg">
-                      {step.description}
-                    </p>
-                  </CardContent>
                 </Card>
               </div>
             );

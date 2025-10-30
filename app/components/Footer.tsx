@@ -136,8 +136,7 @@ const Footer = () => {
               {[
                 { label: "Home", target: "#home" },
                 { label: "Services", target: "#services" },
-                { label: "Portfolio", target: "#portfolio" },
-                { label: "About Us", target: "#about" },
+                { label: "Gameplan", target: "#portfolio" },
                 { label: "Contact", target: "#contact" },
               ].map((link, index) => (
                 <li key={index}>
