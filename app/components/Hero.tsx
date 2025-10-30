@@ -136,10 +136,10 @@ const Hero = () => {
           >
             Get Found.{" "}
             <span className="gradient-text text-glow inline-block">
-              Get Booked.
+              Get Chosen.
             </span>
             <br />
-            Stay Booked.
+            Dominate.
           </h1>
 
           {/* Subtitle */}

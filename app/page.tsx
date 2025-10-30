@@ -1,6 +1,5 @@
 import NewHeader from "./components/NewHeader";
 import Hero from "./components/Hero";
-import Stats from "./components/Stats";
 import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
 import Testimonials from "./components/Testimonials";
@@ -14,9 +13,6 @@ export default function Home() {
       <main>
         <div id="home">
           <Hero />
-        </div>
-        <div id="about">
-          <Stats />
         </div>
         <div id="services">
           <Services />
