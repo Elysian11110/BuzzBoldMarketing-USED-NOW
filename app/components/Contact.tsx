@@ -38,10 +38,10 @@ const Contact = () => {
             {/* Left Side - Form */}
             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                Let&apos;s Talk About <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">Your Growth</span>
+                Get Your <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">Free SEO Audit</span>
               </h2>
               <p className="text-gray-600 mb-8">
-                Ready to dominate your local market? Book a free strategy call and we&apos;ll show you exactly how we can help you get more visibility, more leads, and more revenue.
+                See exactly where your business stands online. We&apos;ll show you what&apos;s working, what&apos;s not, and how to dominate your local market.
               </p>
 
               <form className="space-y-6">
@@ -194,7 +194,7 @@ const Contact = () => {
                   type="submit"
                   className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
                 >
-                  Book a Free Strategy Call
+                  Get Your Free SEO Audit
                 </button>
 
                 <div className="flex items-start gap-2 text-sm text-gray-600">
@@ -202,8 +202,8 @@ const Contact = () => {
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <div>
-                    <p className="font-semibold text-gray-900">We reply within hours</p>
-                    <p>No obligation • No pressure • No BS</p>
+                    <p className="font-semibold text-gray-900">Typical project timeframes provided during consultation</p>
+                    <p>No obligation • No pressure • Clear answers</p>
                   </div>
                 </div>
               </form>
@@ -232,15 +232,15 @@ const Contact = () => {
                 <Clock className="w-12 h-12 mb-4 text-red-600" />
                 <h3 className="text-2xl font-bold mb-2 text-gray-900">Office Hours</h3>
                 <p className="text-gray-600 font-semibold">Monday - Friday</p>
-                <p className="text-gray-600">9:00 AM - 6:00 PM GMT</p>
+                <p className="text-gray-600">9:00 AM - 6:00 PM</p>
                 <p className="text-gray-600 mt-2">Weekend? Leave us a message.</p>
               </div>
 
               <div className="bg-gradient-to-br from-orange-600 to-red-600 rounded-3xl p-8 text-white shadow-2xl">
                 <MapPin className="w-12 h-12 mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Serving All UK Businesses</h3>
-                <p className="text-orange-100 font-semibold">From Local to National</p>
-                <p className="text-orange-100">Remote & On-Site Support Available</p>
+                <h3 className="text-2xl font-bold mb-2">Serving UK Businesses</h3>
+                <p className="text-orange-100 font-semibold">Local to National</p>
+                <p className="text-orange-100">Remote consultation available</p>
               </div>
 
               <div className="bg-red-600 rounded-3xl p-8 text-white shadow-2xl">

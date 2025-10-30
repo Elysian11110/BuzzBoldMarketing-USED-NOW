@@ -125,7 +125,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8 animate-pulse-slow">
             <Sparkles className="w-4 h-4 text-orange-500" />
             <span className="text-sm font-medium text-gray-300">
-              Trusted by UK Businesses Across Every Industry
+              Trusted by Growing UK Businesses
             </span>
           </div>
 
@@ -136,10 +136,10 @@ const Hero = () => {
           >
             Get Found.{" "}
             <span className="gradient-text text-glow inline-block">
-              Get Leads.
+              Get Booked.
             </span>
             <br />
-            Get Growing.
+            Stay Booked.
           </h1>
 
           {/* Subtitle */}
@@ -147,9 +147,8 @@ const Hero = () => {
             ref={subtitleRef}
             className="text-lg md:text-xl lg:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            We help local UK businesses dominate their market with professional websites,
-            local SEO, and review management powered by industry-leading tools.
-            No jargon. No fluff. Just online visibility that brings real customers to your door.
+            We help UK local businesses dominate their market with expert SEO, professional websites,
+            and reputation management that drives real leads—fast.
           </p>
 
           {/* CTAs */}
@@ -163,27 +162,25 @@ const Hero = () => {
               className="btn-primary px-8 py-6 text-lg font-bold group relative overflow-hidden rounded-full"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Book a Free Strategy Call
+                Get Your Free SEO Audit
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={handleServicesClick}
-              className="border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105"
+            <a
+              href="tel:02012345678"
+              className="border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 inline-block"
             >
-              See How We Work
-            </Button>
+              Call Us
+            </a>
           </div>
 
           {/* Stats bar */}
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { value: "Industry-Leading", label: "SEO & Listing Tools" },
-              { value: "Fast Turnaround", label: "Days, Not Months" },
-              { value: "UK Business", label: "Specialists" },
-              { value: "White-Label", label: "Powered by BrightLocal" },
+              { value: "Local SEO", label: "Experts" },
+              { value: "Fast Delivery", label: "Professional Results" },
+              { value: "Full Transparency", label: "Clear Reporting" },
+              { value: "UK-Focused", label: "Local Business Specialists" },
             ].map((stat, index) => (
               <div
                 key={index}
