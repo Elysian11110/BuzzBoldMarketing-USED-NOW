@@ -70,44 +70,44 @@ const Services = () => {
   const services = [
     {
       icon: <Globe className="w-10 h-10" />,
-      title: "Professional Websites",
+      title: "Fast, SEO-Ready Websites",
       description:
-        "Lightning-fast websites built in 7 days. Mobile-friendly, easy to update, and designed to turn visitors into customers. No technical headaches, we handle everything.",
+        "Modern, mobile-first websites designed to convert visitors into paying customers. Every site includes lead capture forms, clear calls-to-action, and is optimized for local search from day one. Built in days, not months.",
       gradient: "from-orange-500 to-red-500",
     },
     {
       icon: <Target className="w-10 h-10" />,
-      title: "Local SEO That Works",
+      title: "Local SEO & Google My Business",
       description:
-        "Get found on Google when customers search for your trade. We'll get you on Page 1 for local searches so the phone starts ringing with real jobs, not tire-kickers.",
+        "Dominate local search results and Google Maps with expert SEO and Google Business Profile optimization. We get you in front of customers searching for what you offer—right when they're ready to buy.",
       gradient: "from-red-500 to-pink-500",
     },
     {
       icon: <MessageSquare className="w-10 h-10" />,
-      title: "Social Media Management",
+      title: "Review & Reputation Management",
       description:
-        "Show off your best work where customers are looking. We create posts that showcase your expertise, build trust, and bring in leads without you lifting a finger.",
+        "Get more reviews, respond to feedback, and build the online reputation that makes customers choose you over competitors. Powered by BrightLocal's trusted review management platform.",
       gradient: "from-pink-500 to-purple-500",
     },
     {
       icon: <Zap className="w-10 h-10" />,
-      title: "Google My Business Setup",
+      title: "Business Listing Management",
       description:
-        "Own your local Google listings. We optimize your profile so you show up in map searches, collect 5-star reviews, and beat your competitors to the call.",
+        "Ensure your business shows up accurately across 100+ online directories, review sites, and local platforms. One dashboard. Total control. Powered by white-label BrightLocal technology.",
       gradient: "from-purple-500 to-indigo-500",
     },
     {
       icon: <TrendingUp className="w-10 h-10" />,
-      title: "Complete Web Presence",
+      title: "Social Media Posting",
       description:
-        "From online directories to review management, we make sure customers can find you everywhere. One package, total coverage, real results.",
+        "Consistent, professional social media posting that keeps your brand visible, builds credibility, and drives traffic to your website—without you lifting a finger.",
       gradient: "from-indigo-500 to-blue-500",
     },
     {
       icon: <Palette className="w-10 h-10" />,
-      title: "Branding & Design",
+      title: "Complete Online Presence Packages",
       description:
-        "Stand out from the competition with a professional look. Logo, business cards, van graphics, everything that makes customers remember you and trust you.",
+        "Get the full package: website, local SEO, listings, reviews, and social—all managed under one roof. Perfect for businesses ready to own their local market.",
       gradient: "from-blue-500 to-cyan-500",
     },
   ];
@@ -125,11 +125,11 @@ const Services = () => {
         {/* Section header */}
         <div ref={titleRef} className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Services Built For <span className="gradient-text">Tradesmen</span>
+            Services Built to <span className="gradient-text">Drive Results</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400">
-            Everything you need to dominate your local market. We understand your business
-            because we come from tech and sales backgrounds, we know what works, and we deliver it fast.
+            Everything your business needs to show up online, stand out locally, and convert clicks into customers.
+            We handle the tech. You handle the growth.
           </p>
         </div>
 
@@ -207,16 +207,19 @@ const Services = () => {
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <p className="text-gray-400 mb-6 text-lg">
-            Not sure which service you need? We get it, marketing can be confusing.
+            Not sure what you need? Let&apos;s talk.
           </p>
-          <a
-            href="mailto:support@buzzboldmarketing.com"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => {
+              const element = document.querySelector("#contact");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
             className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
-            Let&apos;s Chat About Your Business
-          </a>
+            Book a Free Strategy Call
+          </button>
         </div>
       </div>
     </section>

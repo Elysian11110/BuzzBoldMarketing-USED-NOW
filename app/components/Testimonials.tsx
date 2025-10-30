@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Award, Target, Zap, Shield } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,30 +60,34 @@ const Testimonials = () => {
     return () => ctx.revert();
   }, []);
 
-  const testimonials = [
+  const trustPoints = [
     {
-      name: "Mitch A.",
-      role: "Roofer from London",
-      image: "https://images.unsplash.com/photo-1565008576549-57569a49371d?w=150&h=150&fit=crop&auto=format",
-      content:
-        "My old website looked like it was from 2005. BuzzBold built me a proper one that looks professional and brings in quality leads. Phone hasn't stopped ringing since.",
-      rating: 5,
+      icon: Award,
+      title: "Powered by BrightLocal",
+      description:
+        "We partner with BrightLocal—the industry standard for local SEO, listing management, and review tools used by top agencies worldwide.",
+      gradient: "from-orange-500 to-red-500",
     },
     {
-      name: "Dylan M.",
-      role: "Landscaper from Bristol",
-      image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=150&h=150&fit=crop&auto=format",
-      content:
-        "These guys really know their stuff. They helped me get on Google Maps and now I'm getting jobs from people searching for landscapers near them. Game changer for my business.",
-      rating: 5,
+      icon: Target,
+      title: "UK Local Business Experts",
+      description:
+        "We specialize in helping UK businesses dominate local search, rank on Google Maps, and attract customers in their area.",
+      gradient: "from-red-500 to-pink-500",
     },
     {
-      name: "Ron J.",
-      role: "Plumber from Manchester",
-      image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=150&h=150&fit=crop&auto=format",
-      content:
-        "Straight-talking team that delivered exactly what they promised. My phone's been buzzing with new customers since they got my SEO sorted. Best decision I made this year.",
-      rating: 5,
+      icon: Zap,
+      title: "Fast, Proven, Scalable",
+      description:
+        "We build fast. We launch fast. And we deliver results that scale. No 6-month buildouts. No empty promises. Just smart marketing that works.",
+      gradient: "from-pink-500 to-purple-500",
+    },
+    {
+      icon: Shield,
+      title: "Transparent & Accountable",
+      description:
+        "You'll always know what we're doing, why we're doing it, and what results you're getting. Full reporting. No surprises.",
+      gradient: "from-purple-500 to-indigo-500",
     },
   ];
 
@@ -101,97 +104,81 @@ const Testimonials = () => {
         {/* Section header */}
         <div ref={titleRef} className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Real Tradesmen, <span className="gradient-text">Real Results</span>
+            Why Choose <span className="gradient-text">BuzzBold Marketing</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400">
-            Don&apos;t just take our word for it. Here&apos;s what tradesmen across the UK
-            are saying about working with BuzzBold Marketing.
+            We&apos;re not just another agency. We&apos;re specialists in local business growth,
+            powered by the best tools in the industry.
           </p>
         </div>
 
-        {/* Testimonials grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              ref={(el) => {
-                if (el) cardsRef.current[index] = el;
-              }}
-              className="group h-full"
-            >
-              <Card className="h-full bg-gradient-to-br from-gray-900/90 to-gray-900/50 border-2 border-gray-800 rounded-2xl backdrop-blur-sm hover:border-gray-700 transition-all duration-500 relative overflow-hidden">
-                {/* Quote icon background */}
-                <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <Quote className="w-24 h-24 text-white" />
-                </div>
-
-                <CardContent className="p-8 relative z-10">
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-5 h-5 fill-orange-500 text-orange-500"
-                      />
-                    ))}
-                  </div>
-
-                  {/* Content */}
-                  <p className="text-gray-300 leading-relaxed mb-6 text-lg">
-                    &quot;{testimonial.content}&quot;
-                  </p>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-4 pt-6 border-t border-gray-800">
-                    <div className="relative">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-pink-500 p-0.5">
-                        <div className="relative w-full h-full rounded-full overflow-hidden">
-                          <Image
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-sm text-gray-400">
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-
-        {/* Trust badges */}
-        <div className="mt-16 pt-16 border-t border-gray-800">
-          <p className="text-center text-gray-500 mb-8">
-            Helping tradesmen across the UK get found and get booked
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-50">
-            {[
-              "Plumbers",
-              "Electricians",
-              "Builders",
-              "Roofers",
-              "Landscapers",
-              "Carpenters",
-            ].map((trade, index) => (
+        {/* Trust points grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {trustPoints.map((point, index) => {
+            const IconComponent = point.icon;
+            return (
               <div
                 key={index}
-                className="text-2xl font-bold text-gray-600 hover:text-gray-400 transition-colors"
+                ref={(el) => {
+                  if (el) cardsRef.current[index] = el;
+                }}
+                className="group h-full"
               >
-                {trade}
+                <Card className="h-full bg-gradient-to-br from-gray-900/90 to-gray-900/50 border-2 border-gray-800 rounded-2xl backdrop-blur-sm hover:border-transparent transition-all duration-500 relative overflow-hidden">
+                  {/* Gradient overlay on hover */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${point.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                  />
+
+                  {/* Animated border */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-r ${point.gradient} blur-xl opacity-50`}
+                    />
+                  </div>
+
+                  <CardHeader className="relative z-10 flex flex-col items-start p-8 space-y-4">
+                    {/* Icon with gradient */}
+                    <div
+                      className={`p-4 rounded-xl bg-gradient-to-br ${point.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <IconComponent className="w-10 h-10" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold text-white">
+                      {point.title}
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="relative z-10 px-8 pb-8">
+                    <p className="text-gray-400 leading-relaxed text-lg">
+                      {point.description}
+                    </p>
+                  </CardContent>
+                </Card>
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-16 text-center">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            Let&apos;s Grow Your Business Together
+          </h3>
+          <p className="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">
+            Ready to dominate your local market? Book a free strategy call and discover how we can help you get more visibility, more leads, and more revenue.
+          </p>
+          <button
+            onClick={() => {
+              const element = document.querySelector("#contact");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="px-10 py-5 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
+            Book a Strategy Call
+          </button>
         </div>
       </div>
     </section>

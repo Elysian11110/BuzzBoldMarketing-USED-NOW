@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,10 +14,14 @@ import {
   Phone,
   Sparkles,
   ArrowRight,
+  Calendar,
 } from "lucide-react";
 import Logo from "./Logo";
+import { PopupModal } from "react-calendly";
 
 const Footer = () => {
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
+
   const handleScroll = (target: string) => {
     const element = document.querySelector(target);
     if (element) {
@@ -39,21 +43,21 @@ const Footer = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6">
               <Sparkles className="w-4 h-4 text-orange-500" />
               <span className="text-sm font-medium text-gray-300">
-                Ready to Grow Your Trade Business?
+                Ready to Grow Your Business?
               </span>
             </div>
             <h3 className="text-3xl md:text-4xl font-black mb-4">
-              Book a <span className="gradient-text">Demo</span>
+              Book a Free <span className="gradient-text">Strategy Call</span>
             </h3>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              See how we can transform your business. Schedule a free demo with our team today.
+              See how we can transform your online presence and drive real results. Book a free strategy call with our team today.
             </p>
             <button
-              onClick={() => handleScroll("#contact")}
+              onClick={() => setIsCalendlyOpen(true)}
               className="inline-flex items-center gap-3 px-10 py-6 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
-              <Sparkles className="w-6 h-6" />
-              Get In Touch
+              <Calendar className="w-6 h-6" />
+              Book a Demo
             </button>
           </div>
         </div>
@@ -70,8 +74,8 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              We help UK tradesmen dominate their local market with websites, SEO,
-              and social media that brings in real customers. We get you, and we get you results.
+              We help UK local businesses grow with professional websites, local SEO, review management,
+              and social posting—powered by BrightLocal&apos;s industry-leading platform.
             </p>
             <div className="flex gap-3">
               {[
@@ -251,6 +255,14 @@ const Footer = () => {
             />
           </svg>
         </button>
+
+        {/* Calendly Popup Modal */}
+        <PopupModal
+          url="https://calendly.com/buzzboldmarketing"
+          onModalClose={() => setIsCalendlyOpen(false)}
+          open={isCalendlyOpen}
+          rootElement={document.getElementById("root") as HTMLElement}
+        />
       </div>
     </footer>
   );

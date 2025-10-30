@@ -1,83 +1,56 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Target, Rocket, TrendingUp, Headset } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const portfolioItems = [
+const processSteps = [
   {
     id: 1,
-    title: "Manchester Plumber",
-    category: "Plumbing",
-    imageUrl:
-      "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=800&h=600&fit=crop",
+    icon: Target,
+    title: "Discovery & Strategy",
+    headline: "We Learn Your Business",
     description:
-      "Local plumbing service got website and SEO boost",
-    results: "Est. £85K additional revenue in 12 months",
+      "Every business is different. We start with a strategy call to understand your goals, your market, and your competition. Then we build a custom plan designed to get you maximum visibility and leads.",
     gradient: "from-orange-500 to-red-500",
   },
   {
     id: 2,
-    title: "Birmingham Electrician",
-    category: "Electrical",
-    imageUrl:
-      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&h=600&fit=crop",
-    description: "Complete online presence for growing electrical business",
-    results: "Est. 3x customer inquiries, £120K revenue growth",
-    gradient: "from-yellow-500 to-orange-500",
-  },
-  {
-    id: 3,
-    title: "Leeds Builder",
-    category: "Construction",
-    imageUrl:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop",
-    description: "Website and Google My Business for construction company",
-    results: "Est. £200K in new project leads",
-    gradient: "from-blue-500 to-indigo-500",
-  },
-  {
-    id: 4,
-    title: "London Roofer",
-    category: "Roofing",
-    imageUrl:
-      "https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800&h=600&fit=crop",
-    description: "SEO and social media for roofing specialist",
-    results: "Est. £95K revenue increase from online leads",
+    icon: Rocket,
+    title: "Build & Optimize",
+    headline: "We Build Your Online Presence",
+    description:
+      "Whether it's a brand-new website, local SEO setup, or listing management across 100+ directories—we handle the technical heavy lifting. Fast turnaround. Industry-leading tools. Zero hassle.",
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 5,
-    title: "Bristol Landscaper",
-    category: "Landscaping",
-    imageUrl:
-      "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=600&fit=crop",
-    description: "Professional website and local SEO for landscaping business",
-    results: "Est. £110K in additional bookings",
-    gradient: "from-green-500 to-teal-500",
+    id: 3,
+    icon: TrendingUp,
+    title: "Launch & Grow",
+    headline: "We Drive Traffic & Leads",
+    description:
+      "Once you're live, we monitor, optimize, and scale. You'll see more traffic, more reviews, more bookings—and a clear return on your investment. We track it all so you can focus on growing your business.",
+    gradient: "from-pink-500 to-purple-500",
   },
   {
-    id: 6,
-    title: "Glasgow HVAC",
-    category: "HVAC",
-    imageUrl:
-      "https://images.unsplash.com/photo-1607400201515-c2c41c07d307?w=800&h=600&fit=crop",
-    description: "Complete digital marketing for heating and cooling company",
-    results: "Est. £150K revenue growth from web presence",
+    id: 4,
+    icon: Headset,
+    title: "Ongoing Support",
+    headline: "We Stay With You",
+    description:
+      "Marketing isn't set-it-and-forget-it. We provide ongoing support, updates, and optimization to keep you ahead of competitors and top-of-mind with customers.",
     gradient: "from-purple-500 to-indigo-500",
   },
 ];
 
 const Portfolio = () => {
-  const [filter, setFilter] = useState("All");
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
-  const itemsRef = useRef<HTMLDivElement[]>([]);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -97,45 +70,40 @@ const Portfolio = () => {
         },
       );
 
-      // Items animation
-      itemsRef.current.forEach((item, index) => {
+      // Staggered card animations
+      cardsRef.current.forEach((card, index) => {
         gsap.fromTo(
-          item,
+          card,
           {
             opacity: 0,
-            scale: 0.8,
             y: 100,
+            scale: 0.8,
           },
           {
             opacity: 1,
-            scale: 1,
             y: 0,
+            scale: 1,
             duration: 0.8,
             ease: "back.out(1.2)",
             scrollTrigger: {
-              trigger: item,
-              start: "top 90%",
+              trigger: card,
+              start: "top 85%",
               toggleActions: "play none none none",
             },
-            delay: (index % 3) * 0.1,
+            delay: index * 0.2,
           },
         );
       });
     });
 
     return () => ctx.revert();
-  }, [filter]);
-
-  const categories = ["All", "Plumbing", "Electrical", "Construction", "Roofing", "Landscaping", "HVAC"];
-  const filteredItems =
-    filter === "All"
-      ? portfolioItems
-      : portfolioItems.filter((item) => item.category === filter);
+  }, []);
 
   return (
     <section
       ref={sectionRef}
       className="section-padding bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
+      id="process"
     >
       {/* Background elements */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
@@ -144,115 +112,80 @@ const Portfolio = () => {
 
       <div className="container mx-auto container-padding relative z-10">
         {/* Section header */}
-        <div ref={titleRef} className="text-center mb-12 max-w-3xl mx-auto">
+        <div ref={titleRef} className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Real <span className="gradient-text">Results</span> for Real Tradesmen
+            How We <span className="gradient-text">Get You Results</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400">
-            See how tradesmen across the UK have scaled their businesses with our
-            websites, SEO, and marketing services. Estimated revenue increases shown.
+            No guesswork. No trial and error. Just a proven system that gets local businesses found online and booked solid.
           </p>
         </div>
 
-        {/* Filter buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              onClick={() => setFilter(category)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                filter === category
-                  ? "bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white shadow-lg scale-105"
-                  : "bg-gray-800/50 text-gray-400 hover:bg-gray-800 hover:text-white border border-gray-700"
-              }`}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-
-        {/* Portfolio grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredItems.map((item, index) => (
-            <div
-              key={item.id}
-              ref={(el) => {
-                if (el) itemsRef.current[index] = el;
-              }}
-              className="group relative"
-            >
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl h-[400px] bg-gray-900">
-                {/* Image */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={item.imageUrl}
-                    alt={item.title}
-                    fill
-                    className="object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
-                </div>
-
-                {/* Content overlay */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-                  {/* Category badge */}
-                  <div className="mb-4">
-                    <span
-                      className={`inline-block px-4 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${item.gradient} text-white shadow-lg`}
-                    >
-                      {item.category}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 transform group-hover:translate-y-0 translate-y-2 transition-transform duration-300">
-                    {item.title}
-                  </h3>
-
-                  {/* Description - shows on hover */}
-                  <p className="text-gray-300 mb-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
-                    {item.description}
-                  </p>
-
-                  {/* Results - shows on hover */}
-                  <p className="text-sm font-semibold gradient-text opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 mb-4">
-                    {item.results}
-                  </p>
-
-                  {/* Learn more button - shows on hover */}
-                  <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-150">
-                    <a
-                      href="tel:+447000000000"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-colors"
-                    >
-                      Learn More
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Animated border on hover */}
-                <div
-                  className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
-                >
+        {/* Process steps grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {processSteps.map((step, index) => {
+            const IconComponent = step.icon;
+            return (
+              <div
+                key={step.id}
+                ref={(el) => {
+                  if (el) cardsRef.current[index] = el;
+                }}
+                className="group"
+              >
+                <Card className="h-full bg-gradient-to-br from-gray-900/90 to-gray-900/50 border-2 border-gray-800 rounded-2xl backdrop-blur-sm hover:border-transparent transition-all duration-500 relative overflow-hidden">
+                  {/* Gradient overlay on hover */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-r ${item.gradient} blur-xl opacity-50`}
+                    className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                   />
-                </div>
+
+                  {/* Animated border */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-r ${step.gradient} blur-xl opacity-50`}
+                    />
+                  </div>
+
+                  <CardHeader className="relative z-10 flex flex-col items-start p-8 space-y-4">
+                    {/* Step number badge */}
+                    <div className="flex items-center gap-4 w-full mb-2">
+                      <div
+                        className={`px-4 py-2 rounded-full bg-gradient-to-r ${step.gradient} text-white font-bold text-sm`}
+                      >
+                        Step {step.id}
+                      </div>
+                    </div>
+
+                    {/* Icon with gradient */}
+                    <div
+                      className={`p-4 rounded-xl bg-gradient-to-br ${step.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <IconComponent className="w-10 h-10" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold text-white">
+                      {step.headline}
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="relative z-10 px-8 pb-8">
+                    <p className="text-gray-400 leading-relaxed text-lg">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                </Card>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Bottom CTA */}
         <div className="mt-20 text-center">
           <div className="max-w-2xl mx-auto mb-8">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Scale Your Trade Business?
+              Ready to Start Growing?
             </h3>
             <p className="text-gray-400 text-lg">
-              Get more customers, more bookings, and more revenue with a website and
-              marketing that actually works. No BS. Just results.
+              Let&apos;s talk about your business goals and create a custom plan to help you dominate your local market.
             </p>
           </div>
           <button
@@ -262,10 +195,9 @@ const Portfolio = () => {
                 element.scrollIntoView({ behavior: "smooth" });
               }
             }}
-            className="px-10 py-5 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
+            className="px-10 py-5 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
-            Get Started Today
-            <ExternalLink className="w-5 h-5" />
+            Request a Free Website Audit
           </button>
         </div>
       </div>

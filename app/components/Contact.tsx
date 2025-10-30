@@ -38,10 +38,10 @@ const Contact = () => {
             {/* Left Side - Form */}
             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                Get Your Free Consultation
+                Let&apos;s Talk About <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">Your Growth</span>
               </h2>
               <p className="text-gray-600 mb-8">
-                Fill out the form below and we&apos;ll get back to you within a few hours with a custom plan for your business.
+                Ready to dominate your local market? Book a free strategy call and we&apos;ll show you exactly how we can help you get more visibility, more leads, and more revenue.
               </p>
 
               <form className="space-y-6">
@@ -93,17 +93,20 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-bold text-gray-900 mb-2">
-                      Your Trade <span className="text-red-600">*</span>
+                      Business Type <span className="text-red-600">*</span>
                     </label>
                     <select className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer">
-                      <option>Select your trade</option>
+                      <option>Select your industry</option>
                       <option>Plumber</option>
                       <option>Electrician</option>
-                      <option>Builder</option>
+                      <option>Builder/Construction</option>
                       <option>Roofer</option>
                       <option>Landscaper</option>
-                      <option>HVAC</option>
-                      <option>Other</option>
+                      <option>Carpenter</option>
+                      <option>Restaurant/Cafe</option>
+                      <option>Retail Shop</option>
+                      <option>Professional Services</option>
+                      <option>Other Local Business</option>
                     </select>
                   </div>
                   <div>
@@ -191,7 +194,7 @@ const Contact = () => {
                   type="submit"
                   className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
                 >
-                  Get My Free Consultation
+                  Book a Free Strategy Call
                 </button>
 
                 <div className="flex items-start gap-2 text-sm text-gray-600">
@@ -210,32 +213,34 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-3xl p-8 text-white shadow-2xl">
                 <Phone className="w-12 h-12 mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Call Us</h3>
+                <h3 className="text-2xl font-bold mb-2">Call Us Directly</h3>
                 <p className="text-xl font-semibold mb-2">020 1234 5678</p>
-                <p className="text-red-100">Mon-Fri: 9am-6pm</p>
-                <p className="text-red-100">We pick up. No call centers.</p>
+                <p className="text-red-100">Mon-Fri: 9am-6pm GMT</p>
+                <p className="text-red-100">Real people. No call centers.</p>
               </div>
 
               <div className="bg-white rounded-3xl p-8 shadow-2xl">
                 <Mail className="w-12 h-12 mb-4 text-red-600" />
-                <h3 className="text-2xl font-bold mb-2 text-gray-900">Email Us</h3>
-                <a href="mailto:hello@buzzboldmarketing.com" className="text-xl font-semibold text-red-600 hover:text-red-700 transition-colors">
-                  hello@buzzboldmarketing.com
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">Email Us Anytime</h3>
+                <a href="mailto:Support@buzzboldmarketing.com" className="text-xl font-semibold text-red-600 hover:text-red-700 transition-colors">
+                  Support@buzzboldmarketing.com
                 </a>
-                <p className="text-gray-600 mt-2">Average response time: 2-4 hours</p>
+                <p className="text-gray-600 mt-2">We reply within 24 hours.</p>
               </div>
 
               <div className="bg-white rounded-3xl p-8 shadow-2xl">
                 <Clock className="w-12 h-12 mb-4 text-red-600" />
-                <h3 className="text-2xl font-bold mb-2 text-gray-900">Quick Response</h3>
-                <p className="text-gray-600">We reply within hours, not days.</p>
-                <p className="text-gray-600">Real people. Real responses.</p>
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">Office Hours</h3>
+                <p className="text-gray-600 font-semibold">Monday - Friday</p>
+                <p className="text-gray-600">9:00 AM - 6:00 PM GMT</p>
+                <p className="text-gray-600 mt-2">Weekend? Leave us a message.</p>
               </div>
 
               <div className="bg-gradient-to-br from-orange-600 to-red-600 rounded-3xl p-8 text-white shadow-2xl">
                 <MapPin className="w-12 h-12 mb-4" />
-                <h3 className="text-2xl font-bold mb-2">UK-Based</h3>
-                <p className="text-orange-100">Proudly serving tradesmen across the United Kingdom.</p>
+                <h3 className="text-2xl font-bold mb-2">Serving All UK Businesses</h3>
+                <p className="text-orange-100 font-semibold">From Local to National</p>
+                <p className="text-orange-100">Remote & On-Site Support Available</p>
               </div>
 
               <div className="bg-red-600 rounded-3xl p-8 text-white shadow-2xl">

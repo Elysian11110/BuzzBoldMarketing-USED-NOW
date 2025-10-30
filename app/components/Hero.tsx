@@ -125,7 +125,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8 animate-pulse-slow">
             <Sparkles className="w-4 h-4 text-orange-500" />
             <span className="text-sm font-medium text-gray-300">
-              Built for Tradesmen, by experts who get it
+              Trusted by UK Businesses Across Every Industry
             </span>
           </div>
 
@@ -136,10 +136,10 @@ const Hero = () => {
           >
             Get Found.{" "}
             <span className="gradient-text text-glow inline-block">
-              Get Booked.
+              Get Leads.
             </span>
             <br />
-            Get BuzzBold.
+            Get Growing.
           </h1>
 
           {/* Subtitle */}
@@ -147,9 +147,9 @@ const Hero = () => {
             ref={subtitleRef}
             className="text-lg md:text-xl lg:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            We help tradesmen dominate their local market with powerful websites,
-            SEO that actually works, and social media that brings in real customers.
-            No fluff. No jargon. Just results you can measure.
+            We help local UK businesses dominate their market with professional websites,
+            local SEO, and review management powered by industry-leading tools.
+            No jargon. No fluff. Just online visibility that brings real customers to your door.
           </p>
 
           {/* CTAs */}
@@ -163,7 +163,7 @@ const Hero = () => {
               className="btn-primary px-8 py-6 text-lg font-bold group relative overflow-hidden rounded-full"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Get Started
+                Book a Free Strategy Call
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Button>
@@ -173,26 +173,26 @@ const Hero = () => {
               onClick={handleServicesClick}
               className="border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105"
             >
-              Explore Services
+              See How We Work
             </Button>
           </div>
 
           {/* Stats bar */}
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { value: "25 Years", label: "Combined Experience" },
-              { value: "100+", label: "Tradesmen Helped" },
-              { value: "Fast", label: "Website Shipping & Deployment" },
-              { value: "5-Star", label: "Customer Reviews" },
+              { value: "Industry-Leading", label: "SEO & Listing Tools" },
+              { value: "Fast Turnaround", label: "Days, Not Months" },
+              { value: "UK Business", label: "Specialists" },
+              { value: "White-Label", label: "Powered by BrightLocal" },
             ].map((stat, index) => (
               <div
                 key={index}
                 className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-orange-500/50 transition-all duration-300"
               >
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
+                <div className="text-xl md:text-2xl font-bold gradient-text mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+                <div className="text-xs md:text-sm text-gray-400">{stat.label}</div>
               </div>
             ))}
           </div>
