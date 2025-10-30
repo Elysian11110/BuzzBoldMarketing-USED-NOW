@@ -55,11 +55,11 @@ const Footer = () => {
               See how we can transform your online presence and drive real results. Book a free strategy call with our team today.
             </p>
             <button
-              onClick={() => setIsCalendlyOpen(true)}
+              onClick={() => handleScroll("#contact")}
               className="inline-flex items-center gap-3 px-10 py-6 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               <Calendar className="w-6 h-6" />
-              Book a Demo
+              Get In Touch
             </button>
           </div>
         </div>
@@ -159,12 +159,9 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 text-white">Services</h4>
             <ul className="space-y-4">
               {[
-                "Professional Websites",
-                "Local SEO",
-                "Social Media",
-                "Google My Business",
-                "Web Presence",
-                "Branding & Design",
+                "High Quality, Fully Responsive Websites",
+                "Local SEO to Dominate",
+                "Account Management",
               ].map((service, index) => (
                 <li key={index}>
                   <button
