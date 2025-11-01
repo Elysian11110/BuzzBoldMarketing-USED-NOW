@@ -121,8 +121,8 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 z-10 text-center">
         <div className="max-w-5xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8 animate-pulse-slow">
+          {/* Badge - Removed animate-pulse-slow to avoid appearing clickable */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8">
             <Sparkles className="w-4 h-4 text-orange-500" />
             <span className="text-sm font-medium text-gray-300">
               Trusted by Growing UK Businesses
@@ -147,30 +147,27 @@ const Hero = () => {
             Helping UK businesses grow visibility, leads, and revenue.
           </p>
 
-          {/* CTAs */}
+          {/* CTAs - Improved visual hierarchy with primary gradient CTA and secondary outline CTA */}
           <div
             ref={ctaRef}
-            className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full"
+            className="flex flex-col sm:flex-row gap-6 items-center justify-center w-full"
           >
+            <button
+              onClick={handleCtaClick}
+              className="px-12 py-6 text-xl font-black rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white transition-all duration-300 hover:scale-105 inline-flex items-center gap-3 shadow-[0_0_40px_rgba(249,115,22,0.6)] hover:shadow-[0_0_60px_rgba(249,115,22,0.8)]"
+            >
+              Get Free Website Audit
+              <ArrowRight className="w-6 h-6" />
+            </button>
             <a
               href="tel:02012345678"
-              className="btn-primary px-12 py-6 text-xl font-black rounded-full transition-all duration-300 hover:scale-105 inline-flex items-center gap-3 shadow-2xl"
+              className="px-12 py-6 text-xl font-bold rounded-full border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 transition-all duration-300 hover:scale-105 inline-flex items-center gap-3"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              Call Now
+              Call: 020 1234 5678
             </a>
-            <Button
-              size="lg"
-              onClick={handleCtaClick}
-              className="border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105"
-            >
-              <span className="flex items-center gap-2">
-                Get Free SEO Audit
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Button>
           </div>
 
           {/* Stats bar */}

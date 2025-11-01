@@ -1,5 +1,6 @@
 import NewHeader from "./components/NewHeader";
 import Hero from "./components/Hero";
+import ExampleWork from "./components/ExampleWork";
 import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
 import Testimonials from "./components/Testimonials";
@@ -13,6 +14,9 @@ export default function Home() {
       <main>
         <div id="home">
           <Hero />
+        </div>
+        <div id="examples">
+          <ExampleWork />
         </div>
         <div id="services">
           <Services />
