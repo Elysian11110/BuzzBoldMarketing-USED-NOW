@@ -3,13 +3,16 @@
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Phone, Mail, Clock, MapPin, CheckCircle, X } from "lucide-react";
+import { Phone, Mail, Clock, MapPin, CheckCircle, X, ChevronDown } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const sectionRef = useRef(null);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const popupCloseButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (sectionRef.current) {
@@ -31,14 +34,67 @@ const Contact = () => {
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Focus trap for popup - focus close button when popup opens
+  useEffect(() => {
+    if (showSuccessPopup && popupCloseButtonRef.current) {
+      popupCloseButtonRef.current.focus();
+    }
+  }, [showSuccessPopup]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Show success popup - it will appear centered in the current viewport
-    setShowSuccessPopup(true);
+    setIsSubmitting(true);
+
+    // Get form data
+    const formData = new FormData(e.currentTarget);
+    const templateParams = {
+      name: formData.get("name"),
+      businessName: formData.get("businessName"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      businessType: formData.get("businessType"),
+      location: formData.get("location"),
+      service: formData.get("service"),
+      website: formData.get("website") || "Not provided",
+      advertising: formData.get("advertising"),
+      goals: formData.get("goals"),
+      message: formData.get("message") || "No additional message provided",
+      to_email: "support@buzzboldmarketing.com",
+    };
+
+    try {
+      // Initialize EmailJS with public key
+      emailjs.init("3PzRZdZuhqytSTXs6");
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        "service_buzzbold", // Service ID - you'll need to create this in EmailJS dashboard
+        "template_contact", // Template ID - you'll need to create this in EmailJS dashboard
+        templateParams,
+        "3PzRZdZuhqytSTXs6" // Public API key
+      );
+
+      console.log("Email sent successfully:", response);
+
+      // Show success popup
+      setShowSuccessPopup(true);
+
+      // Reset form
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Sorry, there was an error submitting your form. Please try again or email us directly at support@buzzboldmarketing.com");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleClosePopup = () => {
+    setShowSuccessPopup(false);
   };
 
   return (
-    <section ref={sectionRef} className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20">
+    <section ref={sectionRef} className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20" id="contact">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -53,22 +109,28 @@ const Contact = () => {
 
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                  <label htmlFor="name" className="block text-sm font-bold text-gray-900 mb-2">
                     Your Name <span className="text-red-600">*</span>
                   </label>
                   <input
+                    id="name"
+                    name="name"
                     type="text"
+                    required
                     placeholder="John Smith"
                     className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                  <label htmlFor="businessName" className="block text-sm font-bold text-gray-900 mb-2">
                     Business Name <span className="text-red-600">*</span>
                   </label>
                   <input
+                    id="businessName"
+                    name="businessName"
                     type="text"
+                    required
                     placeholder="Smith Plumbing"
                     className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900"
                   />
@@ -76,21 +138,27 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-gray-900 mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-gray-900 mb-2">
                       Email Address <span className="text-red-600">*</span>
                     </label>
                     <input
+                      id="email"
+                      name="email"
                       type="email"
+                      required
                       placeholder="john@smithplumbing.co.uk"
                       className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-900 mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold text-gray-900 mb-2">
                       Phone Number <span className="text-red-600">*</span>
                     </label>
                     <input
+                      id="phone"
+                      name="phone"
                       type="tel"
+                      required
                       placeholder="07123 456789"
                       className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900"
                     />
@@ -99,29 +167,40 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-gray-900 mb-2">
+                    <label htmlFor="businessType" className="block text-sm font-bold text-gray-900 mb-2">
                       Business Type <span className="text-red-600">*</span>
                     </label>
-                    <select className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer">
-                      <option>Select your industry</option>
-                      <option>Plumber</option>
-                      <option>Electrician</option>
-                      <option>Builder/Construction</option>
-                      <option>Roofer</option>
-                      <option>Landscaper</option>
-                      <option>Carpenter</option>
-                      <option>Restaurant/Cafe</option>
-                      <option>Retail Shop</option>
-                      <option>Professional Services</option>
-                      <option>Other Local Business</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="businessType"
+                        name="businessType"
+                        required
+                        className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer"
+                      >
+                        <option value="">Select your industry</option>
+                        <option value="Plumber">Plumber</option>
+                        <option value="Electrician">Electrician</option>
+                        <option value="Builder/Construction">Builder/Construction</option>
+                        <option value="Roofer">Roofer</option>
+                        <option value="Landscaper">Landscaper</option>
+                        <option value="Carpenter">Carpenter</option>
+                        <option value="Restaurant/Cafe">Restaurant/Cafe</option>
+                        <option value="Retail Shop">Retail Shop</option>
+                        <option value="Professional Services">Professional Services</option>
+                        <option value="Other Local Business">Other Local Business</option>
+                      </select>
+                      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+                    </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-900 mb-2">
+                    <label htmlFor="location" className="block text-sm font-bold text-gray-900 mb-2">
                       Your Location <span className="text-red-600">*</span>
                     </label>
                     <input
+                      id="location"
+                      name="location"
                       type="text"
+                      required
                       placeholder="e.g., Manchester"
                       className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900"
                     />
@@ -129,24 +208,34 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                  <label htmlFor="service" className="block text-sm font-bold text-gray-900 mb-2">
                     What Do You Need? <span className="text-red-600">*</span>
                   </label>
-                  <select className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer">
-                    <option>Select a service</option>
-                    <option>Website Design</option>
-                    <option>SEO</option>
-                    <option>Social Media</option>
-                    <option>Complete Package</option>
-                    <option>Not Sure</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      id="service"
+                      name="service"
+                      required
+                      className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="Website Design">Website Design</option>
+                      <option value="SEO">SEO</option>
+                      <option value="Social Media">Social Media</option>
+                      <option value="Complete Package">Complete Package</option>
+                      <option value="Not Sure">Not Sure</option>
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                  <label htmlFor="website" className="block text-sm font-bold text-gray-900 mb-2">
                     Current Website (if you have one)
                   </label>
                   <input
+                    id="website"
+                    name="website"
                     type="url"
                     placeholder="https://yourwebsite.co.uk"
                     className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900"
@@ -155,53 +244,75 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-gray-900 mb-2">
+                    <label htmlFor="advertising" className="block text-sm font-bold text-gray-900 mb-2">
                       Are you currently advertising? <span className="text-red-600">*</span>
                     </label>
-                    <select className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer">
-                      <option>Select advertising method</option>
-                      <option>Google Ads</option>
-                      <option>Facebook Ads</option>
-                      <option>Instagram Ads</option>
-                      <option>Local Directories</option>
-                      <option>Print Media</option>
-                      <option>Not Currently Advertising</option>
-                      <option>Other</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="advertising"
+                        name="advertising"
+                        required
+                        className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer"
+                      >
+                        <option value="">Select advertising method</option>
+                        <option value="Google Ads">Google Ads</option>
+                        <option value="Facebook Ads">Facebook Ads</option>
+                        <option value="Instagram Ads">Instagram Ads</option>
+                        <option value="Local Directories">Local Directories</option>
+                        <option value="Print Media">Print Media</option>
+                        <option value="Not Currently Advertising">Not Currently Advertising</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+                    </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-900 mb-2">
+                    <label htmlFor="goals" className="block text-sm font-bold text-gray-900 mb-2">
                       What are your goals? <span className="text-red-600">*</span>
                     </label>
-                    <select className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer">
-                      <option>Select your goal</option>
-                      <option>Get More Leads</option>
-                      <option>Increase Brand Awareness</option>
-                      <option>Improve Online Presence</option>
-                      <option>Rank Higher on Google</option>
-                      <option>Get More Customer Reviews</option>
-                      <option>Beat Local Competition</option>
-                      <option>All of the Above</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="goals"
+                        name="goals"
+                        required
+                        className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 appearance-none cursor-pointer"
+                      >
+                        <option value="">Select your goal</option>
+                        <option value="Get More Leads">Get More Leads</option>
+                        <option value="Increase Brand Awareness">Increase Brand Awareness</option>
+                        <option value="Improve Online Presence">Improve Online Presence</option>
+                        <option value="Rank Higher on Google">Rank Higher on Google</option>
+                        <option value="Get More Customer Reviews">Get More Customer Reviews</option>
+                        <option value="Beat Local Competition">Beat Local Competition</option>
+                        <option value="All of the Above">All of the Above</option>
+                      </select>
+                      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+                    </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                  <label htmlFor="message" className="block text-sm font-bold text-gray-900 mb-2">
                     Tell Us About Your Business & Goals
                   </label>
                   <textarea
+                    id="message"
+                    name="message"
                     rows={4}
+                    maxLength={1000}
                     placeholder="Tell us about your business, what services you offer, and what you want to achieve online..."
                     className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:border-red-500 focus:outline-none transition-colors text-gray-900 resize-none"
                   />
+                  <p className="text-xs text-gray-500 mt-1">Maximum 1000 characters</p>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  aria-label="Submit contact form to request free SEO audit"
                 >
-                  Get Your Free SEO Audit
+                  {isSubmitting ? "Sending..." : "Get Your Free SEO Audit"}
                 </button>
 
                 <div className="flex items-start gap-2 text-sm text-gray-600">
@@ -221,7 +332,7 @@ const Contact = () => {
               <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-3xl p-8 text-white shadow-2xl">
                 <Phone className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-2">Call Us Directly</h3>
-                <p className="text-xl font-semibold mb-2">020 1234 5678</p>
+                <a href="tel:02012345678" className="text-xl font-semibold mb-2 hover:underline">020 1234 5678</a>
                 <p className="text-red-100">Mon-Fri: 9am-5pm</p>
               </div>
 
@@ -265,13 +376,19 @@ const Contact = () => {
 
       {/* Success Popup */}
       {showSuccessPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="success-title"
+        >
           <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-white/10 rounded-3xl p-8 md:p-12 max-w-md w-full shadow-2xl relative animate-in zoom-in duration-500">
             {/* Close button */}
             <button
-              onClick={() => setShowSuccessPopup(false)}
+              ref={popupCloseButtonRef}
+              onClick={handleClosePopup}
               className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 transition-colors"
-              aria-label="Close"
+              aria-label="Close success message"
             >
               <X className="w-6 h-6 text-gray-400 hover:text-white" />
             </button>
@@ -288,7 +405,7 @@ const Contact = () => {
 
             {/* Success message */}
             <div className="text-center space-y-4">
-              <h3 className="text-3xl font-black text-white">
+              <h3 id="success-title" className="text-3xl font-black text-white">
                 Message <span className="gradient-text">Received!</span>
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed">
