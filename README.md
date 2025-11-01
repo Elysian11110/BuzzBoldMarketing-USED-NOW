@@ -1,110 +1,125 @@
-# 🚀 BuzzBold - Award-Winning Marketing Agency Website
+# 🚀 BuzzBold Marketing - UK Digital Growth Agency
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.2-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18.3-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![GSAP](https://img.shields.io/badge/GSAP-3.13-88CE02?style=for-the-badge&logo=greensock)](https://greensock.com/gsap/)
 
-> A stunning, high-performance marketing agency website built with Next.js 16, featuring advanced animations, modern design, and best practices for the world's leading marketing agency.
+> A high-performance marketing agency website built for UK local businesses. Professional websites, local SEO, and social media management that drives real results.
 
-![BuzzBold Preview](https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop)
+**Live Site:** [https://buzzboldmarketing.vercel.app/](https://buzzboldmarketing.vercel.app/)
 
 ## ✨ Features
 
 ### 🎨 Modern Design
-- **Gradient-based color scheme** with orange, red, and pink accents
+- **Gradient-based branding** with orange, red, and pink accents
 - **Glassmorphism effects** with backdrop blur
-- **Animated gradient orbs** floating in the background
-- **Custom scrollbar** with gradient styling
-- **Responsive design** optimized for all devices
+- **Animated gradient backgrounds** with GSAP
+- **Responsive design** optimized for mobile and desktop
+- **Professional UI** built with Radix UI and shadcn/ui
 
 ### 🚀 Performance
-- Built with **Next.js 16** (App Router)
+- Built with **Next.js 15.5** App Router
 - **Server-side rendering** for optimal SEO
-- **Image optimization** with Next.js Image component
-- **Code splitting** for faster load times
+- **Optimized animations** with GSAP ScrollTrigger
+- **Fast page loads** with code splitting
 - **Production-ready** configuration
 
 ### 🎬 Advanced Animations
-- **GSAP ScrollTrigger** for scroll-based animations
-- **Parallax effects** on scroll
-- **Staggered animations** for card reveals
-- **Smooth transitions** throughout the site
-- **Counter animations** for statistics
+- **GSAP ScrollTrigger** for scroll-based reveals
+- **Staggered card animations** on section entry
+- **Smooth transitions** throughout
+- **Floating gradient orbs** in hero section
 - **Hover effects** with scale and glow
 
 ### 📱 Sections
 
 1. **Hero Section**
-   - Eye-catching headline with gradient text
-   - Animated statistics bar
-   - Floating gradient orbs
-   - Dual CTAs for conversion
-   - Parallax scroll effects
-
-2. **Stats Section**
-   - Animated counter numbers
-   - 4 key performance indicators
-   - Card-based layout with gradients
-   - Scroll-triggered animations
-
-3. **Services Section**
-   - 6 comprehensive service offerings
-   - Icon-based cards with gradients
-   - Hover effects with border animations
-   - Detailed descriptions
-
-4. **Portfolio Section**
-   - Filterable project gallery
-   - Category-based filtering
-   - Image overlays with project details
-   - Results-driven case studies
-   - Smooth filter transitions
-
-5. **Testimonials Section**
-   - 6 client testimonials
-   - 5-star ratings
-   - Client avatars with gradient borders
-   - Trust badges from leading brands
-
-6. **Contact Section**
-   - Modern contact form
-   - Input validation ready
-   - Glassmorphism design
+   - Bold headline: "Build to Dominate"
+   - Dual CTAs: Call Now + Free SEO Audit
+   - Animated gradient orbs
+   - Trust indicators with stats
    - Smooth scroll animations
 
-7. **Footer**
-   - Newsletter subscription
+2. **Services Section**
+   - 4 core services:
+     - High-Quality Websites Built to Convert
+     - Local SEO to Dominate Your Market
+     - Social Media Posting & Management
+     - Dedicated Account Management
+   - Icon-based gradient cards
+   - Hover effects with animated borders
+   - Scroll-triggered reveals
+
+3. **Our Winning Strategy** (Process Section)
+   - 3-step methodology:
+     1. Discovery & Strategy
+     2. Build & Optimize
+     3. Execute & Monitor
+   - Step badges with gradients
+   - Animated card reveals
+   - CTA: Request a Free Website Audit
+
+4. **Testimonials/Positioning Section**
+   - "Built for Local Businesses That Want Results"
+   - 3 value propositions:
+     - Done-For-You Service
+     - Powered by BrightLocal
+     - Built for Tradesmen & Local Businesses
+   - Gradient overlays on hover
+
+5. **Contact Section**
+   - Comprehensive contact form with 10+ fields
+   - Professional success popup
+   - Right-side info cards:
+     - Call Us Directly
+     - Email Us Anytime
+     - Office Hours
+     - Serving UK Businesses
+     - Free SEO Audit offer
+   - Form validation ready
+   - Smooth scroll animations
+
+6. **Footer**
+   - "Book a Free Strategy Call" CTA
+   - Company info with gradient logo
+   - Social media links (Twitter, LinkedIn, Instagram, Facebook, YouTube)
    - Quick links navigation
-   - Social media icons with gradients
    - Contact information
    - Scroll-to-top button
 
 ### 🛠️ Tech Stack
 
-#### Core
-- **Next.js 16.0.1** - React framework with App Router
-- **React 19.2.0** - UI library
-- **TypeScript 5** - Type safety
-- **Tailwind CSS 4** - Utility-first CSS framework
+**Core Technologies** (Actual versions from package.json):
+- **Next.js 15.5.6** - React framework with App Router
+- **React 18.3.1** - UI library
+- **React DOM 18.3.1** - React DOM rendering
+- **TypeScript 5.9.3** - Type safety
 
-#### UI Components
+**Styling**:
+- **Tailwind CSS 3.4.17** - Utility-first CSS framework
+- **PostCSS 8.4.49** - CSS transformations
+- **Autoprefixer 10.4.21** - Vendor prefixing
+
+**UI Components**:
 - **Radix UI** - Accessible component primitives
-  - Navigation Menu
-  - Label
-  - Slot
-- **Lucide React** - Beautiful icon library
+  - @radix-ui/react-navigation-menu ^1.2.14
+  - @radix-ui/react-label ^2.1.7
+  - @radix-ui/react-slot ^1.2.3
+- **Lucide React 0.548.0** - Icon library
 - **shadcn/ui** - Re-usable component system
 
-#### Animation
-- **GSAP 3.13** - Professional animation library
-- **ScrollTrigger** - Scroll-based animations
+**Animation**:
+- **GSAP 3.13.0** - Professional animation library with ScrollTrigger
 
-#### Utilities
-- **clsx** - Conditional classNames
-- **tailwind-merge** - Merge Tailwind classes
-- **class-variance-authority** - Component variants
+**Utilities**:
+- **clsx 2.1.1** - Conditional classNames
+- **tailwind-merge 3.3.1** - Merge Tailwind classes
+- **class-variance-authority 0.7.1** - Component variants
+
+**Integrations**:
+- **react-calendly 4.4.0** - Calendly widget integration
 
 ## 🚀 Getting Started
 
@@ -117,30 +132,18 @@
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/buzzbold.git
-cd buzzbold
+git clone https://github.com/Elysian11110/BuzzBoldMarketing-Website.git
+cd BuzzBoldMarketing-Website
 ```
 
 2. **Install dependencies**
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
 ```
 
 3. **Run the development server**
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 4. **Open your browser**
@@ -150,22 +153,24 @@ Navigate to [http://localhost:3000](http://localhost:3000) to see the website.
 ## 📁 Project Structure
 
 ```
-buzzbold/
+BuzzBoldMarketing-Website/
 ├── app/
 │   ├── components/
-│   │   ├── NewHeader.tsx      # Navigation header with mobile menu
-│   │   ├── Hero.tsx            # Hero section with animations
-│   │   ├── Stats.tsx           # Statistics with counter animations
-│   │   ├── Services.tsx        # Services grid section
-│   │   ├── Portfolio.tsx       # Filterable portfolio gallery
-│   │   ├── Testimonials.tsx    # Client testimonials
-│   │   ├── Contact.tsx         # Contact form
-│   │   └── Footer.tsx          # Footer with newsletter
-│   ├── globals.css             # Global styles and utilities
-│   ├── layout.tsx              # Root layout with metadata
-│   └── page.tsx                # Home page
+│   │   ├── NewHeader.tsx       # Fixed navigation with mobile menu
+│   │   ├── Hero.tsx            # Hero with "Build to Dominate" headline
+│   │   ├── Stats.tsx           # Statistics/trust indicators (not in use)
+│   │   ├── Services.tsx        # 4 service cards with gradients
+│   │   ├── Portfolio.tsx       # "Our Winning Strategy" 3-step process
+│   │   ├── Testimonials.tsx    # "Built for Local Businesses" positioning
+│   │   ├── Contact.tsx         # Contact form with success popup
+│   │   ├── Footer.tsx          # Footer with CTA and social links
+│   │   ├── Logo.tsx            # SVG logo component
+│   │   └── CalendlyPopup.tsx   # Calendly integration modal
+│   ├── globals.css             # Global styles, gradients, animations
+│   ├── layout.tsx              # Root layout with SEO metadata
+│   └── page.tsx                # Home page composition
 ├── components/
-│   └── ui/                     # Reusable UI components
+│   └── ui/                     # Reusable shadcn/ui components
 │       ├── button.tsx
 │       ├── card.tsx
 │       ├── input.tsx
@@ -173,10 +178,11 @@ buzzbold/
 │       ├── navigation-menu.tsx
 │       └── textarea.tsx
 ├── lib/
-│   └── utils.ts                # Utility functions
+│   └── utils.ts                # Utility functions (cn, etc.)
 ├── public/                     # Static assets
-├── tailwind.config.mjs         # Tailwind configuration
-├── next.config.ts              # Next.js configuration
+├── tailwind.config.ts          # Tailwind configuration
+├── next.config.mjs             # Next.js configuration
+├── tsconfig.json               # TypeScript configuration
 └── package.json                # Dependencies
 ```
 
@@ -184,35 +190,55 @@ buzzbold/
 
 ### Colors
 
-The color scheme uses gradient combinations. Edit `app/globals.css` to customize:
+The color scheme uses orange → red → pink gradients. Edit `app/globals.css`:
 
 ```css
---primary: 10 90% 55%;        /* Orange */
---accent: 280 100% 70%;       /* Pink/Purple */
-
+/* Gradient text utility */
 .gradient-text {
-  @apply bg-gradient-to-r from-orange-500 via-red-500 to-pink-500;
+    @apply bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent;
+}
+
+/* Gradient blur orbs */
+.blur-gradient-orange {
+    @apply absolute w-96 h-96 bg-gradient-to-r from-orange-500 to-red-500 rounded-full blur-3xl opacity-20;
 }
 ```
 
 ### Content
 
-Update content in the component files:
+Update content in component files:
 
-- **Hero**: `app/components/Hero.tsx` - Headlines and CTAs
+- **Hero**: `app/components/Hero.tsx` - Main headline and CTAs
 - **Services**: `app/components/Services.tsx` - Service offerings
-- **Portfolio**: `app/components/Portfolio.tsx` - Project showcases
-- **Testimonials**: `app/components/Testimonials.tsx` - Client reviews
-- **Contact**: `app/components/Contact.tsx` - Contact form
-- **Footer**: `app/components/Footer.tsx` - Footer content
+- **Process**: `app/components/Portfolio.tsx` - 3-step methodology
+- **Positioning**: `app/components/Testimonials.tsx` - Value propositions
+- **Contact**: `app/components/Contact.tsx` - Form fields and info cards
+- **Footer**: `app/components/Footer.tsx` - Footer content and links
 
-### Images
+### Navigation
 
-Replace Unsplash placeholder images with your own:
+Update navigation items in:
+- `app/components/NewHeader.tsx` - Header nav
+- `app/components/Footer.tsx` - Footer nav
 
-1. Add images to `public/images/`
-2. Update image URLs in components
-3. Use Next.js Image component for optimization
+Current navigation:
+- Home
+- Services
+- Our Winning Strategy
+- Contact
+
+### SEO & Metadata
+
+Update in `app/layout.tsx`:
+
+```typescript
+export const metadata: Metadata = {
+  title: "BuzzBold Marketing | UK Web Design, SEO & Social Media",
+  description: "Professional websites, local SEO, and social media...",
+  keywords: [...],
+  // ... more metadata
+};
+```
 
 ## 🧪 Testing
 
@@ -225,6 +251,9 @@ npx tsc --noEmit
 
 # Build for production
 npm run build
+
+# Start production server
+npm start
 ```
 
 ## 📦 Build & Deploy
@@ -240,65 +269,50 @@ npm start
 
 The easiest way to deploy is using [Vercel](https://vercel.com):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/buzzbold)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Elysian11110/BuzzBoldMarketing-Website)
+
+**Current Deployment:** [https://buzzboldmarketing.vercel.app/](https://buzzboldmarketing.vercel.app/)
 
 ### Deploy to Other Platforms
 
 - **Netlify**: Connect your Git repository
+- **Cloudflare Pages**: Deploy via Git integration
 - **AWS Amplify**: Use the Amplify Console
-- **Docker**: Create a Dockerfile for containerization
-- **Static Export**: Run `next build && next export`
 
 ## 🎯 Performance Optimization
 
 ### Already Implemented
 
-✅ Next.js Image optimization  
-✅ Code splitting & lazy loading  
-✅ CSS minification  
-✅ Font optimization with Geist  
-✅ Scroll-based lazy animations  
-✅ Production build optimization  
+✅ Next.js image optimization
+✅ Code splitting & lazy loading
+✅ CSS minification
+✅ Font optimization with Geist
+✅ GSAP ScrollTrigger animations
+✅ Responsive design (mobile-first)
+✅ Production build optimization
 
-### Additional Recommendations
+### Lighthouse Score Goals
 
-- [ ] Add Progressive Web App (PWA) support
-- [ ] Implement ISR (Incremental Static Regeneration)
-- [ ] Add image lazy loading with blur placeholders
-- [ ] Optimize GSAP bundle size
-- [ ] Add analytics (Google Analytics, Plausible, etc.)
-- [ ] Implement caching strategies
+- **Performance**: 90+
+- **Accessibility**: 95+
+- **Best Practices**: 95+
+- **SEO**: 100
 
 ## 🔧 Configuration
 
 ### Environment Variables
 
-Create a `.env.local` file for environment variables:
+Create a `.env.local` file (optional):
 
 ```env
-# Email service (for contact form)
+# Email service (for contact form - not yet implemented)
 NEXT_PUBLIC_EMAIL_SERVICE_ID=your_service_id
-NEXT_PUBLIC_EMAIL_TEMPLATE_ID=your_template_id
-NEXT_PUBLIC_EMAIL_PUBLIC_KEY=your_public_key
 
-# Analytics
+# Analytics (optional)
 NEXT_PUBLIC_GA_ID=your_google_analytics_id
 
-# API endpoints
-NEXT_PUBLIC_API_URL=https://api.yourdomain.com
-```
-
-### SEO Configuration
-
-Update metadata in `app/layout.tsx`:
-
-```typescript
-export const metadata: Metadata = {
-  title: "Your Agency | Tagline",
-  description: "Your description",
-  keywords: ["keyword1", "keyword2"],
-  // ... more metadata
-};
+# Calendly (if using)
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/buzzboldmarketing
 ```
 
 ## 🤝 Contributing
@@ -313,50 +327,46 @@ Contributions are welcome! Please follow these steps:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- **Next.js Team** - For the amazing framework
-- **Vercel** - For hosting and deployment
-- **Radix UI** - For accessible components
-- **GSAP** - For powerful animations
-- **Unsplash** - For beautiful placeholder images
-- **Lucide** - For the icon library
-- **Tailwind CSS** - For the utility-first CSS framework
+- **Next.js Team** - For the amazing React framework
+- **Vercel** - For hosting and deployment platform
+- **Radix UI** - For accessible component primitives
+- **GSAP** - For professional animation library
+- **Lucide** - For the beautiful icon library
+- **Tailwind CSS** - For utility-first CSS framework
+- **shadcn/ui** - For reusable component system
 
 ## 📞 Support
 
-For support, email hello@buzzbold.com or join our Slack channel.
+For inquiries: **Support@buzzboldmarketing.com**
+Phone: **020 1234 5678** (Mon-Fri: 9am-5pm)
 
 ## 🗺️ Roadmap
 
 - [x] Initial website launch
-- [x] Responsive design
-- [x] Advanced animations
-- [x] Portfolio section
-- [x] Testimonials
-- [ ] Blog integration
-- [ ] Case studies detail pages
-- [ ] Multi-language support
-- [ ] Dark/Light mode toggle
-- [ ] Admin dashboard
-- [ ] CMS integration (Contentful/Sanity)
-
-## 📊 Analytics & Metrics
-
-### Key Performance Indicators
-
-- **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices, SEO)
-- **Page Load Time**: < 2 seconds
-- **First Contentful Paint**: < 1.5 seconds
-- **Time to Interactive**: < 3 seconds
-- **Mobile Friendly**: 100%
+- [x] Responsive design (mobile & desktop)
+- [x] Advanced GSAP animations
+- [x] Contact form with success popup
+- [x] Professional service cards
+- [x] Fixed navigation with mobile menu
+- [ ] Form backend integration (EmailJS, Resend, etc.)
+- [ ] Google Analytics integration
+- [ ] Blog section
+- [ ] Case studies page
+- [ ] Testimonials with real client data
+- [ ] Multi-page support (About, Services detail pages)
 
 ---
 
 <div align="center">
-  <strong>Built with ❤️ by BuzzBold Team</strong>
+  <strong>Built with ❤️ for UK Local Businesses</strong>
   <br>
-  <sub>Making bold brands since 2024</sub>
+  <sub>Helping tradesmen and local businesses dominate their market</sub>
+  <br><br>
+  <strong>GitHub:</strong> <a href="https://github.com/Elysian11110/BuzzBoldMarketing-Website">Elysian11110/BuzzBoldMarketing-Website</a>
+  <br>
+  <strong>Live Site:</strong> <a href="https://buzzboldmarketing.vercel.app/">buzzboldmarketing.vercel.app</a>
 </div>
