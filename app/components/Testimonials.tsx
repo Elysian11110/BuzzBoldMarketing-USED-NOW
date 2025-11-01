@@ -112,7 +112,7 @@ const Testimonials = () => {
         </div>
 
         {/* Trust points grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {trustPoints.map((point, index) => {
             const IconComponent = point.icon;
             return (
@@ -136,20 +136,20 @@ const Testimonials = () => {
                     />
                   </div>
 
-                  <CardHeader className="relative z-10 flex flex-col items-start p-8 space-y-4">
+                  <CardHeader className="relative z-10 flex flex-col items-start p-6 space-y-3">
                     {/* Icon with gradient */}
                     <div
-                      className={`p-4 rounded-xl bg-gradient-to-br ${point.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      className={`p-3 rounded-xl bg-gradient-to-br ${point.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
                     >
-                      <IconComponent className="w-10 h-10" />
+                      <IconComponent className="w-8 h-8" />
                     </div>
-                    <CardTitle className="text-2xl font-bold text-white">
+                    <CardTitle className="text-xl font-bold text-white leading-tight">
                       {point.title}
                     </CardTitle>
                   </CardHeader>
 
-                  <CardContent className="relative z-10 px-8 pb-8">
-                    <p className="text-gray-400 leading-relaxed text-lg">
+                  <CardContent className="relative z-10 px-6 pb-6">
+                    <p className="text-gray-400 leading-relaxed text-base">
                       {point.description}
                     </p>
                   </CardContent>
