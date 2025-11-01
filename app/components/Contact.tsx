@@ -14,6 +14,11 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const popupCloseButtonRef = useRef<HTMLButtonElement>(null);
 
+  // Initialize EmailJS once when component mounts
+  useEffect(() => {
+    emailjs.init("3PzRZdZuhqytSTXs6");
+  }, []);
+
   useEffect(() => {
     if (sectionRef.current) {
       gsap.fromTo(
@@ -63,12 +68,11 @@ const Contact = () => {
     };
 
     try {
-      // Send email using EmailJS
+      // Send email using EmailJS (already initialized in useEffect)
       const response = await emailjs.send(
         "service_buzzbold", // Service ID
         "template_contact", // Template ID
-        templateParams,
-        "3PzRZdZuhqytSTXs6" // Public API key
+        templateParams
       );
 
       console.log("Email sent successfully:", response);
@@ -78,8 +82,14 @@ const Contact = () => {
 
       // Reset form
       e.currentTarget.reset();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Form submission error:", error);
+      console.error("Error details:", {
+        message: error?.message,
+        text: error?.text,
+        status: error?.status,
+        name: error?.name
+      });
       alert("Sorry, there was an error submitting your form. Please try again or email us directly at support@buzzboldmarketing.com");
     } finally {
       setIsSubmitting(false);
