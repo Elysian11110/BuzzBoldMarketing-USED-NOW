@@ -216,7 +216,6 @@ const Contact = () => {
                 <h3 className="text-2xl font-bold mb-2">Call Us Directly</h3>
                 <p className="text-xl font-semibold mb-2">020 1234 5678</p>
                 <p className="text-red-100">Mon-Fri: 9am-5pm</p>
-                <p className="text-red-100">Real people. No call centers.</p>
               </div>
 
               <div className="bg-white rounded-3xl p-8 shadow-2xl">
@@ -239,7 +238,6 @@ const Contact = () => {
               <div className="bg-gradient-to-br from-orange-600 to-red-600 rounded-3xl p-8 text-white shadow-2xl">
                 <MapPin className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-2">Serving UK Businesses</h3>
-                <p className="text-orange-100 font-semibold">Remote Consultation Only</p>
                 <p className="text-orange-100">Nationwide coverage across the UK</p>
               </div>
 
