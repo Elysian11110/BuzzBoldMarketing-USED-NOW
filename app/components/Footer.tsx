@@ -161,7 +161,7 @@ const Footer = () => {
               {[
                 "High Quality Websites",
                 "Local SEO to Dominate",
-                "Social Media Posting & Management",
+                "Social Media Management",
                 "Account Management",
               ].map((service, index) => (
                 <li key={index}>

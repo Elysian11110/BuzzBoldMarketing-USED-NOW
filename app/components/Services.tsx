@@ -80,7 +80,7 @@ const Services = () => {
     },
     {
       icon: <TrendingUp className="w-10 h-10" />,
-      title: "Social Media Posting & Management",
+      title: "Social Media Management",
       gradient: "from-pink-500 to-purple-500",
     },
     {
