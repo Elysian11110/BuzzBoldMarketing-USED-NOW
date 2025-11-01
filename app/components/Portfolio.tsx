@@ -107,7 +107,7 @@ const Portfolio = () => {
         </div>
 
         {/* Process steps grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {processSteps.map((step, index) => {
             const IconComponent = step.icon;
             return (
@@ -131,11 +131,11 @@ const Portfolio = () => {
                     />
                   </div>
 
-                  <CardHeader className="relative z-10 flex flex-col items-start p-8 space-y-4">
+                  <CardHeader className="relative z-10 flex flex-col items-start p-6 space-y-3">
                     {/* Step number badge */}
                     <div className="flex items-center gap-4 w-full mb-2">
                       <div
-                        className={`px-4 py-2 rounded-full bg-gradient-to-r ${step.gradient} text-white font-bold text-sm`}
+                        className={`px-3 py-1.5 rounded-full bg-gradient-to-r ${step.gradient} text-white font-bold text-xs`}
                       >
                         Step {step.id}
                       </div>
@@ -143,11 +143,11 @@ const Portfolio = () => {
 
                     {/* Icon with gradient */}
                     <div
-                      className={`p-4 rounded-xl bg-gradient-to-br ${step.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      className={`p-3 rounded-xl bg-gradient-to-br ${step.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
                     >
-                      <IconComponent className="w-10 h-10" />
+                      <IconComponent className="w-8 h-8" />
                     </div>
-                    <CardTitle className="text-2xl font-bold text-white">
+                    <CardTitle className="text-xl font-bold text-white leading-tight">
                       {step.headline}
                     </CardTitle>
                   </CardHeader>
