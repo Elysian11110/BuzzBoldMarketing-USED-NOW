@@ -83,6 +83,10 @@ const Contact = () => {
         to_email: templateParams.email,
         to_name: templateParams.name,
         business_name: templateParams.businessName,
+        business_type: templateParams.businessType,
+        location: templateParams.location,
+        service: templateParams.service,
+        goals: templateParams.goals,
       };
 
       const autoReplyResponse = await emailjs.send(
