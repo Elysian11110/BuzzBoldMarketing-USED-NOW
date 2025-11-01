@@ -35,10 +35,8 @@ const Contact = () => {
     e.preventDefault();
     // Show success popup
     setShowSuccessPopup(true);
-    // Auto-close after 5 seconds
-    setTimeout(() => {
-      setShowSuccessPopup(false);
-    }, 5000);
+    // Scroll to top of page to center popup in viewport
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
