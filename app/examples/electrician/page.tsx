@@ -159,7 +159,7 @@ export default function BrightWaveElectrical() {
       problem: 'Customer wanted whole-home smart lighting control via smartphone, including automated schedules and voice control integration.',
       solution: 'Installed Philips Hue ecosystem throughout property with smart switches, motion sensors, and bridge. Integrated with Amazon Alexa for voice control. Programmed lighting scenes and automated schedules.',
       result: 'Complete smart home lighting control via app and voice commands. Automated lighting saves energy and improves home security. Customer delighted with modern convenience.',
-      image: 'photo-1558618666-3f827d37f385'
+      image: 'photo-1707733260992-73ff6dbed163'
     },
     {
       title: 'Emergency: Complete Power Loss',
