@@ -892,7 +892,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-video">
                       <Image
-                        src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1620653713380-7a34b773fef8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=645"
                         alt="Gas safe engineer installing new boiler panel"
                         width={1200}
                         height={675}
