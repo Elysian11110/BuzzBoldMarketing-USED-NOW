@@ -79,7 +79,7 @@ export default function BrightWaveElectrical() {
       title: 'Domestic Repairs',
       icon: Home,
       description: 'Circuit testing, socket installation, lighting repairs and replacements',
-      image: 'photo-1621905252507-b35492cc74b4',
+      image: 'photo-1751486289947-4f5f5961b3aa',
       details: 'Professional domestic electrical services including fault finding, circuit testing, socket and switch installation, lighting repairs, and appliance connections. All work complies with BS7671 18th Edition regulations.',
       safety: 'All repairs include comprehensive testing and certification. Part P compliant installations with 2-year guarantee.'
     },
