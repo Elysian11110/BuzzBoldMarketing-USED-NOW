@@ -145,7 +145,7 @@ export default function BrightWaveElectrical() {
       problem: 'Property with 1970s fuse box lacking modern RCD protection. Failed landlord EICR inspection requiring immediate attention.',
       solution: 'Removed obsolete fuse box and installed modern 18th Edition consumer unit with full RCD protection. Updated earth bonding and tested all circuits to current standards.',
       result: 'Property passed EICR inspection with zero defects. Landlord now compliant with rental regulations. Tenants benefit from enhanced electrical safety.',
-      image: 'photo-1621905251918-48285dc89edb'
+      image: 'photo-1681117644152-645a04e9e630'
     },
     {
       title: 'New Extension Wiring',
