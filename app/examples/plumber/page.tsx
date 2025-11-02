@@ -644,7 +644,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border-2 border-gray-200 rounded-lg p-8">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
                       <Image
-                        src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1722942721205-ba565770373e?w=1200&q=80"
                         alt="Modern bathroom with chrome fixtures and clean design"
                         width={1200}
                         height={675}
