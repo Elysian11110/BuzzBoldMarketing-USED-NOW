@@ -856,7 +856,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-video">
                       <Image
-                        src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1607400201515-1c4826d5e90f?w=1200&q=80"
                         alt="Emergency plumber repairing kitchen pipe under sink"
                         width={1200}
                         height={675}
@@ -892,7 +892,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-video">
                       <Image
-                        src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80"
                         alt="Gas safe engineer installing new boiler panel"
                         width={1200}
                         height={675}
@@ -928,7 +928,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-video">
                       <Image
-                        src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?w=1200&q=80"
                         alt="Copper pipe fittings and professional plumbing tools on workbench"
                         width={1200}
                         height={675}
@@ -964,7 +964,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-video">
                       <Image
-                        src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1607472547227-2e398906f4ab?w=1200&q=80"
                         alt="Professional plumber working on central heating radiator"
                         width={1200}
                         height={675}
@@ -1000,7 +1000,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-video">
                       <Image
-                        src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=80"
                         alt="Modern kitchen tap and plumbing installation"
                         width={1200}
                         height={675}

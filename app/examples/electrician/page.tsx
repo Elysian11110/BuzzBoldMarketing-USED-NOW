@@ -138,35 +138,35 @@ export default function BrightWaveElectrical() {
       problem: 'Customer experiencing repeated circuit breaker trips in kitchen, especially when using multiple appliances. Safety concern with potential fire risk.',
       solution: 'Comprehensive circuit testing revealed faulty appliance circuit with damaged wiring behind kitchen units. Replaced damaged cables and upgraded consumer unit with dedicated RCD protection for kitchen circuits.',
       result: 'Kitchen circuits now operating safely with proper RCD protection. Customer can use all appliances simultaneously without issues. Full EICR certification provided.',
-      image: 'photo-1621905251453-5cb9e63e0c4e'
+      image: 'photo-1565183928294-7d22f2150ee2'
     },
     {
       title: 'Old Fuse Box Upgrade',
       problem: 'Property with 1970s fuse box lacking modern RCD protection. Failed landlord EICR inspection requiring immediate attention.',
       solution: 'Removed obsolete fuse box and installed modern 18th Edition consumer unit with full RCD protection. Updated earth bonding and tested all circuits to current standards.',
       result: 'Property passed EICR inspection with zero defects. Landlord now compliant with rental regulations. Tenants benefit from enhanced electrical safety.',
-      image: 'photo-1621905251189-08b45d6a269e'
+      image: 'photo-1621905251918-48285dc89edb'
     },
     {
       title: 'New Extension Wiring',
       problem: 'Customer building rear extension requiring complete electrical design and installation for kitchen, utility room, and bathroom.',
       solution: 'Created comprehensive electrical design with dedicated circuits for kitchen appliances, bathroom zones compliant with Part P, and LED lighting throughout. Coordinated with builders for first and second fix installations.',
       result: 'Full electrical installation completed on schedule. All work certified and Building Control approved. Energy-efficient LED lighting reduces running costs.',
-      image: 'photo-1621905252507-b35492cc74b4'
+      image: 'photo-1504307651254-35680f356dfd'
     },
     {
       title: 'Smart Lighting Installation',
       problem: 'Customer wanted whole-home smart lighting control via smartphone, including automated schedules and voice control integration.',
       solution: 'Installed Philips Hue ecosystem throughout property with smart switches, motion sensors, and bridge. Integrated with Amazon Alexa for voice control. Programmed lighting scenes and automated schedules.',
       result: 'Complete smart home lighting control via app and voice commands. Automated lighting saves energy and improves home security. Customer delighted with modern convenience.',
-      image: 'photo-1558002038-1055907df827'
+      image: 'photo-1558618666-3f827d37f385'
     },
     {
       title: 'Emergency: Complete Power Loss',
       problem: 'Emergency callout for complete property power loss late evening. Family with young children in darkness with no heating.',
       solution: 'Rapid response within 45 minutes. Diagnosed faulty main switch in consumer unit. Replaced main switch and tested all circuits for safety.',
       result: 'Power restored same evening. Family safely back with electricity and heating. Follow-up inspection recommended consumer unit upgrade for long-term reliability.',
-      image: 'photo-1518640426253-4b6eb7e57b6f'
+      image: 'photo-1621905252472-70d2f3e6d53c'
     }
   ];
 
