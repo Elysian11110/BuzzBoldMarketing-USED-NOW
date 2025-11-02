@@ -820,7 +820,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-video">
                       <Image
-                        src="https://videos.openai.com/az/vg-assets/task_01k931csr5fys8hxhs4jmms06n%2F1762112579_img_1.webp?se=2025-11-08T19%3A43%3A00Z&sp=r&sv=2024-08-04&sr=b&skoid=cfbc986b-d2bc-4088-8b71-4f962129715b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-11-02T13%3A12%3A02Z&ske=2025-11-09T13%3A17%3A02Z&sks=b&skv=2024-08-04&sig=HQwsmJ0tmkPSsJTeSRZ/ow87n702feyjT41TQruGl7A%3D&ac=oaivgprodscus2"
+                        src="https://images.unsplash.com/photo-1631049035482-d38c547be450?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
                         alt="Modern bathroom before and after renovation with chrome fixtures"
                         width={1200}
                         height={675}
