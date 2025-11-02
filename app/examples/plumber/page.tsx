@@ -1000,7 +1000,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-video">
                       <Image
-                        src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1637665609537-26857a32f6cd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
                         alt="Modern kitchen tap and plumbing installation"
                         width={1200}
                         height={675}
