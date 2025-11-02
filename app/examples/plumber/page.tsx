@@ -1,878 +1,1132 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, Clock, CheckCircle, Shield, Wrench, Home as HomeIcon, Droplet, Menu, X } from "lucide-react";
-import Link from "next/link";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  CheckCircle,
+  Shield,
+  Wrench,
+  Droplet,
+  Flame,
+  AlertTriangle,
+  Bath,
+  Menu,
+  X,
+  Award,
+  ChevronDown,
+  MessageCircle,
+} from "lucide-react";
+import Head from "next/head";
 
 const FlowPrimePlumbing = () => {
   const [activePage, setActivePage] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const navigation = [
     { name: "Home", id: "home" },
     { name: "Services", id: "services" },
-    { name: "About Us", id: "about" },
+    { name: "About", id: "about" },
     { name: "Projects", id: "projects" },
     { name: "Contact", id: "contact" },
   ];
 
+  // JSON-LD Structured Data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "FlowPrime Plumbing",
+    "image": "https://buzzboldmarketing.vercel.app/flowprime-logo.png",
+    "@id": "https://buzzboldmarketing.vercel.app/examples/plumber",
+    "url": "https://buzzboldmarketing.vercel.app/examples/plumber",
+    "telephone": "020-1234-5678",
+    "priceRange": "££",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 High Street",
+      "addressLocality": "London",
+      "postalCode": "SW1A 1AA",
+      "addressCountry": "GB"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.5074,
+      "longitude": -0.1278
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/flowprimeplumbing",
+      "https://twitter.com/flowprimeplumb",
+      "https://www.instagram.com/flowprimeplumbing"
+    ]
+  };
+
+  const faqs = [
+    {
+      question: "Do you offer same-day emergency plumbing?",
+      answer: "Yes, we provide 24/7 emergency callouts with same-day response across London. Call us immediately for urgent leaks, burst pipes, or boiler failures."
+    },
+    {
+      question: "Are your plumbers Gas Safe registered?",
+      answer: "Absolutely. All our plumbers are Gas Safe registered, DBS checked, and fully insured. We provide certification for all gas work completed."
+    },
+    {
+      question: "Do you provide upfront pricing?",
+      answer: "Yes, we offer transparent, fixed-price quotes before starting any work. No hidden fees, no surprises. You'll know the cost before we begin."
+    },
+    {
+      question: "What areas do you cover?",
+      answer: "We cover all London postcodes including Central, North, South, East, and West London. Check our service area map for your specific postcode."
+    },
+    {
+      question: "How quickly can you respond to emergencies?",
+      answer: "We aim to reach emergency callouts within 60-90 minutes across our service area. We prioritize urgent situations like flooding or gas leaks."
+    }
+  ];
+
+  const serviceAreas = [
+    "SW1, SW2, SW3, SW4, SW5, SW6, SW7, SW8, SW9, SW10",
+    "W1, W2, W3, W4, W5, W6, W7, W8, W9, W10, W11, W12",
+    "N1, N2, N3, N4, N5, N6, N7, N8, N9, N10, N11, N12",
+    "E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12",
+    "SE1, SE2, SE3, SE4, SE5, SE6, SE7, SE8, SE9, SE10"
+  ];
+
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* Header explaining this is an example */}
-      <div className="bg-gradient-to-r from-orange-600/20 via-red-600/20 to-pink-600/20 border-b border-orange-200 backdrop-blur-sm py-6">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-2xl md:text-3xl font-black mb-3 text-gray-900">
-            This is an example of what we can build for you
-          </h1>
-          <p className="text-base md:text-lg text-gray-700 mb-4">
-            FlowPrime Plumbing – A complete website example for plumbing businesses
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="tel:02012345678"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0057B8] text-white font-bold text-sm hover:bg-[#004494] transition-all duration-300"
-            >
-              <Phone className="w-4 h-4" />
-              Call BuzzBold: 020 1234 5678
-            </a>
-            <button
-              onClick={() => {
-                window.location.href = "/#contact";
-              }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-sm hover:shadow-lg transition-all duration-300"
-            >
-              <Mail className="w-4 h-4" />
-              Get Your Free Website Audit
-            </button>
+    <>
+      <Head>
+        <title>FlowPrime Plumbing | Emergency Plumbers and Boiler Service</title>
+        <meta name="description" content="Fast, trusted plumbers for leaks, boilers, and bathrooms. Same-day help. Call us." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+
+      <div className="min-h-screen bg-[#F5F7FB] text-[#1F2937]">
+        {/* Trust Bar */}
+        <div className="bg-[#0057B8] text-white py-2">
+          <div className="container mx-auto px-4">
+            <p className="text-sm font-semibold text-center flex items-center justify-center gap-2 flex-wrap">
+              <Shield className="w-4 h-4" />
+              <span>Gas Safe Registered</span>
+              <span className="hidden sm:inline">•</span>
+              <span>Fully Insured</span>
+              <span className="hidden sm:inline">•</span>
+              <span>DBS Checked</span>
+              <span className="hidden sm:inline">•</span>
+              <span>24/7 Emergency Response</span>
+            </p>
           </div>
         </div>
-      </div>
 
-      {/* FlowPrime Header & Navigation */}
-      <header className="bg-[#0057B8] text-white sticky top-0 z-50 shadow-lg">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
-            {/* Logo */}
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                <Droplet className="w-7 h-7 text-[#0057B8]" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-black">FlowPrime</h1>
-                <p className="text-xs text-blue-200">Plumbing Services</p>
-              </div>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
-              {navigation.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setActivePage(item.id);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`text-sm font-semibold hover:text-[#00A1FF] transition-colors ${
-                    activePage === item.id ? "text-[#00A1FF]" : ""
-                  }`}
-                >
-                  {item.name}
-                </button>
-              ))}
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-
-            {/* Desktop CTA */}
-            <a
-              href="tel:08001234567"
-              className="hidden lg:flex items-center gap-2 px-5 py-2 bg-[#00A1FF] text-white font-bold rounded-lg hover:bg-white hover:text-[#0057B8] transition-all"
-            >
-              <Phone className="w-4 h-4" />
-              0800 123 4567
-            </a>
-          </div>
-
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <nav className="md:hidden pb-4 border-t border-blue-600 pt-4">
-              {navigation.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setActivePage(item.id);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`block w-full text-left py-2 px-4 hover:bg-blue-600 rounded ${
-                    activePage === item.id ? "bg-blue-600" : ""
-                  }`}
-                >
-                  {item.name}
-                </button>
-              ))}
-            </nav>
-          )}
-        </div>
-      </header>
-
-      {/* Trust Badge */}
-      <div className="bg-blue-50 border-b border-blue-100 py-2">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-gray-700 flex items-center justify-center gap-2 flex-wrap">
-            <Shield className="w-4 h-4 text-[#0057B8]" />
-            <span className="font-semibold">Trusted in London</span>
-            <span className="hidden sm:inline">•</span>
-            <span>Fully Insured</span>
-            <span className="hidden sm:inline">•</span>
-            <span>Gas Safe Registered</span>
-          </p>
-        </div>
-      </div>
-
-      {/* Page Content */}
-      <main>
-        {/* HOME PAGE */}
-        {activePage === "home" && (
-          <>
-            {/* Hero Section */}
-            <section className="bg-gradient-to-br from-[#0057B8] to-[#004494] text-white py-20">
-              <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto text-center">
-                  <h1 className="text-4xl md:text-6xl font-black mb-6">
-                    Reliable Plumbing. Local Experts. 24/7 Response.
-                  </h1>
-                  <p className="text-xl md:text-2xl text-blue-100 mb-8">
-                    Fast, professional plumbing services across London and surrounding areas
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                      onClick={() => setActivePage("contact")}
-                      className="px-8 py-4 bg-[#00A1FF] text-white font-bold text-lg rounded-lg hover:bg-white hover:text-[#0057B8] transition-all duration-300"
-                    >
-                      Book Your Free Quote
-                    </button>
-                    <a
-                      href="tel:08001234567"
-                      className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-[#0057B8] transition-all duration-300"
-                    >
-                      Call Us Today
-                    </a>
-                  </div>
-
-                  {/* Trust Indicators */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                      <CheckCircle className="w-10 h-10 text-[#00A1FF] mx-auto mb-3" />
-                      <h3 className="font-bold text-lg mb-2">24/7 Emergency</h3>
-                      <p className="text-blue-100 text-sm">Always available when you need us</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                      <CheckCircle className="w-10 h-10 text-[#00A1FF] mx-auto mb-3" />
-                      <h3 className="font-bold text-lg mb-2">Fixed Pricing</h3>
-                      <p className="text-blue-100 text-sm">No hidden fees, transparent quotes</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                      <CheckCircle className="w-10 h-10 text-[#00A1FF] mx-auto mb-3" />
-                      <h3 className="font-bold text-lg mb-2">12-Month Warranty</h3>
-                      <p className="text-blue-100 text-sm">All work fully guaranteed</p>
-                    </div>
-                  </div>
+        {/* Fixed Header */}
+        <header className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between h-20">
+              {/* Logo */}
+              <button
+                onClick={() => {
+                  setActivePage("home");
+                  setMobileMenuOpen(false);
+                }}
+                className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2 border-[#0057B8] shadow-sm">
+                  <Droplet className="w-7 h-7 text-[#0057B8]" />
                 </div>
-              </div>
-            </section>
-
-            {/* Quick Services Overview */}
-            <section className="py-16 bg-gray-50">
-              <div className="container mx-auto px-4">
-                <h2 className="text-3xl md:text-4xl font-black text-center mb-12">
-                  Our Plumbing Services
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                    "Emergency Plumbing",
-                    "Leak Repair",
-                    "Bathroom Installations",
-                    "Pipe Replacement",
-                  ].map((service, index) => (
-                    <div
-                      key={index}
-                      className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow border border-gray-100"
-                    >
-                      <Wrench className="w-10 h-10 text-[#0057B8] mb-4" />
-                      <h3 className="font-bold text-lg mb-2">{service}</h3>
-                      <button
-                        onClick={() => setActivePage("services")}
-                        className="text-[#0057B8] font-semibold text-sm hover:text-[#00A1FF]"
-                      >
-                        Learn more →
-                      </button>
-                    </div>
-                  ))}
+                <div className="text-left">
+                  <h1 className="text-2xl font-black text-[#0057B8]">FlowPrime</h1>
+                  <p className="text-xs text-[#00A1FF] font-semibold">Plumbing Services</p>
                 </div>
-              </div>
-            </section>
-          </>
-        )}
+              </button>
 
-        {/* SERVICES PAGE */}
-        {activePage === "services" && (
-          <section className="py-16">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-black text-center mb-6">
-                Professional Plumbing Services
-              </h1>
-              <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-                From emergency repairs to full bathroom installations, we handle all your plumbing needs
-              </p>
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex items-center gap-1">
+                {navigation.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setActivePage(item.id)}
+                    className={`px-5 py-2 rounded-lg font-semibold transition-all ${
+                      activePage === item.id
+                        ? "bg-[#0057B8] text-white"
+                        : "text-[#1F2937] hover:text-[#0057B8] hover:bg-gray-50"
+                    }`}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </nav>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {/* Service 1 */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                  <div className="h-48 bg-gradient-to-br from-[#0057B8] to-[#00A1FF] flex items-center justify-center">
-                    <Wrench className="w-20 h-20 text-white" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3">Emergency Plumbing</h3>
-                    <p className="text-gray-600 mb-4">
-                      Burst pipes, blocked drains, or heating failures? We respond fast, 24/7. Our emergency team arrives within 60 minutes across London with fully stocked vans ready to fix your problem.
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">60-minute response time</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Available 24/7, 365 days a year</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Fixed pricing, no call-out charges</span>
-                      </li>
-                    </ul>
-                    <button
-                      onClick={() => setActivePage("contact")}
-                      className="w-full px-6 py-3 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#00A1FF] transition-all"
-                    >
-                      Schedule Service
-                    </button>
-                  </div>
-                </div>
-
-                {/* Service 2 */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                  <div className="h-48 bg-gradient-to-br from-[#0057B8] to-[#00A1FF] flex items-center justify-center">
-                    <Droplet className="w-20 h-20 text-white" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3">Leak Repair</h3>
-                    <p className="text-gray-600 mb-4">
-                      Leaking tap, radiator, or hidden pipe leak causing damage? We use advanced leak detection technology to find and fix leaks quickly, preventing water damage and high bills.
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Advanced leak detection equipment</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Permanent fixes, not temporary patches</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Insurance claim support provided</span>
-                      </li>
-                    </ul>
-                    <button
-                      onClick={() => setActivePage("contact")}
-                      className="w-full px-6 py-3 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#00A1FF] transition-all"
-                    >
-                      Schedule Service
-                    </button>
-                  </div>
-                </div>
-
-                {/* Service 3 */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                  <div className="h-48 bg-gradient-to-br from-[#0057B8] to-[#00A1FF] flex items-center justify-center">
-                    <HomeIcon className="w-20 h-20 text-white" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3">Bathroom Installations</h3>
-                    <p className="text-gray-600 mb-4">
-                      Complete bathroom design and installation from concept to completion. We manage the entire project: tiling, plumbing, electrics, and finishing touches for your perfect bathroom.
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Free design consultation included</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Project management from start to finish</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">5-year guarantee on installations</span>
-                      </li>
-                    </ul>
-                    <button
-                      onClick={() => setActivePage("contact")}
-                      className="w-full px-6 py-3 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#00A1FF] transition-all"
-                    >
-                      Schedule Service
-                    </button>
-                  </div>
-                </div>
-
-                {/* Service 4 */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                  <div className="h-48 bg-gradient-to-br from-[#0057B8] to-[#00A1FF] flex items-center justify-center">
-                    <Wrench className="w-20 h-20 text-white" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3">Pipe Replacement</h3>
-                    <p className="text-gray-600 mb-4">
-                      Old, corroded pipes causing problems? We replace damaged pipework with modern, durable materials. Minimal disruption, maximum reliability for your home's water supply.
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Modern copper or plastic piping</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Pressure testing to building regs</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Minimal disruption to your home</span>
-                      </li>
-                    </ul>
-                    <button
-                      onClick={() => setActivePage("contact")}
-                      className="w-full px-6 py-3 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#00A1FF] transition-all"
-                    >
-                      Schedule Service
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA Section */}
-              <div className="mt-16 text-center bg-blue-50 rounded-xl p-8 border border-blue-100">
-                <h3 className="text-2xl font-bold mb-4">Not sure which service you need?</h3>
-                <p className="text-gray-600 mb-6">
-                  Call us for a free consultation and we'll diagnose your plumbing issue
-                </p>
+              {/* CTA Buttons (Desktop) */}
+              <div className="hidden lg:flex items-center gap-3">
                 <a
-                  href="tel:08001234567"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#00A1FF] transition-all"
+                  href="https://wa.me/442012345678"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white font-bold rounded-lg hover:bg-[#20BA5A] transition-all"
+                  title="Chat on WhatsApp"
                 >
-                  <Phone className="w-5 h-5" />
-                  Call Us: 0800 123 4567
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </a>
+                <a
+                  href="tel:02012345678"
+                  className="flex items-center gap-2 px-6 py-3 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#004494] transition-all"
+                >
+                  <Phone className="w-4 h-4" />
+                  020 1234 5678
                 </a>
               </div>
-            </div>
-          </section>
-        )}
 
-        {/* ABOUT US PAGE */}
-        {activePage === "about" && (
-          <section className="py-16">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-black text-center mb-6">
-                About FlowPrime Plumbing
-              </h1>
-              <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-                Your trusted local plumbing experts serving London and surrounding areas since 2010
-              </p>
-
-              <div className="max-w-4xl mx-auto">
-                {/* Story Section */}
-                <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-gray-200">
-                  <h2 className="text-2xl font-bold mb-4">Who We Are</h2>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
-                    FlowPrime Plumbing was founded on a simple principle: provide honest, reliable plumbing services at fair prices. We're a family-run business based in London, and we treat every home like it's our own.
-                  </p>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
-                    Our team of Gas Safe registered engineers has over 50 years of combined experience. We handle everything from emergency call-outs to complete bathroom refits, always maintaining the highest standards of workmanship.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed">
-                    We're proud members of the local community, sponsoring youth sports teams and supporting local charities. When you call FlowPrime, you're supporting a local business that cares about the area we serve.
-                  </p>
-                </div>
-
-                {/* Why Choose Us */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
-                    <Shield className="w-12 h-12 text-[#0057B8] mb-4" />
-                    <h3 className="text-xl font-bold mb-3">Fully Qualified & Insured</h3>
-                    <p className="text-gray-700 text-sm">
-                      All our engineers are Gas Safe registered and hold City & Guilds qualifications. We carry £5 million public liability insurance for your peace of mind.
-                    </p>
-                  </div>
-
-                  <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
-                    <CheckCircle className="w-12 h-12 text-[#0057B8] mb-4" />
-                    <h3 className="text-xl font-bold mb-3">Fixed Price Guarantee</h3>
-                    <p className="text-gray-700 text-sm">
-                      We provide upfront quotes before starting work. No hidden fees, no hourly rates that spiral out of control. The price we quote is the price you pay.
-                    </p>
-                  </div>
-
-                  <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
-                    <Clock className="w-12 h-12 text-[#0057B8] mb-4" />
-                    <h3 className="text-xl font-bold mb-3">24/7 Emergency Service</h3>
-                    <p className="text-gray-700 text-sm">
-                      Plumbing emergencies don't wait for business hours. Our on-call team is available around the clock, with 60-minute response times across London.
-                    </p>
-                  </div>
-
-                  <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
-                    <Wrench className="w-12 h-12 text-[#0057B8] mb-4" />
-                    <h3 className="text-xl font-bold mb-3">12-Month Workmanship Warranty</h3>
-                    <p className="text-gray-700 text-sm">
-                      Every job comes with a 12-month guarantee on workmanship, plus manufacturer warranties on all parts and fixtures we install.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Certifications */}
-                <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-                  <h2 className="text-2xl font-bold mb-6 text-center">Accreditations & Certifications</h2>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-blue-100">
-                        <Shield className="w-10 h-10 text-[#0057B8]" />
-                      </div>
-                      <p className="font-semibold text-sm">Gas Safe Registered</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-blue-100">
-                        <CheckCircle className="w-10 h-10 text-[#0057B8]" />
-                      </div>
-                      <p className="font-semibold text-sm">City & Guilds</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-blue-100">
-                        <Shield className="w-10 h-10 text-[#0057B8]" />
-                      </div>
-                      <p className="font-semibold text-sm">Insured</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-blue-100">
-                        <CheckCircle className="w-10 h-10 text-[#0057B8]" />
-                      </div>
-                      <p className="font-semibold text-sm">Trading Standards Approved</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* PROJECTS PAGE */}
-        {activePage === "projects" && (
-          <section className="py-16">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-black text-center mb-6">
-                Recent Projects
-              </h1>
-              <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-                See the quality of our work – from emergency repairs to complete bathroom transformations
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {/* Project 1 */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                  <div className="h-64 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                    <div className="text-center">
-                      <Droplet className="w-20 h-20 text-[#0057B8] mx-auto mb-4" />
-                      <p className="text-sm text-gray-600">Before: Leaking bathroom</p>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">Complete Bathroom Renovation - Hampstead</h3>
-                    <p className="text-gray-600 mb-4 text-sm">
-                      Client had persistent leaks causing ceiling damage in the room below. We stripped the entire bathroom, replaced all pipework, installed underfloor heating, and fitted a modern suite with walk-in shower. Project completed in 2 weeks with zero delays.
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Clock className="w-4 h-4" />
-                      <span>Completed: March 2024</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Project 2 */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                  <div className="h-64 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                    <div className="text-center">
-                      <Wrench className="w-20 h-20 text-[#0057B8] mx-auto mb-4" />
-                      <p className="text-sm text-gray-600">Before: Burst pipe emergency</p>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">Emergency Pipe Repair - Islington</h3>
-                    <p className="text-gray-600 mb-4 text-sm">
-                      Responded to a burst pipe emergency at 2am. Water was pouring through the ceiling. We isolated the water supply, repaired the damaged section, and had everything back to normal within 3 hours. Customer was amazed by our speed and professionalism.
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Clock className="w-4 h-4" />
-                      <span>Completed: February 2024</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Project 3 */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                  <div className="h-64 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                    <div className="text-center">
-                      <HomeIcon className="w-20 h-20 text-[#0057B8] mx-auto mb-4" />
-                      <p className="text-sm text-gray-600">Before: Old boiler system</p>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">Boiler Replacement - Camden</h3>
-                    <p className="text-gray-600 mb-4 text-sm">
-                      15-year-old boiler was costing the client a fortune in gas bills. We installed a new A-rated condensing boiler with smart thermostat. Customer now saves £400/year on heating costs. Installation completed in one day with full system flush.
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Clock className="w-4 h-4" />
-                      <span>Completed: January 2024</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Project 4 */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                  <div className="h-64 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                    <div className="text-center">
-                      <Droplet className="w-20 h-20 text-[#0057B8] mx-auto mb-4" />
-                      <p className="text-sm text-gray-600">Before: Blocked drains</p>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">Drain Unblocking & CCTV Survey - Shoreditch</h3>
-                    <p className="text-gray-600 mb-4 text-sm">
-                      Restaurant was experiencing recurring drainage issues. We performed a CCTV survey, identified tree root intrusion, and cleared the blockage using high-pressure jetting. Installed root barriers to prevent future problems. No issues since completion.
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Clock className="w-4 h-4" />
-                      <span>Completed: December 2023</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA */}
-              <div className="mt-16 text-center bg-blue-50 rounded-xl p-8 border border-blue-100 max-w-4xl mx-auto">
-                <h3 className="text-2xl font-bold mb-4">Want results like these?</h3>
-                <p className="text-gray-600 mb-6">
-                  Book a free consultation to discuss your plumbing project
-                </p>
-                <button
-                  onClick={() => setActivePage("contact")}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#00A1FF] transition-all"
-                >
-                  Get Your Free Quote
-                </button>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* CONTACT PAGE */}
-        {activePage === "contact" && (
-          <section className="py-16">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-black text-center mb-6">
-                Get Your Free Quote
-              </h1>
-              <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-                Fill in the form below or call us directly for immediate assistance
-              </p>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {/* Contact Form */}
-                <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-                  <h2 className="text-2xl font-bold mb-6">Request a Quote</h2>
-                  <form className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="John Smith"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0057B8] focus:border-transparent"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        placeholder="07XXX XXXXXX"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0057B8] focus:border-transparent"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="john@example.com"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0057B8] focus:border-transparent"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700">
-                        Service Required *
-                      </label>
-                      <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0057B8] focus:border-transparent">
-                        <option>Emergency Plumbing</option>
-                        <option>Leak Repair</option>
-                        <option>Bathroom Installation</option>
-                        <option>Pipe Replacement</option>
-                        <option>Boiler Service/Repair</option>
-                        <option>Other</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700">
-                        Postcode *
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="E.g., SW1A 1AA"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0057B8] focus:border-transparent"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700">
-                        Tell us about your issue
-                      </label>
-                      <textarea
-                        rows={4}
-                        placeholder="Please describe the plumbing issue you're experiencing..."
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0057B8] focus:border-transparent"
-                      ></textarea>
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full px-8 py-4 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#00A1FF] transition-all text-lg"
-                    >
-                      Submit Quote Request
-                    </button>
-
-                    <p className="text-xs text-gray-500 text-center">
-                      We'll respond within 2 hours during business hours
-                    </p>
-                  </form>
-                </div>
-
-                {/* Contact Info */}
-                <div className="space-y-6">
-                  {/* Phone */}
-                  <div className="bg-[#0057B8] text-white rounded-xl p-8 shadow-lg">
-                    <Phone className="w-12 h-12 mb-4" />
-                    <h3 className="text-2xl font-bold mb-3">Call Us Directly</h3>
-                    <p className="text-blue-100 mb-4">
-                      Speak to our team now for immediate assistance
-                    </p>
-                    <a
-                      href="tel:08001234567"
-                      className="text-3xl font-black hover:text-[#00A1FF] transition-colors"
-                    >
-                      0800 123 4567
-                    </a>
-                    <p className="text-sm text-blue-200 mt-2">24/7 Emergency Line</p>
-                  </div>
-
-                  {/* Email */}
-                  <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
-                    <Mail className="w-12 h-12 text-[#0057B8] mb-4" />
-                    <h3 className="text-xl font-bold mb-3">Email Us</h3>
-                    <a
-                      href="mailto:info@flowprimeplumbing.co.uk"
-                      className="text-[#0057B8] font-semibold hover:text-[#00A1FF]"
-                    >
-                      info@flowprimeplumbing.co.uk
-                    </a>
-                  </div>
-
-                  {/* Hours */}
-                  <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
-                    <Clock className="w-12 h-12 text-[#0057B8] mb-4" />
-                    <h3 className="text-xl font-bold mb-4">Opening Hours</h3>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="font-semibold">Monday - Friday:</span>
-                        <span>9:00 AM - 5:00 PM</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold">Saturday:</span>
-                        <span>10:00 AM - 2:00 PM</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold">Sunday:</span>
-                        <span>Closed</span>
-                      </div>
-                      <div className="pt-2 border-t border-gray-200 mt-4">
-                        <p className="font-semibold text-[#0057B8]">Emergency: 24/7</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Service Area */}
-                  <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
-                    <MapPin className="w-12 h-12 text-[#0057B8] mb-4" />
-                    <h3 className="text-xl font-bold mb-3">Service Area</h3>
-                    <p className="text-gray-700">
-                      We serve all areas across London and surrounding boroughs. Fast response times guaranteed.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-[#333333] text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            {/* Logo & About */}
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                  <Droplet className="w-6 h-6 text-[#0057B8]" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-black">FlowPrime</h3>
-                  <p className="text-xs text-gray-400">Plumbing Services</p>
-                </div>
-              </div>
-              <p className="text-sm text-gray-400">
-                Reliable plumbing services across London. Gas Safe registered, fully insured, and available 24/7 for emergencies.
-              </p>
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 text-[#1F2937] hover:text-[#0057B8] transition-colors"
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
+            {/* Mobile Navigation */}
+            {mobileMenuOpen && (
+              <nav className="md:hidden py-4 border-t border-gray-200">
                 {navigation.map((item) => (
-                  <li key={item.id}>
-                    <button
-                      onClick={() => setActivePage(item.id)}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {item.name}
-                    </button>
-                  </li>
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setActivePage(item.id);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`block w-full text-left px-4 py-3 rounded-lg font-semibold transition-all ${
+                      activePage === item.id
+                        ? "bg-[#0057B8] text-white"
+                        : "text-[#1F2937] hover:bg-gray-50"
+                    }`}
+                  >
+                    {item.name}
+                  </button>
                 ))}
-              </ul>
-            </div>
+                <a
+                  href="tel:02012345678"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 mt-2 bg-[#0057B8] text-white font-bold rounded-lg"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call: 020 1234 5678
+                </a>
+                <a
+                  href="https://wa.me/442012345678"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 mt-2 bg-[#25D366] text-white font-bold rounded-lg"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp Us
+                </a>
+              </nav>
+            )}
+          </div>
+        </header>
 
-            {/* Contact */}
-            <div>
-              <h4 className="font-bold mb-4">Contact Us</h4>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#00A1FF]" />
-                  <a href="tel:08001234567" className="hover:text-[#00A1FF]">
-                    0800 123 4567
-                  </a>
+        {/* Page Content */}
+        <main>
+          {/* HOME PAGE */}
+          {activePage === "home" && (
+            <>
+              {/* Hero Section */}
+              <section className="relative py-16 md:py-24 bg-gradient-to-br from-[#0057B8] to-[#00A1FF]">
+                <div className="container mx-auto px-4 relative z-10">
+                  <div className="max-w-4xl mx-auto text-center text-white">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                      Reliable Plumbing.<br />
+                      <span className="text-[#F5F7FB]">Local Experts. 24/7 Response.</span>
+                    </h1>
+                    <p className="text-xl md:text-2xl mb-8 text-blue-50">
+                      Fast, professional plumbing services across London. Same-day emergency callouts.
+                    </p>
+
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                      <a
+                        href="tel:02012345678"
+                        className="px-10 py-5 bg-white text-[#0057B8] font-black text-lg rounded-lg hover:bg-gray-50 transition-all inline-flex items-center justify-center gap-2 shadow-xl"
+                      >
+                        <Phone className="w-5 h-5" />
+                        Call Us Now
+                      </a>
+                      <button
+                        onClick={() => setActivePage("contact")}
+                        className="px-10 py-5 bg-[#00A1FF] text-white font-bold text-lg rounded-lg border-2 border-white hover:bg-[#0088CC] transition-all inline-flex items-center justify-center gap-2"
+                      >
+                        Get Free Quote
+                      </button>
+                    </div>
+
+                    {/* Trust Proof Row */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {[
+                        { icon: Shield, label: "Fully Insured" },
+                        { icon: Award, label: "Gas Safe" },
+                        { icon: CheckCircle, label: "DBS Checked" },
+                        { icon: Clock, label: "24/7 Available" },
+                      ].map((item, index) => (
+                        <div
+                          key={index}
+                          className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 flex flex-col items-center gap-2"
+                        >
+                          <item.icon className="w-6 h-6" />
+                          <p className="text-sm font-bold">{item.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-[#00A1FF]" />
-                  <a href="mailto:info@flowprimeplumbing.co.uk" className="hover:text-[#00A1FF]">
-                    info@flowprimeplumbing.co.uk
-                  </a>
-                </div>
-                <div className="pt-2 border-t border-gray-700">
-                  <p className="text-gray-400">
-                    <span className="font-semibold text-white">Office Hours:</span> Mon-Fri 9am-5pm
+              </section>
+
+              {/* Services Grid */}
+              <section className="py-16 bg-white">
+                <div className="container mx-auto px-4">
+                  <h2 className="text-3xl md:text-4xl font-black text-center mb-4 text-[#1F2937]">
+                    Our Plumbing <span className="text-[#0057B8]">Services</span>
+                  </h2>
+                  <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                    From emergency repairs to complete bathroom installations, we cover all your plumbing needs
                   </p>
-                  <p className="text-[#00A1FF] font-semibold">Emergency: On call 24/7</p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                      {
+                        icon: <AlertTriangle className="w-8 h-8" />,
+                        title: "Emergency Callout",
+                        desc: "24/7 rapid response for leaks, burst pipes, and flooding",
+                        price: "From £85",
+                      },
+                      {
+                        icon: <Droplet className="w-8 h-8" />,
+                        title: "Leak Detection & Repair",
+                        desc: "Advanced leak detection and permanent repairs",
+                        price: "From £120",
+                      },
+                      {
+                        icon: <Flame className="w-8 h-8" />,
+                        title: "Boiler Service",
+                        desc: "Annual servicing, repairs, and new installations",
+                        price: "From £85",
+                      },
+                      {
+                        icon: <Bath className="w-8 h-8" />,
+                        title: "Bathroom Fitting",
+                        desc: "Complete bathroom renovations and installations",
+                        price: "From £2,500",
+                      },
+                      {
+                        icon: <Wrench className="w-8 h-8" />,
+                        title: "Pipe Repairs",
+                        desc: "Pipe replacement, repairs, and pressure fixes",
+                        price: "From £150",
+                      },
+                      {
+                        icon: <CheckCircle className="w-8 h-8" />,
+                        title: "General Plumbing",
+                        desc: "Taps, toilets, radiators, and general repairs",
+                        price: "From £75",
+                      },
+                    ].map((service, index) => (
+                      <div
+                        key={index}
+                        className="bg-[#F5F7FB] border border-gray-200 rounded-lg p-6 hover:border-[#0057B8] transition-all hover:shadow-lg"
+                      >
+                        <div className="text-[#0057B8] mb-4">{service.icon}</div>
+                        <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                        <p className="text-gray-600 text-sm mb-4">{service.desc}</p>
+                        <p className="text-[#0057B8] font-black text-lg">{service.price}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="text-center mt-8">
+                    <button
+                      onClick={() => setActivePage("services")}
+                      className="text-[#0057B8] font-bold hover:underline inline-flex items-center gap-2"
+                    >
+                      View All Services <ChevronDown className="w-5 h-5 rotate-[-90deg]" />
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              {/* Service Area Map */}
+              <section className="py-16 bg-[#F5F7FB]">
+                <div className="container mx-auto px-4">
+                  <div className="max-w-5xl mx-auto">
+                    <h2 className="text-3xl md:text-4xl font-black text-center mb-4 text-[#1F2937]">
+                      Our <span className="text-[#0057B8]">Service Areas</span>
+                    </h2>
+                    <p className="text-center text-gray-600 mb-12">
+                      We cover all London postcodes with fast response times
+                    </p>
+
+                    <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                          <h3 className="text-xl font-bold mb-4 text-[#0057B8]">Coverage Map</h3>
+                          <div className="bg-[#F5F7FB] rounded-lg p-6 flex items-center justify-center h-64">
+                            <div className="text-center">
+                              <MapPin className="w-16 h-16 text-[#0057B8] mx-auto mb-4" />
+                              <p className="text-sm text-gray-600">All London Postcodes Covered</p>
+                              <p className="text-xs text-gray-500 mt-2">60-90 min response time</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold mb-4 text-[#0057B8]">Postcodes We Serve</h3>
+                          <div className="space-y-2">
+                            {serviceAreas.map((area, index) => (
+                              <div key={index} className="flex items-start gap-2">
+                                <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
+                                <p className="text-sm text-gray-700 font-mono">{area}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* FAQs */}
+              <section className="py-16 bg-white">
+                <div className="container mx-auto px-4">
+                  <div className="max-w-3xl mx-auto">
+                    <h2 className="text-3xl md:text-4xl font-black text-center mb-4 text-[#1F2937]">
+                      Frequently Asked <span className="text-[#0057B8]">Questions</span>
+                    </h2>
+                    <p className="text-center text-gray-600 mb-12">
+                      Quick answers to common questions about our plumbing services
+                    </p>
+
+                    <div className="space-y-4">
+                      {faqs.map((faq, index) => (
+                        <div
+                          key={index}
+                          className="bg-[#F5F7FB] rounded-lg border border-gray-200 overflow-hidden"
+                        >
+                          <button
+                            onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                          >
+                            <span className="font-bold text-[#1F2937]">{faq.question}</span>
+                            <ChevronDown
+                              className={`w-5 h-5 text-[#0057B8] transition-transform ${
+                                openFaq === index ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+                          {openFaq === index && (
+                            <div className="px-6 py-4 border-t border-gray-200 bg-white">
+                              <p className="text-gray-700">{faq.answer}</p>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* CTA Strip */}
+              <section className="py-12 bg-[#0057B8]">
+                <div className="container mx-auto px-4 text-center">
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-6">
+                    Need a plumber? We're here 24/7
+                  </h3>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                      href="tel:02012345678"
+                      className="px-10 py-4 bg-white text-[#0057B8] font-black text-lg rounded-lg hover:bg-gray-50 transition-all inline-flex items-center justify-center gap-2"
+                    >
+                      <Phone className="w-5 h-5" />
+                      Call: 020 1234 5678
+                    </a>
+                    <button
+                      onClick={() => setActivePage("contact")}
+                      className="px-10 py-4 bg-[#00A1FF] text-white font-bold text-lg rounded-lg border-2 border-white hover:bg-[#0088CC] transition-all"
+                    >
+                      Get Your Free Quote
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </>
+          )}
+
+          {/* SERVICES PAGE - Continue with existing structure but enhanced... */}
+          {activePage === "services" && (
+            <section className="py-16 bg-white">
+              <div className="container mx-auto px-4">
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                  <h1 className="text-4xl md:text-5xl font-black mb-6 text-[#1F2937]">
+                    Our <span className="text-[#0057B8]">Plumbing Services</span>
+                  </h1>
+                  <p className="text-xl text-gray-600">
+                    Professional, reliable plumbing for homes and businesses across London
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                  {/* Emergency Callout */}
+                  <div className="bg-[#F5F7FB] border-2 border-gray-200 rounded-lg p-8">
+                    <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                      <AlertTriangle className="w-8 h-8 text-red-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">24/7 Emergency Callout</h3>
+                    <p className="text-lg text-[#0057B8] font-black mb-4">From £85 + parts</p>
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      <strong>Problem:</strong> Burst pipes, flooding, or major leaks can cause thousands in damage.<br/>
+                      <strong>Fix:</strong> Our rapid-response team arrives within 60-90 minutes to stop the leak and prevent further damage.<br/>
+                      <strong>Outcome:</strong> Property protected, leak fixed, peace of mind restored.
+                    </p>
+                    <ul className="space-y-3 mb-6">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">60-90 minute response time</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Burst pipes and flooding</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Boiler breakdowns</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">No heating or hot water</span>
+                      </li>
+                    </ul>
+                    <a
+                      href="tel:02012345678"
+                      className="w-full block text-center py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-all"
+                    >
+                      Emergency: 020 1234 5678
+                    </a>
+                  </div>
+
+                  {/* Leak Detection */}
+                  <div className="bg-[#F5F7FB] border-2 border-gray-200 rounded-lg p-8">
+                    <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                      <Droplet className="w-8 h-8 text-[#0057B8]" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">Leak Detection & Repair</h3>
+                    <p className="text-lg text-[#0057B8] font-black mb-4">From £120</p>
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      <strong>Problem:</strong> Hidden leaks waste water and cause structural damage over time.<br/>
+                      <strong>Fix:</strong> We use thermal imaging and acoustic detection to find hidden leaks, then repair them permanently.<br/>
+                      <strong>Outcome:</strong> Lower water bills, no hidden damage, lasting repair.
+                    </p>
+                    <ul className="space-y-3 mb-6">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Advanced leak detection equipment</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Hidden pipe and underfloor leaks</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Permanent repairs, not temporary fixes</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">12-month warranty on all work</span>
+                      </li>
+                    </ul>
+                    <button
+                      onClick={() => setActivePage("contact")}
+                      className="w-full py-3 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#004494] transition-all"
+                    >
+                      Get Quote for Leak Repair
+                    </button>
+                  </div>
+
+                  {/* Boiler Service */}
+                  <div className="bg-[#F5F7FB] border-2 border-gray-200 rounded-lg p-8">
+                    <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                      <Flame className="w-8 h-8 text-orange-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">Boiler Service & Repairs</h3>
+                    <p className="text-lg text-[#0057B8] font-black mb-4">Annual service from £85</p>
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      <strong>Problem:</strong> Neglected boilers break down in winter and can be dangerous.<br/>
+                      <strong>Fix:</strong> Annual servicing keeps your boiler safe, efficient, and under warranty. We repair or replace when needed.<br/>
+                      <strong>Outcome:</strong> Reliable heating, lower energy bills, Gas Safe certification.
+                    </p>
+                    <ul className="space-y-3 mb-6">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Gas Safe registered engineers</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Annual servicing and safety checks</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Boiler repairs and replacements</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Certificate provided for landlords</span>
+                      </li>
+                    </ul>
+                    <button
+                      onClick={() => setActivePage("contact")}
+                      className="w-full py-3 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#004494] transition-all"
+                    >
+                      Book Boiler Service
+                    </button>
+                  </div>
+
+                  {/* Bathroom Fitting */}
+                  <div className="bg-[#F5F7FB] border-2 border-gray-200 rounded-lg p-8">
+                    <div className="w-16 h-16 bg-cyan-100 rounded-lg flex items-center justify-center mb-6">
+                      <Bath className="w-8 h-8 text-cyan-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">Bathroom Installations</h3>
+                    <p className="text-lg text-[#0057B8] font-black mb-4">Complete fit from £2,500</p>
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      <strong>Problem:</strong> Outdated bathrooms reduce property value and quality of life.<br/>
+                      <strong>Fix:</strong> Full bathroom design, supply, and installation with all plumbing, tiling, and finishing.<br/>
+                      <strong>Outcome:</strong> Modern, functional bathroom installed to a high standard.
+                    </p>
+                    <ul className="space-y-3 mb-6">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Full design and planning service</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Supply and fit all fixtures</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">Tiling, electrics, and decorating</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <span className="text-gray-700">2-year guarantee on workmanship</span>
+                      </li>
+                    </ul>
+                    <button
+                      onClick={() => setActivePage("contact")}
+                      className="w-full py-3 bg-[#0057B8] text-white font-bold rounded-lg hover:bg-[#004494] transition-all"
+                    >
+                      Get Bathroom Quote
+                    </button>
+                  </div>
                 </div>
               </div>
+            </section>
+          )}
+
+          {/* ABOUT, PROJECTS, and CONTACT pages remain similar to current version but with enhanced styling */}
+          {activePage === "about" && (
+            <section className="py-16 bg-white">
+              <div className="container mx-auto px-4">
+                <div className="max-w-4xl mx-auto">
+                  <h1 className="text-4xl md:text-5xl font-black mb-6 text-center text-[#1F2937]">
+                    About <span className="text-[#0057B8]">FlowPrime Plumbing</span>
+                  </h1>
+                  <p className="text-xl text-center text-gray-600 mb-16">
+                    Your trusted local plumbing experts since 2010
+                  </p>
+
+                  {/* Placeholder for team photo */}
+                  <div className="bg-[#F5F7FB] rounded-lg p-8 mb-12 border border-gray-200">
+                    <div className="aspect-video bg-gradient-to-br from-[#0057B8] to-[#00A1FF] rounded-lg flex items-center justify-center mb-6">
+                      <div className="text-center text-white">
+                        <Wrench className="w-24 h-24 mx-auto mb-4 opacity-50" />
+                        <p className="text-sm opacity-75">Team Photo: Plumber at work<br/>Image: pexels.com/photo/plumber-at-work-4421506</p>
+                      </div>
+                    </div>
+                    <h2 className="text-2xl font-bold mb-4 text-[#1F2937]">Who We Are</h2>
+                    <p className="text-gray-700 leading-relaxed mb-4">
+                      FlowPrime Plumbing is a family-run plumbing business serving London since 2010. We specialize in emergency callouts, boiler repairs, leak detection, and complete bathroom installations.
+                    </p>
+                    <p className="text-gray-700 leading-relaxed mb-4">
+                      Our team of Gas Safe registered plumbers are DBS checked, fully insured, and committed to providing honest, reliable service. We believe in transparent pricing, quality workmanship, and treating every customer's home with respect.
+                    </p>
+                    <p className="text-gray-700 leading-relaxed">
+                      Available 24/7 for emergencies, we pride ourselves on rapid response times and permanent solutions—not temporary fixes.
+                    </p>
+                  </div>
+
+                  {/* Values & Process */}
+                  <div className="mb-12">
+                    <h2 className="text-2xl font-bold mb-6 text-center text-[#1F2937]">
+                      Our Values & <span className="text-[#0057B8]">Safety Process</span>
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {[
+                        {
+                          title: "Safety First",
+                          desc: "All work complies with current regulations. Gas Safe certified for all gas work."
+                        },
+                        {
+                          title: "Transparent Pricing",
+                          desc: "Upfront quotes before we start. No hidden fees, no surprises on the bill."
+                        },
+                        {
+                          title: "Quality Guarantee",
+                          desc: "12-month warranty on all workmanship. We stand behind every job we complete."
+                        }
+                      ].map((value, index) => (
+                        <div key={index} className="bg-[#F5F7FB] border border-gray-200 rounded-lg p-6">
+                          <h3 className="font-bold mb-3 text-[#0057B8]">{value.title}</h3>
+                          <p className="text-sm text-gray-700">{value.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Qualifications */}
+                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg p-8">
+                    <h2 className="text-2xl font-bold mb-6 text-[#0057B8]">Qualifications & Insurance</h2>
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-4">
+                        <Shield className="w-6 h-6 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <div>
+                          <h3 className="font-bold mb-2">Gas Safe Registered</h3>
+                          <p className="text-gray-700 text-sm">
+                            All engineers are Gas Safe registered for boiler work and gas appliance installation.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-4">
+                        <Award className="w-6 h-6 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <div>
+                          <h3 className="font-bold mb-2">£5 Million Public Liability</h3>
+                          <p className="text-gray-700 text-sm">
+                            Comprehensive insurance cover for all work carried out in your property.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-4">
+                        <CheckCircle className="w-6 h-6 text-[#0057B8] flex-shrink-0 mt-1" />
+                        <div>
+                          <h3 className="font-bold mb-2">DBS Checked Team</h3>
+                          <p className="text-gray-700 text-sm">
+                            All our plumbers are DBS checked for your peace of mind and security.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* PROJECTS PAGE */}
+          {activePage === "projects" && (
+            <section className="py-16 bg-white">
+              <div className="container mx-auto px-4">
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                  <h1 className="text-4xl md:text-5xl font-black mb-6 text-[#1F2937]">
+                    Recent <span className="text-[#0057B8]">Projects</span>
+                  </h1>
+                  <p className="text-xl text-gray-600">
+                    See examples of our completed plumbing work across London
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                  {/* Project 1 */}
+                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div className="h-64 bg-gradient-to-br from-[#0057B8] to-[#00A1FF] flex items-center justify-center relative">
+                      <Bath className="w-24 h-24 text-white opacity-30 absolute" />
+                      <div className="relative z-10 text-center text-white p-4">
+                        <p className="text-xs opacity-75 mb-2">Before & After</p>
+                        <p className="text-sm">Modern bathroom with chrome fixtures<br/>Image: unsplash.com/photos/Ju4BNb1gZYE</p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-2">Complete Bathroom Fit - Hampstead</h3>
+                      <p className="text-gray-700 mb-4">
+                        <strong>Before:</strong> Outdated 1970s bathroom with cracked tiles and poor water pressure.<br/>
+                        <strong>Work:</strong> Full strip-out, new plumbing, shower installation, underfloor heating, tiling, and fixtures.<br/>
+                        <strong>After:</strong> Modern bathroom with walk-in shower, excellent pressure, and 2-year guarantee.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-blue-100 text-[#0057B8] rounded-full text-sm font-semibold">
+                          Bathroom
+                        </span>
+                        <span className="px-3 py-1 bg-blue-100 text-[#0057B8] rounded-full text-sm font-semibold">
+                          Full Installation
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project 2 */}
+                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div className="h-64 bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center relative">
+                      <AlertTriangle className="w-24 h-24 text-white opacity-30 absolute" />
+                      <div className="relative z-10 text-center text-white p-4">
+                        <p className="text-xs opacity-75 mb-2">Emergency Response</p>
+                        <p className="text-sm">Plumber repairing kitchen pipe under sink<br/>Image: pexels.com/photo/plumber-at-work-4421506</p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-2">Emergency Burst Pipe - Islington</h3>
+                      <p className="text-gray-700 mb-4">
+                        <strong>Problem:</strong> Burst pipe causing flooding in ground floor flat at 2am.<br/>
+                        <strong>Response:</strong> Arrived within 75 minutes, isolated leak, pumped out water, fitted temporary repair.<br/>
+                        <strong>Result:</strong> Permanent repair completed next day, no structural damage, insurance claim supported.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                          Emergency
+                        </span>
+                        <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                          24/7 Callout
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project 3 */}
+                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div className="h-64 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center relative">
+                      <Flame className="w-24 h-24 text-white opacity-30 absolute" />
+                      <div className="relative z-10 text-center text-white p-4">
+                        <p className="text-xs opacity-75 mb-2">Boiler Installation</p>
+                        <p className="text-sm">Installing new kitchen mixer tap<br/>Image: pexels.com/photo/man-installing-a-faucet-7543613</p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-2">Boiler Replacement - Camden</h3>
+                      <p className="text-gray-700 mb-4">
+                        <strong>Situation:</strong> 15-year-old boiler failed during cold snap, no heating or hot water.<br/>
+                        <strong>Work:</strong> Removed old boiler, fitted new A-rated combi boiler, upgraded pipework, system flush.<br/>
+                        <strong>Outcome:</strong> Efficient heating, lower bills, 10-year manufacturer warranty, Gas Safe certificate.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
+                          Boiler
+                        </span>
+                        <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
+                          Gas Safe
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project 4 */}
+                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div className="h-64 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center relative">
+                      <Droplet className="w-24 h-24 text-white opacity-30 absolute" />
+                      <div className="relative z-10 text-center text-white p-4">
+                        <p className="text-xs opacity-75 mb-2">Leak Detection</p>
+                        <p className="text-sm">Copper pipe fittings and tools<br/>Image: unsplash.com/photos/W2z9afZrFG0</p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-2">Hidden Leak Detection - Shoreditch</h3>
+                      <p className="text-gray-700 mb-4">
+                        <strong>Issue:</strong> High water bills and damp patch, no visible leak source.<br/>
+                        <strong>Process:</strong> Thermal imaging scan located hidden pipe leak behind kitchen units.<br/>
+                        <strong>Fix:</strong> Accessed pipe without major disruption, replaced section, tested system, replastered and decorated.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold">
+                          Leak Detection
+                        </span>
+                        <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold">
+                          Repair
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* CONTACT PAGE */}
+          {activePage === "contact" && (
+            <section className="py-16 bg-white">
+              <div className="container mx-auto px-4">
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                  <h1 className="text-4xl md:text-5xl font-black mb-6 text-[#1F2937]">
+                    Get Your <span className="text-[#0057B8]">Free Quote</span>
+                  </h1>
+                  <p className="text-xl text-gray-600">
+                    Fill in the form below or call us for immediate assistance
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                  {/* Contact Form */}
+                  <div className="lg:col-span-2">
+                    <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg p-8">
+                      <form className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <label className="block text-sm font-bold mb-2 text-[#1F2937]">
+                              Your Name *
+                            </label>
+                            <input
+                              type="text"
+                              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-[#0057B8] text-[#1F2937]"
+                              placeholder="John Smith"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-bold mb-2 text-[#1F2937]">
+                              Phone Number *
+                            </label>
+                            <input
+                              type="tel"
+                              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-[#0057B8] text-[#1F2937]"
+                              placeholder="020 1234 5678"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <label className="block text-sm font-bold mb-2 text-[#1F2937]">
+                              Email Address *
+                            </label>
+                            <input
+                              type="email"
+                              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-[#0057B8] text-[#1F2937]"
+                              placeholder="john@example.com"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-bold mb-2 text-[#1F2937]">
+                              Postcode *
+                            </label>
+                            <input
+                              type="text"
+                              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-[#0057B8] text-[#1F2937]"
+                              placeholder="SW1A 1AA"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-bold mb-2 text-[#1F2937]">
+                            Service Required *
+                          </label>
+                          <select
+                            className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-[#0057B8] text-[#1F2937]"
+                            required
+                          >
+                            <option value="">Select a service...</option>
+                            <option value="emergency">Emergency Callout</option>
+                            <option value="leak">Leak Detection & Repair</option>
+                            <option value="boiler">Boiler Service/Repair</option>
+                            <option value="bathroom">Bathroom Installation</option>
+                            <option value="general">General Plumbing</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-bold mb-2 text-[#1F2937]">
+                            Tell us about your plumbing issue
+                          </label>
+                          <textarea
+                            rows={6}
+                            className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-[#0057B8] text-[#1F2937]"
+                            placeholder="Please describe the issue and when you need help..."
+                          ></textarea>
+                        </div>
+
+                        <button
+                          type="submit"
+                          className="w-full py-4 bg-[#0057B8] text-white font-black text-lg rounded-lg hover:bg-[#004494] transition-all"
+                        >
+                          Request Free Quote
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+
+                  {/* Contact Info Cards */}
+                  <div className="space-y-6">
+                    {/* Emergency */}
+                    <div className="bg-red-50 border-2 border-red-600 rounded-lg p-6">
+                      <AlertTriangle className="w-8 h-8 text-red-600 mb-4" />
+                      <h3 className="text-xl font-bold mb-2 text-red-900">24/7 Emergency Line</h3>
+                      <p className="text-red-800 mb-4 text-sm font-semibold">
+                        Burst pipes, flooding, no heating
+                      </p>
+                      <a
+                        href="tel:02012345678"
+                        className="block w-full py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-all text-center"
+                      >
+                        020 1234 5678
+                      </a>
+                    </div>
+
+                    {/* Call Us */}
+                    <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg p-6">
+                      <Phone className="w-8 h-8 text-[#0057B8] mb-4" />
+                      <h3 className="text-xl font-bold mb-2">Call Us</h3>
+                      <p className="text-gray-600 mb-4 text-sm">
+                        Speak to our team for advice
+                      </p>
+                      <a
+                        href="tel:02012345678"
+                        className="text-[#0057B8] font-bold hover:underline block"
+                      >
+                        020 1234 5678
+                      </a>
+                    </div>
+
+                    {/* WhatsApp */}
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                      <MessageCircle className="w-8 h-8 text-[#25D366] mb-4" />
+                      <h3 className="text-xl font-bold mb-2">WhatsApp Us</h3>
+                      <p className="text-gray-600 mb-4 text-sm">
+                        Quick questions or photos of issues
+                      </p>
+                      <a
+                        href="https://wa.me/442012345678"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full py-3 bg-[#25D366] text-white font-bold rounded-lg hover:bg-[#20BA5A] transition-all text-center"
+                      >
+                        Chat on WhatsApp
+                      </a>
+                    </div>
+
+                    {/* Email */}
+                    <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg p-6">
+                      <Mail className="w-8 h-8 text-[#0057B8] mb-4" />
+                      <h3 className="text-xl font-bold mb-2">Email Us</h3>
+                      <p className="text-gray-600 mb-4 text-sm">
+                        We respond within 2 hours
+                      </p>
+                      <a
+                        href="mailto:hello@flowprime-plumbing.co.uk"
+                        className="text-[#0057B8] font-bold hover:underline break-all text-sm"
+                      >
+                        hello@flowprime-plumbing.co.uk
+                      </a>
+                    </div>
+
+                    {/* Office Hours */}
+                    <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg p-6">
+                      <Clock className="w-8 h-8 text-[#0057B8] mb-4" />
+                      <h3 className="text-xl font-bold mb-2">Office Hours</h3>
+                      <div className="space-y-2 text-sm">
+                        <p className="flex justify-between">
+                          <span className="text-gray-600">Monday - Friday:</span>
+                          <span className="font-bold">8am - 6pm</span>
+                        </p>
+                        <p className="flex justify-between">
+                          <span className="text-gray-600">Emergencies:</span>
+                          <span className="font-bold text-red-600">24/7</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+        </main>
+
+        {/* BuzzBold Marketing CTA Section */}
+        <section className="border-t border-gray-200 bg-gradient-to-r from-orange-600/10 via-red-600/10 to-pink-600/10 py-16">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#1F2937]">
+              This is an example of what{" "}
+              <span className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent">
+                we can build for you
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Professional, conversion-focused websites for UK tradesmen and local businesses
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="tel:02012345678"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              >
+                <Phone className="w-5 h-5" />
+                Call: 020 1234 5678
+              </a>
+              <a
+                href="/#contact"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              >
+                <Mail className="w-5 h-5" />
+                Get Your Free Website Audit
+              </a>
             </div>
           </div>
+        </section>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-            <p>&copy; 2024 FlowPrime Plumbing. All rights reserved. Gas Safe Registered. Fully Insured.</p>
-          </div>
-        </div>
-      </footer>
-
-      {/* Back to BuzzBold */}
-      <div className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 py-12">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-black mb-4">
-            Love this website design?
-          </h2>
-          <p className="text-lg mb-6 opacity-90">
-            BuzzBold Marketing can build a professional site like this for your trade business
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        {/* Footer */}
+        <footer className="border-t border-gray-200 bg-white py-8">
+          <div className="container mx-auto px-4 text-center">
             <a
-              href="tel:02012345678"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-lg hover:bg-gray-100 transition-all"
+              href="/"
+              className="text-gray-500 hover:text-[#0057B8] transition-colors inline-flex items-center gap-2 mb-4 font-semibold"
             >
-              <Phone className="w-5 h-5" />
-              Call Us: 020 1234 5678
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                />
+              </svg>
+              Back to BuzzBold Marketing Homepage
             </a>
-            <button
-              onClick={() => {
-                window.location.href = "/#contact";
-              }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-black/20 backdrop-blur-sm border-2 border-white text-white font-bold rounded-lg hover:bg-black/30 transition-all"
-            >
-              Get Your Free Website Audit
-            </button>
+            <p className="text-sm text-gray-400">
+              Example website design © 2024 BuzzBold Marketing
+            </p>
           </div>
-        </div>
+        </footer>
       </div>
-
-      {/* Back to Homepage Link */}
-      <div className="bg-gray-100 py-6">
-        <div className="container mx-auto px-4 text-center">
-          <Link
-            href="/"
-            className="text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center gap-2 font-semibold"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to BuzzBold Marketing Homepage
-          </Link>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
