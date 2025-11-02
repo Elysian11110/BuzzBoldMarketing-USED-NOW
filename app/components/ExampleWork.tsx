@@ -5,8 +5,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Wrench, Leaf, Zap } from "lucide-react";
-import Link from "next/link";
-
 gsap.registerPlugin(ScrollTrigger);
 
 const ExampleWork = () => {
@@ -124,9 +122,11 @@ const ExampleWork = () => {
         {/* Example cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {examples.map((example, index) => (
-            <Link
+            <a
               key={index}
               href={example.link}
+              target="_blank"
+              rel="noopener noreferrer"
               ref={(el) => {
                 if (el) cardsRef.current[index] = el;
               }}
@@ -183,7 +183,7 @@ const ExampleWork = () => {
                   </div>
                 </CardContent>
               </Card>
-            </Link>
+            </a>
           ))}
         </div>
 
