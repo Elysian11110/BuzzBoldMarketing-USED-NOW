@@ -551,7 +551,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border-2 border-gray-200 rounded-lg p-8">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
                       <Image
-                        src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1200&q=80"
+                        src="https://images.unsplash.com/photo-1505695715220-3a366d958259?w=1200&q=80"
                         alt="Plumber using wrench on copper pipe close up detail"
                         width={1200}
                         height={675}
