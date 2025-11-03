@@ -3,15 +3,8 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Zap,
-  Target,
-  TrendingUp,
-  Palette,
-  Globe,
-  MessageSquare,
-} from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { ArrowRight, Globe, Target, TrendingUp, MessageSquare } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,43 +15,28 @@ const Services = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(
         titleRef.current,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
+          duration: 0.9,
+          scrollTrigger: { trigger: titleRef.current, start: "top 85%" },
         },
       );
 
-      // Staggered card animations
       cardsRef.current.forEach((card, index) => {
         gsap.fromTo(
           card,
-          {
-            opacity: 0,
-            y: 100,
-            scale: 0.8,
-          },
+          { opacity: 0, y: 50 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: "back.out(1.2)",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-            delay: index * 0.1,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: { trigger: card, start: "top 85%" },
+            delay: index * 0.08,
           },
         );
       });
@@ -69,93 +47,82 @@ const Services = () => {
 
   const services = [
     {
-      icon: <Globe className="w-10 h-10" />,
-      title: "High Quality, Fully Responsive Websites",
-      gradient: "from-orange-500 to-red-500",
+      icon: <Globe className="h-6 w-6 text-orange-300" />,
+      title: "Website design & build",
+      copy: [
+        "Conversion-first site architecture and copywriting",
+        "Responsive Next.js build optimised for speed",
+        "Launch-ready asset library and CMS handover",
+      ],
     },
     {
-      icon: <Target className="w-10 h-10" />,
-      title: "Local SEO to Dominate",
-      gradient: "from-red-500 to-pink-500",
+      icon: <Target className="h-6 w-6 text-orange-300" />,
+      title: "Local SEO foundations",
+      copy: [
+        "Technical audit and on-page optimisation",
+        "Google Business Profile clean-up and growth plan",
+        "Review engine and citation management",
+      ],
     },
     {
-      icon: <TrendingUp className="w-10 h-10" />,
-      title: "Social Media Management",
-      gradient: "from-pink-500 to-purple-500",
+      icon: <TrendingUp className="h-6 w-6 text-orange-300" />,
+      title: "Always-on optimisation",
+      copy: [
+        "Landing page and funnel experiments",
+        "Monthly performance reviews with action steps",
+        "Dashboards that highlight the numbers that matter",
+      ],
     },
     {
-      icon: <MessageSquare className="w-10 h-10" />,
-      title: "Account Management",
-      gradient: "from-purple-500 to-indigo-500",
+      icon: <MessageSquare className="h-6 w-6 text-orange-300" />,
+      title: "Content & campaign support",
+      copy: [
+        "Launch calendars and campaign playbooks",
+        "Social and email assets ready to publish",
+        "Paid boosts to keep visibility consistent",
+      ],
     },
   ];
 
   return (
-    <section
-      ref={sectionRef}
-      className="section-padding bg-black relative overflow-hidden"
-    >
-      {/* Background gradients */}
-      <div className="blur-gradient-orange top-0 right-0" />
-      <div className="blur-gradient-pink bottom-0 left-0" />
-
-      <div className="container mx-auto container-padding relative z-10">
-        {/* Section header */}
-        <div ref={titleRef} className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Services Built to <span className="gradient-text">Drive Results</span>
+    <section ref={sectionRef} className="section-padding border-t border-white/5 bg-[#05070f]">
+      <div className="container mx-auto container-padding">
+        <div ref={titleRef} className="mx-auto mb-14 max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-400">Services</p>
+          <h2 className="mt-4 text-4xl font-black text-white md:text-5xl">
+            A focused team covering the essentials.
           </h2>
-          <p className="text-lg md:text-xl text-gray-400">
-            Everything your business needs to get chosen, dominate locally, generate customers.
-            We handle the tech. You handle the growth.
+          <p className="mt-4 text-base text-gray-400 md:text-lg">
+            Pick a single engagement or combine them for momentum. Either way you get clear deliverables and the same
+            senior team driving execution.
           </p>
         </div>
 
-        {/* Services grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <div
-              key={index}
+            <Card
+              key={service.title}
               ref={(el) => {
                 if (el) cardsRef.current[index] = el;
               }}
-              className="group"
+              className="surface-card flex h-full flex-col gap-4 p-6 transition-transform duration-200 hover:-translate-y-1 hover:border-orange-400/50"
             >
-              <Card className="h-full bg-gradient-to-br from-gray-900/90 to-gray-900/50 border-2 border-gray-800 rounded-2xl backdrop-blur-sm hover:border-transparent transition-all duration-500 relative overflow-hidden">
-                {/* Gradient overlay on hover */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                />
-
-                {/* Animated border */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r ${service.gradient} blur-xl opacity-50`}
-                  />
-                </div>
-
-                <CardHeader className="relative z-10 flex flex-col items-start p-6 space-y-3">
-                  {/* Icon with gradient */}
-                  <div
-                    className={`p-3 rounded-xl bg-gradient-to-br ${service.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    {service.icon}
-                  </div>
-                  <CardTitle className="text-xl font-bold text-white leading-tight">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-
-              </Card>
-            </div>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5">{service.icon}</div>
+              <h3 className="mt-5 text-xl font-semibold text-white">{service.title}</h3>
+              <ul className="mt-5 space-y-3 text-sm text-gray-300">
+                {service.copy.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-orange-400" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <p className="text-gray-400 mb-6 text-lg">
-            Not sure what you need? Let&apos;s talk.
-          </p>
+          <p className="mb-5 text-sm text-gray-400 md:text-base">Not sure what mix you need? Let&apos;s map it out.</p>
           <button
             onClick={() => {
               const element = document.querySelector("#contact");
@@ -163,9 +130,10 @@ const Services = () => {
                 element.scrollIntoView({ behavior: "smooth" });
               }
             }}
-            className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-8 py-3 font-semibold text-black transition-transform duration-200 hover:-translate-y-1 hover:bg-orange-400"
           >
-            Book a Free Strategy Call
+            Book a strategy call
+            <ArrowRight className="h-5 w-5" />
           </button>
         </div>
       </div>

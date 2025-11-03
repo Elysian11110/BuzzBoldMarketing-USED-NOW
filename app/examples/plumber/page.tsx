@@ -251,37 +251,51 @@ const FlowPrimePlumbing = () => {
           {activePage === "home" && (
             <>
               {/* Hero Section */}
-              <section className="relative py-16 md:py-24 bg-gradient-to-br from-[#0057B8] to-[#00A1FF]">
-                <div className="container mx-auto px-4">
-                  <div className="grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+              <section className="relative py-20 md:py-32 bg-gradient-to-br from-[#0057B8] via-[#0067D8] to-[#00A1FF] overflow-hidden">
+                {/* Decorative Background Elements */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                </div>
+
+                <div className="container mx-auto px-4 relative z-10">
+                  <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
                     <div className="text-white order-2 md:order-1">
-                      <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                      <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
+                        <Clock className="w-4 h-4" />
+                        <span className="text-sm font-bold">Available 24/7 for Emergencies</span>
+                      </div>
+
+                      <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
                         Reliable plumbing.
                         <br />
-                        <span className="text-[#F5F7FB]">Local experts. 24/7 response.</span>
+                        <span className="text-white/90 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Local experts.</span>
+                        <br />
+                        <span className="text-white/90">24/7 response.</span>
                       </h1>
-                      <p className="text-xl md:text-2xl mb-8 text-blue-50">
+                      <p className="text-xl md:text-2xl mb-10 text-blue-50 leading-relaxed font-medium">
                         Fast, professional plumbing services across London. Same-day emergency
-                        callouts.
+                        callouts with transparent pricing.
                       </p>
 
-                      <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                      <div className="flex flex-col sm:flex-row gap-4 mb-10">
                         <a
                           href="tel:02012345678"
-                          className="px-10 py-4 bg-white text-[#0057B8] font-black text-lg rounded-lg hover:bg-gray-50 transition-all inline-flex items-center justify-center gap-2 shadow-xl min-h-[44px]"
+                          className="group px-8 py-5 bg-white text-[#0057B8] font-black text-lg rounded-xl hover:bg-gray-50 hover:shadow-2xl hover:scale-105 transition-all inline-flex items-center justify-center gap-3 shadow-xl min-h-[44px]"
                         >
-                          <Phone className="w-5 h-5" />
-                          Call us
+                          <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                          Call Now: 020 1234 5678
                         </a>
                         <button
                           onClick={() => setActivePage("contact")}
-                          className="px-10 py-4 bg-[#00A1FF] text-white font-bold text-lg rounded-lg border-2 border-white hover:bg-[#0088CC] transition-all inline-flex items-center justify-center gap-2 min-h-[44px]"
+                          className="group px-8 py-5 bg-transparent text-white font-bold text-lg rounded-xl border-2 border-white hover:bg-white hover:text-[#0057B8] transition-all inline-flex items-center justify-center gap-2 min-h-[44px]"
                         >
-                          Get your free quote
+                          Get Free Quote
+                          <ChevronDown className="w-5 h-5 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
                         </button>
                       </div>
 
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-3 gap-3">
                         {[
                           { icon: Shield, label: "Fully Insured" },
                           { icon: Award, label: "Gas Safe" },
@@ -289,25 +303,28 @@ const FlowPrimePlumbing = () => {
                         ].map((item, index) => (
                           <div
                             key={index}
-                            className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 flex flex-col items-center gap-2"
+                            className="bg-white/15 backdrop-blur-md border border-white/25 rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-white/25 transition-all"
                           >
                             <item.icon className="w-6 h-6" />
-                            <p className="text-sm font-bold">{item.label}</p>
+                            <p className="text-xs md:text-sm font-bold text-center">{item.label}</p>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div className="order-1 md:order-2">
-                      <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
-                        <Image
-                          src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1800&q=80"
-                          alt="Professional plumber installing radiator pipe in modern home"
-                          width={1800}
-                          height={1200}
-                          priority={true}
-                          className="object-cover"
-                        />
+                      <div className="relative">
+                        <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-2xl blur-2xl opacity-30"></div>
+                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20">
+                          <Image
+                            src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1800&q=80"
+                            alt="Professional plumber installing radiator pipe in modern home"
+                            width={1800}
+                            height={1200}
+                            priority={true}
+                            className="object-cover hover:scale-105 transition-transform duration-700"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -315,105 +332,175 @@ const FlowPrimePlumbing = () => {
               </section>
 
               {/* Services Grid */}
-              <section className="py-16 bg-white">
+              <section className="py-20 bg-gradient-to-b from-white to-gray-50">
                 <div className="container mx-auto px-4">
-                  <h2 className="text-3xl md:text-4xl font-black text-center mb-4 text-[#111111]">
-                    Our Plumbing <span className="text-[#0057B8]">Services</span>
-                  </h2>
-                  <p className="text-center text-[#444444] mb-12 max-w-2xl mx-auto">
-                    From emergency repairs to complete bathroom installations, we cover all your
-                    plumbing needs
-                  </p>
+                  <div className="text-center mb-16">
+                    <span className="inline-block px-4 py-2 bg-blue-100 text-[#0057B8] rounded-full text-sm font-bold mb-4">
+                      WHAT WE DO
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-black mb-4 text-[#111111]">
+                      Our Plumbing <span className="text-[#0057B8]">Services</span>
+                    </h2>
+                    <p className="text-center text-[#555555] text-lg mb-4 max-w-2xl mx-auto">
+                      From emergency repairs to complete bathroom installations, we cover all your
+                      plumbing needs with expert care
+                    </p>
+                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                     {[
                       {
-                        icon: <AlertTriangle className="w-8 h-8" />,
+                        icon: <AlertTriangle className="w-10 h-10" />,
                         title: "Emergency Callout",
                         desc: "24/7 rapid response for leaks, burst pipes, and flooding",
+                        color: "from-red-500 to-red-600",
+                        bgColor: "bg-red-50",
+                        borderColor: "group-hover:border-red-500"
                       },
                       {
-                        icon: <Droplet className="w-8 h-8" />,
+                        icon: <Droplet className="w-10 h-10" />,
                         title: "Leak Detection & Repair",
                         desc: "Advanced leak detection and permanent repairs",
+                        color: "from-cyan-500 to-blue-600",
+                        bgColor: "bg-cyan-50",
+                        borderColor: "group-hover:border-cyan-500"
                       },
                       {
-                        icon: <Flame className="w-8 h-8" />,
+                        icon: <Flame className="w-10 h-10" />,
                         title: "Boiler Service",
                         desc: "Annual servicing, repairs, and new installations",
+                        color: "from-orange-500 to-red-500",
+                        bgColor: "bg-orange-50",
+                        borderColor: "group-hover:border-orange-500"
                       },
                       {
-                        icon: <Bath className="w-8 h-8" />,
+                        icon: <Bath className="w-10 h-10" />,
                         title: "Bathroom Fitting",
                         desc: "Complete bathroom renovations and installations",
+                        color: "from-blue-500 to-indigo-600",
+                        bgColor: "bg-blue-50",
+                        borderColor: "group-hover:border-blue-500"
                       },
                       {
-                        icon: <Wrench className="w-8 h-8" />,
+                        icon: <Wrench className="w-10 h-10" />,
                         title: "Pipe Repairs",
                         desc: "Pipe replacement, repairs, and pressure fixes",
+                        color: "from-gray-600 to-gray-800",
+                        bgColor: "bg-gray-50",
+                        borderColor: "group-hover:border-gray-600"
                       },
                       {
-                        icon: <CheckCircle className="w-8 h-8" />,
+                        icon: <CheckCircle className="w-10 h-10" />,
                         title: "General Plumbing",
                         desc: "Taps, toilets, radiators, and general repairs",
+                        color: "from-green-500 to-emerald-600",
+                        bgColor: "bg-green-50",
+                        borderColor: "group-hover:border-green-500"
                       },
                     ].map((service, index) => (
                       <div
                         key={index}
-                        className="bg-[#F5F7FB] border border-gray-200 rounded-lg p-6 hover:border-[#0057B8] transition-all hover:shadow-lg"
+                        className="group bg-white border-2 border-gray-200 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden"
                       >
-                        <div className="text-[#0057B8] mb-4">{service.icon}</div>
-                        <h3 className="text-xl font-bold mb-2 text-[#111111]">{service.title}</h3>
-                        <p className="text-[#444444] text-sm">{service.desc}</p>
+                        <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 rounded-full blur-3xl transition-opacity duration-500`}></div>
+                        
+                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                          <div className="text-white">{service.icon}</div>
+                        </div>
+                        <h3 className="text-2xl font-bold mb-3 text-[#111111] group-hover:text-[#0057B8] transition-colors">{service.title}</h3>
+                        <p className="text-[#555555] leading-relaxed">{service.desc}</p>
+                        
+                        <div className="mt-6 flex items-center text-[#0057B8] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          Learn more <ChevronDown className="w-4 h-4 ml-1 rotate-[-90deg]" />
+                        </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="text-center mt-8">
+                  <div className="text-center mt-12">
                     <button
                       onClick={() => setActivePage("services")}
-                      className="text-[#0057B8] font-bold hover:underline inline-flex items-center gap-2 min-h-[44px]"
+                      className="group px-8 py-4 bg-[#0057B8] text-white font-bold text-lg rounded-xl hover:bg-[#004494] hover:shadow-xl transition-all inline-flex items-center gap-2 min-h-[44px]"
                     >
-                      View All Services <ChevronDown className="w-5 h-5 rotate-[-90deg]" />
+                      View All Services
+                      <ChevronDown className="w-5 h-5 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
                     </button>
                   </div>
                 </div>
               </section>
 
               {/* Service Area Map */}
-              <section className="py-16 bg-[#F5F7FB]">
+              <section className="py-20 bg-white">
                 <div className="container mx-auto px-4">
-                  <div className="max-w-5xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-black text-center mb-4 text-[#111111]">
-                      Our <span className="text-[#0057B8]">Service Areas</span>
-                    </h2>
-                    <p className="text-center text-[#444444] mb-12">
-                      We cover all London postcodes with fast response times
-                    </p>
+                  <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-16">
+                      <span className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-bold mb-4">
+                        COVERAGE AREA
+                      </span>
+                      <h2 className="text-4xl md:text-5xl font-black mb-4 text-[#111111]">
+                        Our <span className="text-[#0057B8]">Service Areas</span>
+                      </h2>
+                      <p className="text-center text-[#555555] text-lg max-w-2xl mx-auto">
+                        We cover all London postcodes with fast response times—60 to 90 minutes for emergencies
+                      </p>
+                    </div>
 
-                    <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 md:p-12 shadow-xl border-2 border-blue-100">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div>
-                          <h3 className="text-xl font-bold mb-4 text-[#0057B8]">Coverage Map</h3>
-                          <div className="bg-[#F5F7FB] rounded-lg p-6 flex items-center justify-center h-64">
-                            <div className="text-center">
-                              <MapPin className="w-16 h-16 text-[#0057B8] mx-auto mb-4" />
-                              <p className="text-sm text-[#444444]">All London Postcodes Covered</p>
-                              <p className="text-xs text-[#666666] mt-2">60-90 min response time</p>
+                          <h3 className="text-2xl font-bold mb-6 text-[#0057B8] flex items-center gap-3">
+                            <MapPin className="w-7 h-7" />
+                            Coverage Map
+                          </h3>
+                          <div className="bg-white rounded-2xl p-8 flex items-center justify-center h-80 shadow-lg border-2 border-blue-200 relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-transparent opacity-40"></div>
+                            <div className="text-center relative z-10">
+                              <div className="relative inline-block">
+                                <div className="absolute inset-0 animate-ping opacity-20">
+                                  <MapPin className="w-24 h-24 text-[#0057B8] mx-auto" />
+                                </div>
+                                <MapPin className="w-24 h-24 text-[#0057B8] mx-auto mb-6 relative" />
+                              </div>
+                              <p className="text-xl font-bold text-[#111111] mb-2">All London Postcodes</p>
+                              <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold text-sm">
+                                <Clock className="w-4 h-4" />
+                                60-90 min response time
+                              </div>
                             </div>
                           </div>
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold mb-4 text-[#0057B8]">Postcodes We Serve</h3>
-                          <div className="space-y-2">
-                            {serviceAreas.map((area, index) => (
-                              <div key={index} className="flex items-start gap-2">
-                                <CheckCircle className="w-5 h-5 text-[#0057B8] flex-shrink-0 mt-0.5" />
-                                <p className="text-sm text-[#333333] font-mono">{area}</p>
-                              </div>
-                            ))}
+                          <h3 className="text-2xl font-bold mb-6 text-[#0057B8] flex items-center gap-3">
+                            <CheckCircle className="w-7 h-7" />
+                            Postcodes We Serve
+                          </h3>
+                          <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-blue-200 max-h-80 overflow-y-auto">
+                            <div className="space-y-3">
+                              {serviceAreas.map((area, index) => (
+                                <div key={index} className="flex items-start gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                                    <CheckCircle className="w-5 h-5 text-green-600" />
+                                  </div>
+                                  <p className="text-sm text-[#333333] font-mono font-semibold pt-1">{area}</p>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
+                      </div>
+
+                      <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {[
+                          { number: "24/7", label: "Emergency Service" },
+                          { number: "60-90", label: "Min Response" },
+                          { number: "100+", label: "Areas Covered" },
+                          { number: "5★", label: "Customer Rating" }
+                        ].map((stat, index) => (
+                          <div key={index} className="bg-white rounded-xl p-6 text-center shadow-md border border-blue-200 hover:shadow-lg transition-shadow">
+                            <p className="text-3xl font-black text-[#0057B8] mb-1">{stat.number}</p>
+                            <p className="text-sm text-[#666666] font-semibold">{stat.label}</p>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -421,65 +508,121 @@ const FlowPrimePlumbing = () => {
               </section>
 
               {/* FAQs */}
-              <section className="py-16 bg-white">
+              <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
                 <div className="container mx-auto px-4">
-                  <div className="max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-black text-center mb-4 text-[#111111]">
-                      Frequently Asked <span className="text-[#0057B8]">Questions</span>
-                    </h2>
-                    <p className="text-center text-[#444444] mb-12">
-                      Quick answers to common questions about our plumbing services
-                    </p>
+                  <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-16">
+                      <span className="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-bold mb-4">
+                        FAQ
+                      </span>
+                      <h2 className="text-4xl md:text-5xl font-black mb-4 text-[#111111]">
+                        Frequently Asked <span className="text-[#0057B8]">Questions</span>
+                      </h2>
+                      <p className="text-center text-[#555555] text-lg">
+                        Quick answers to common questions about our plumbing services
+                      </p>
+                    </div>
 
                     <div className="space-y-4">
                       {faqs.map((faq, index) => (
                         <div
                           key={index}
-                          className="bg-[#F5F7FB] rounded-lg border border-gray-200 overflow-hidden"
+                          className={`bg-white rounded-2xl border-2 overflow-hidden transition-all duration-300 ${
+                            openFaq === index 
+                              ? "border-[#0057B8] shadow-xl" 
+                              : "border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md"
+                          }`}
                         >
                           <button
                             onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors min-h-[44px]"
+                            className="w-full px-6 md:px-8 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors min-h-[44px] group"
                           >
-                            <span className="font-bold text-[#111111]">{faq.question}</span>
-                            <ChevronDown
-                              className={`w-5 h-5 text-[#0057B8] transition-transform ${
-                                openFaq === index ? "rotate-180" : ""
-                              }`}
-                            />
+                            <span className={`font-bold text-lg pr-4 transition-colors ${
+                              openFaq === index ? "text-[#0057B8]" : "text-[#111111] group-hover:text-[#0057B8]"
+                            }`}>
+                              {faq.question}
+                            </span>
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
+                              openFaq === index 
+                                ? "bg-[#0057B8] text-white rotate-180" 
+                                : "bg-gray-100 text-[#0057B8] group-hover:bg-blue-50"
+                            }`}>
+                              <ChevronDown className="w-5 h-5" />
+                            </div>
                           </button>
                           {openFaq === index && (
-                            <div className="px-6 py-4 border-t border-gray-200 bg-white">
-                              <p className="text-[#333333]">{faq.answer}</p>
+                            <div className="px-6 md:px-8 py-6 border-t-2 border-blue-100 bg-gradient-to-br from-blue-50/50 to-transparent animate-in fade-in slide-in-from-top-2 duration-300">
+                              <p className="text-[#444444] leading-relaxed text-lg">{faq.answer}</p>
                             </div>
                           )}
                         </div>
                       ))}
+                    </div>
+
+                    <div className="mt-12 text-center bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 border-2 border-blue-100">
+                      <p className="text-lg text-[#333333] mb-4 font-semibold">
+                        Still have questions? We're here to help!
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a
+                          href="tel:02012345678"
+                          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0057B8] text-white font-bold rounded-xl hover:bg-[#004494] transition-all min-h-[44px]"
+                        >
+                          <Phone className="w-4 h-4" />
+                          Call Us Now
+                        </a>
+                        <button
+                          onClick={() => setActivePage("contact")}
+                          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-[#0057B8] font-bold rounded-xl border-2 border-[#0057B8] hover:bg-[#0057B8] hover:text-white transition-all min-h-[44px]"
+                        >
+                          <Mail className="w-4 h-4" />
+                          Contact Us
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </section>
 
               {/* CTA Strip */}
-              <section className="py-12 bg-[#0057B8]">
-                <div className="container mx-auto px-4 text-center">
-                  <h3 className="text-2xl md:text-3xl font-black text-white mb-6">
-                    Need a plumber? We're here 24/7
-                  </h3>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a
-                      href="tel:02012345678"
-                      className="px-10 py-4 bg-white text-[#0057B8] font-black text-lg rounded-lg hover:bg-gray-50 transition-all inline-flex items-center justify-center gap-2 min-h-[44px]"
-                    >
-                      <Phone className="w-5 h-5" />
-                      Call us
-                    </a>
-                    <button
-                      onClick={() => setActivePage("contact")}
-                      className="px-10 py-4 bg-[#00A1FF] text-white font-bold text-lg rounded-lg border-2 border-white hover:bg-[#0088CC] transition-all min-h-[44px]"
-                    >
-                      Get your free quote
-                    </button>
+              <section className="relative py-20 bg-gradient-to-r from-[#0057B8] via-[#0067D8] to-[#0057B8] overflow-hidden">
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                </div>
+                
+                <div className="container mx-auto px-4 text-center relative z-10">
+                  <div className="max-w-4xl mx-auto">
+                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
+                      <AlertTriangle className="w-4 h-4 text-white" />
+                      <span className="text-sm font-bold text-white">Emergency? We're Available 24/7</span>
+                    </div>
+                    
+                    <h3 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">
+                      Need a plumber?
+                      <br />
+                      <span className="text-blue-100">We're here 24/7</span>
+                    </h3>
+                    <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                      Fast response • Transparent pricing • Professional service
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <a
+                        href="tel:02012345678"
+                        className="group px-10 py-5 bg-white text-[#0057B8] font-black text-xl rounded-xl hover:bg-gray-50 hover:shadow-2xl hover:scale-105 transition-all inline-flex items-center justify-center gap-3 shadow-xl min-h-[44px]"
+                      >
+                        <Phone className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                        020 1234 5678
+                      </a>
+                      <button
+                        onClick={() => setActivePage("contact")}
+                        className="group px-10 py-5 bg-transparent text-white font-bold text-xl rounded-xl border-2 border-white hover:bg-white hover:text-[#0057B8] transition-all inline-flex items-center justify-center gap-2 min-h-[44px]"
+                      >
+                        Get Free Quote
+                        <ChevronDown className="w-5 h-5 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -644,8 +787,8 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] border-2 border-gray-200 rounded-lg p-8">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
                       <Image
-                        src="https://images.unsplash.com/photo-1722942721205-ba565770373e?w=1200&q=80"
-                        alt="Modern bathroom with chrome fixtures and clean design"
+                        src="/images/3d-rendering-modern-design-marble-tile-toilet-bathroom.jpg"
+                        alt="Modern bathroom with marble tiles and clean design"
                         width={1200}
                         height={675}
                         className="object-cover"
@@ -804,48 +947,56 @@ const FlowPrimePlumbing = () => {
 
           {/* PROJECTS PAGE */}
           {activePage === "projects" && (
-            <section className="py-16 bg-white">
+            <section className="py-20 bg-gradient-to-b from-white via-gray-50 to-white">
               <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto text-center mb-16">
-                  <h1 className="text-4xl md:text-5xl font-black mb-6 text-[#111111]">
+                  <span className="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-bold mb-4">
+                    OUR WORK
+                  </span>
+                  <h1 className="text-4xl md:text-6xl font-black mb-6 text-[#111111]">
                     Recent <span className="text-[#0057B8]">Projects</span>
                   </h1>
-                  <p className="text-xl text-[#444444]">
-                    See examples of our completed plumbing work across London
+                  <p className="text-xl text-[#555555] leading-relaxed">
+                    See examples of our completed plumbing work across London. Real results for real customers.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
                   {/* Project 1 */}
-                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="relative aspect-video">
+                  <div className="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-[#0057B8] hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
                         src="https://images.unsplash.com/photo-1631049035482-d38c547be450?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
                         alt="Modern bathroom before and after renovation with chrome fixtures"
                         width={1200}
                         height={675}
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold mb-2 text-[#111111]">
-                        Complete Bathroom Fit - Hampstead
-                      </h3>
-                      <p className="text-[#333333] mb-4">
-                        <strong>Before:</strong> Outdated 1970s bathroom with cracked tiles and poor
-                        water pressure.
-                        <br />
-                        <strong>Work:</strong> Full strip-out, new plumbing, shower installation,
-                        underfloor heating, tiling, and fixtures.
-                        <br />
-                        <strong>After:</strong> Modern bathroom with walk-in shower, excellent
-                        pressure, and 2-year guarantee.
-                      </p>
+                    <div className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-[#111111] group-hover:text-[#0057B8] transition-colors">
+                          Complete Bathroom Fit - Hampstead
+                        </h3>
+                      </div>
+                      <div className="space-y-3 mb-6">
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Before:</span> Outdated 1970s bathroom with cracked tiles and poor water pressure.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Work:</span> Full strip-out, new plumbing, shower installation, underfloor heating, tiling, and fixtures.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">After:</span> Modern bathroom with walk-in shower, excellent pressure, and 2-year guarantee.
+                        </p>
+                      </div>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-blue-100 text-[#0057B8] rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl text-sm font-bold shadow-md">
+                          <Bath className="w-4 h-4 inline mr-1" />
                           Bathroom
                         </span>
-                        <span className="px-3 py-1 bg-blue-100 text-[#0057B8] rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white rounded-xl text-sm font-bold shadow-md">
                           Full Installation
                         </span>
                       </div>
@@ -853,35 +1004,43 @@ const FlowPrimePlumbing = () => {
                   </div>
 
                   {/* Project 2 */}
-                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="relative aspect-video">
+                  <div className="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-red-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
                         src="https://images.unsplash.com/photo-1538474705339-e87de81450e8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
                         alt="Emergency plumber repairing kitchen pipe under sink"
                         width={1200}
                         height={675}
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                        <AlertTriangle className="w-4 h-4" />
+                        Emergency
+                      </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold mb-2 text-[#111111]">
-                        Emergency Burst Pipe - Islington
-                      </h3>
-                      <p className="text-[#333333] mb-4">
-                        <strong>Problem:</strong> Burst pipe causing flooding in ground floor flat at
-                        2am.
-                        <br />
-                        <strong>Response:</strong> Arrived within 75 minutes, isolated leak, pumped
-                        out water, fitted temporary repair.
-                        <br />
-                        <strong>Result:</strong> Permanent repair completed next day, no structural
-                        damage, insurance claim supported.
-                      </p>
+                    <div className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-[#111111] group-hover:text-red-600 transition-colors">
+                          Emergency Burst Pipe - Islington
+                        </h3>
+                      </div>
+                      <div className="space-y-3 mb-6">
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Problem:</span> Burst pipe causing flooding in ground floor flat at 2am.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Response:</span> Arrived within 75 minutes, isolated leak, pumped out water, fitted temporary repair.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Result:</span> Permanent repair completed next day, no structural damage, insurance claim supported.
+                        </p>
+                      </div>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl text-sm font-bold shadow-md">
                           Emergency
                         </span>
-                        <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl text-sm font-bold shadow-md">
                           24/7 Callout
                         </span>
                       </div>
@@ -889,35 +1048,44 @@ const FlowPrimePlumbing = () => {
                   </div>
 
                   {/* Project 3 */}
-                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="relative aspect-video">
+                  <div className="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-orange-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
                         src="https://images.unsplash.com/photo-1620653713380-7a34b773fef8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=645"
                         alt="Gas safe engineer installing new boiler panel"
                         width={1200}
                         height={675}
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-4 right-4 bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                        <Flame className="w-4 h-4" />
+                        Gas Safe
+                      </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold mb-2 text-[#111111]">
-                        Boiler Replacement - Camden
-                      </h3>
-                      <p className="text-[#333333] mb-4">
-                        <strong>Situation:</strong> 15-year-old boiler failed during cold snap, no
-                        heating or hot water.
-                        <br />
-                        <strong>Work:</strong> Removed old boiler, fitted new A-rated combi boiler,
-                        upgraded pipework, system flush.
-                        <br />
-                        <strong>Outcome:</strong> Efficient heating, lower bills, 10-year
-                        manufacturer warranty, Gas Safe certificate.
-                      </p>
+                    <div className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-[#111111] group-hover:text-orange-600 transition-colors">
+                          Boiler Replacement - Camden
+                        </h3>
+                      </div>
+                      <div className="space-y-3 mb-6">
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Situation:</span> 15-year-old boiler failed during cold snap, no heating or hot water.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Work:</span> Removed old boiler, fitted new A-rated combi boiler, upgraded pipework, system flush.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Outcome:</span> Efficient heating, lower bills, 10-year manufacturer warranty, Gas Safe certificate.
+                        </p>
+                      </div>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl text-sm font-bold shadow-md">
+                          <Flame className="w-4 h-4 inline mr-1" />
                           Boiler
                         </span>
-                        <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl text-sm font-bold shadow-md">
                           Gas Safe
                         </span>
                       </div>
@@ -925,35 +1093,44 @@ const FlowPrimePlumbing = () => {
                   </div>
 
                   {/* Project 4 */}
-                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="relative aspect-video">
+                  <div className="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-cyan-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
                         src="https://images.unsplash.com/photo-1650551182991-b07558247564?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=873"
                         alt="Copper pipe fittings and professional plumbing tools on workbench"
                         width={1200}
                         height={675}
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-4 right-4 bg-cyan-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                        <Droplet className="w-4 h-4" />
+                        Leak Detection
+                      </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold mb-2 text-[#111111]">
-                        Hidden Leak Detection - Shoreditch
-                      </h3>
-                      <p className="text-[#333333] mb-4">
-                        <strong>Issue:</strong> High water bills and damp patch, no visible leak
-                        source.
-                        <br />
-                        <strong>Process:</strong> Thermal imaging scan located hidden pipe leak
-                        behind kitchen units.
-                        <br />
-                        <strong>Fix:</strong> Accessed pipe without major disruption, replaced
-                        section, tested system, replastered.
-                      </p>
+                    <div className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-[#111111] group-hover:text-cyan-600 transition-colors">
+                          Hidden Leak Detection - Shoreditch
+                        </h3>
+                      </div>
+                      <div className="space-y-3 mb-6">
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Issue:</span> High water bills and damp patch, no visible leak source.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Process:</span> Thermal imaging scan located hidden pipe leak behind kitchen units.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Fix:</span> Accessed pipe without major disruption, replaced section, tested system, replastered.
+                        </p>
+                      </div>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl text-sm font-bold shadow-md">
+                          <Droplet className="w-4 h-4 inline mr-1" />
                           Leak Detection
                         </span>
-                        <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl text-sm font-bold shadow-md">
                           Repair
                         </span>
                       </div>
@@ -961,35 +1138,43 @@ const FlowPrimePlumbing = () => {
                   </div>
 
                   {/* Project 5 */}
-                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="relative aspect-video">
+                  <div className="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-[#0057B8] hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
-                        src="https://images.unsplash.com/photo-1744063909793-8a1e85ace349?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=435"
-                        alt="Professional plumber working on central heating radiator"
+                        src="/images/man-turning-off-radiator-energy-crisis.jpg"
+                        alt="Man adjusting radiator - central heating installation system"
                         width={1200}
                         height={675}
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-4 right-4 bg-[#0057B8] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                        <Wrench className="w-4 h-4" />
+                        Upgrade
+                      </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold mb-2 text-[#111111]">
-                        Central Heating Upgrade - Hackney
-                      </h3>
-                      <p className="text-[#333333] mb-4">
-                        <strong>Challenge:</strong> Old radiators with cold spots and inefficient
-                        heating throughout property.
-                        <br />
-                        <strong>Solution:</strong> Power flushed system, replaced 6 radiators,
-                        balanced heating, fitted thermostatic valves.
-                        <br />
-                        <strong>Result:</strong> Even heating throughout, 25% reduction in energy
-                        bills, improved comfort.
-                      </p>
+                    <div className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-[#111111] group-hover:text-[#0057B8] transition-colors">
+                          Central Heating Upgrade - Hackney
+                        </h3>
+                      </div>
+                      <div className="space-y-3 mb-6">
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Challenge:</span> Old radiators with cold spots and inefficient heating throughout property.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Solution:</span> Power flushed system, replaced 6 radiators, balanced heating, fitted thermostatic valves.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Result:</span> Even heating throughout, 25% reduction in energy bills, improved comfort.
+                        </p>
+                      </div>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-blue-100 text-[#0057B8] rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl text-sm font-bold shadow-md">
                           Heating
                         </span>
-                        <span className="px-3 py-1 bg-blue-100 text-[#0057B8] rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl text-sm font-bold shadow-md">
                           Upgrade
                         </span>
                       </div>
@@ -997,35 +1182,43 @@ const FlowPrimePlumbing = () => {
                   </div>
 
                   {/* Project 6 */}
-                  <div className="bg-[#F5F7FB] border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="relative aspect-video">
+                  <div className="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-green-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
                         src="https://images.unsplash.com/photo-1637665609537-26857a32f6cd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
                         alt="Modern kitchen tap and plumbing installation"
                         width={1200}
                         height={675}
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                        <Wrench className="w-4 h-4" />
+                        Kitchen
+                      </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold mb-2 text-[#111111]">
-                        Kitchen Plumbing - Clapham
-                      </h3>
-                      <p className="text-[#333333] mb-4">
-                        <strong>Scope:</strong> Full kitchen renovation required complete plumbing
-                        re-route for new layout.
-                        <br />
-                        <strong>Work:</strong> Relocated sink, installed dishwasher and washing
-                        machine, fitted boiling water tap.
-                        <br />
-                        <strong>Outcome:</strong> Modern kitchen with concealed pipework, all
-                        appliances working perfectly.
-                      </p>
+                    <div className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-[#111111] group-hover:text-green-600 transition-colors">
+                          Kitchen Plumbing - Clapham
+                        </h3>
+                      </div>
+                      <div className="space-y-3 mb-6">
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Scope:</span> Full kitchen renovation required complete plumbing re-route for new layout.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Work:</span> Relocated sink, installed dishwasher and washing machine, fitted boiling water tap.
+                        </p>
+                        <p className="text-[#555555] leading-relaxed">
+                          <span className="font-bold text-[#111111]">Outcome:</span> Modern kitchen with concealed pipework, all appliances working perfectly.
+                        </p>
+                      </div>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl text-sm font-bold shadow-md">
                           Kitchen
                         </span>
-                        <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                        <span className="px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-xl text-sm font-bold shadow-md">
                           Installation
                         </span>
                       </div>

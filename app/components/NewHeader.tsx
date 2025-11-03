@@ -8,7 +8,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 
 export default function NewHeader() {
@@ -44,136 +44,106 @@ export default function NewHeader() {
     { label: "Home", target: "#home" },
     { label: "Services", target: "#services" },
     { label: "Example Work", target: "#examples" },
-    { label: "Our Winning Strategy", target: "#portfolio" },
+    { label: "Our Process", target: "#portfolio" },
     { label: "Contact", target: "#contact" },
   ];
 
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300"
+        className={`fixed top-0 left-0 z-50 w-full border-b border-white/10 transition-all duration-300 ${
+          isScrolled ? "bg-[#05070f]/95 backdrop-blur" : "bg-[#05070f]/85"
+        }`}
       >
-        <div className="container mx-auto flex items-center justify-between p-4 md:p-6">
-          {/* Logo */}
-          <div
-            className="flex items-center gap-1 cursor-pointer group"
+        <div className="container mx-auto flex items-center justify-between px-4 py-4 md:px-6">
+          <button
+            type="button"
             onClick={() => handleScroll("#home")}
+            className="flex items-center gap-2 text-left text-slate-200 transition-transform duration-200 hover:-translate-y-0.5"
           >
-            <h1 className="text-2xl md:text-3xl font-black flex items-center gap-1">
-              <Logo size={32} className="inline-block" />
-              <span className="gradient-text">Buzz</span>
-              <span className="text-white">BoldMarketing</span>
-            </h1>
-          </div>
+            <Logo size={28} className="shrink-0" />
+            <div className="flex flex-col leading-tight">
+              <span className="text-sm font-semibold uppercase tracking-[0.32em] text-orange-400">BuzzBold</span>
+              <span className="text-base font-semibold text-slate-100 md:text-lg">Marketing</span>
+            </div>
+          </button>
 
-          {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList className="flex gap-2">
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.label}>
                   <NavigationMenuLink
-                    className="px-5 py-2.5 hover:bg-white/5 rounded-full cursor-pointer transition-all duration-300 text-gray-300 hover:text-white font-medium relative group"
+                    className="group relative rounded-full px-5 py-2 text-sm font-medium text-slate-300 transition-colors duration-200 hover:bg-white/8 hover:text-white"
                     onClick={() => handleScroll(item.target)}
                   >
                     {item.label}
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-3/4 transition-all duration-300" />
+                    <span className="absolute bottom-1 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-orange-400 transition-all duration-200 group-hover:w-1/2" />
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Button
-              onClick={() => handleScroll("#contact")}
-              className="btn-primary px-6 py-3 relative overflow-hidden group flex items-center gap-2"
-            >
-              <span className="relative z-10">Get In Touch</span>
+          <div className="hidden items-center gap-3 lg:flex">
+            <Button onClick={() => handleScroll("#contact")} className="btn-primary px-5 py-3 text-sm">
+              Talk to our team
             </Button>
             <a
               href="tel:02012345678"
-              className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold transition-all duration-300 flex items-center gap-2 border border-white/20"
+              className="flex items-center gap-2 rounded-full border border-white/12 px-5 py-3 text-sm font-semibold text-slate-200 transition-colors duration-200 hover:border-orange-400/60 hover:text-white"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
               </svg>
-              Call us
+              020 1234 5678
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
+            className="rounded-lg p-2 text-slate-200 transition-colors hover:bg-white/10 lg:hidden"
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-white" />
-            ) : (
-              <Menu className="w-6 h-6 text-white" />
-            )}
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
-          isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 transition-all duration-300 lg:hidden ${
+          isMobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-black/95 backdrop-blur-2xl"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
+        <div className="absolute inset-0 bg-[#05070f]/90 backdrop-blur" onClick={() => setIsMobileMenuOpen(false)} />
 
-        {/* Menu Content */}
-        <div className="relative h-full flex flex-col items-center justify-center p-8">
-          <nav className="flex flex-col gap-6 text-center">
+        <div className="relative flex h-full flex-col items-center justify-center gap-10 px-8 py-12">
+          <nav className="flex flex-col items-center gap-4 text-center">
             {navItems.map((item, index) => (
               <button
                 key={item.label}
                 onClick={() => handleScroll(item.target)}
-                className={`text-3xl font-bold text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-500 transition-all duration-300 transform hover:scale-110 ${
-                  isMobileMenuOpen
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
+                className={`text-2xl font-semibold text-slate-200 transition-transform duration-200 hover:-translate-y-1 hover:text-white ${
+                  isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
                 }`}
-                style={{
-                  transitionDelay: isMobileMenuOpen
-                    ? `${index * 100}ms`
-                    : "0ms",
-                }}
+                style={{ transitionDelay: isMobileMenuOpen ? `${index * 80}ms` : "0ms" }}
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          {/* Mobile CTA */}
-          <div
-            className={`mt-12 transition-all duration-500 ${
-              isMobileMenuOpen
-                ? "opacity-100 translate-y-0 delay-500"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
-            <Button
-              onClick={() => handleScroll("#contact")}
-              size="lg"
-              className="btn-primary px-10 py-6 text-lg"
-            >
-              Get Started
-            </Button>
-          </div>
-
-          {/* Decorative elements */}
-          <div className="absolute top-20 left-10 blur-gradient-orange opacity-30" />
-          <div className="absolute bottom-20 right-10 blur-gradient-pink opacity-30" />
+          <Button onClick={() => handleScroll("#contact")} size="lg" className="btn-primary px-8 py-3 text-base">
+            Book a strategy call
+          </Button>
         </div>
       </div>
     </>

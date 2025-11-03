@@ -32,34 +32,33 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-black text-white pt-20 pb-8 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
-      <div className="blur-gradient-orange top-0 left-0 opacity-30" />
-      <div className="blur-gradient-pink bottom-0 right-0 opacity-30" />
+    <footer className="relative overflow-hidden bg-[#05070f] pt-20 pb-8 text-slate-200">
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:100px_100px]" />
+      <div className="blur-gradient-orange top-0 -left-12" />
+      <div className="blur-gradient-pink bottom-0 -right-12" />
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Top Section - Book a Demo */}
-        <div className="bg-gradient-to-r from-orange-600/10 via-red-600/10 to-pink-600/10 border border-white/10 rounded-3xl p-8 md:p-12 mb-16 backdrop-blur-sm">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6">
-              <Sparkles className="w-4 h-4 text-orange-500" />
-              <span className="text-sm font-medium text-gray-300">
-                Ready to Grow Your Business?
-              </span>
-            </div>
-            <h3 className="text-3xl md:text-4xl font-black mb-4">
-              Book a Free <span className="gradient-text">Strategy Call</span>
-            </h3>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              See how we can transform your online presence and drive real results. Book a free strategy call with our team today.
-            </p>
+        <div className="surface-card mx-auto mb-16 max-w-4xl px-6 py-10 text-center md:px-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/12 px-4 py-2 text-sm font-medium text-slate-200">
+            <Sparkles className="h-4 w-4 text-orange-400" />
+            Ready to grow your business?
+          </div>
+          <h3 className="mt-6 text-3xl font-black text-white md:text-4xl">Book a free strategy call</h3>
+          <p className="mt-4 text-sm text-gray-300 md:text-base">
+            See how we can modernise your website, streamline your marketing, and bring in qualified enquiries. A quick
+            conversation is all it takes to map the next steps.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <button onClick={() => handleScroll("#contact")} className="btn-primary inline-flex items-center gap-2 px-8 py-3 text-base">
+              <Calendar className="h-5 w-5" />
+              Talk to the team
+            </button>
             <button
-              onClick={() => handleScroll("#contact")}
-              className="inline-flex items-center gap-3 px-10 py-6 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              onClick={() => setIsCalendlyOpen(true)}
+              className="inline-flex items-center gap-2 rounded-full border border-white/12 px-8 py-3 text-base font-semibold text-slate-100 transition-colors duration-200 hover:border-orange-400/60 hover:text-white"
             >
-              <Calendar className="w-6 h-6" />
-              Get In Touch
+              <ArrowRight className="h-5 w-5" />
+              View availability
             </button>
           </div>
         </div>
@@ -68,62 +67,37 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-1 mb-6 group cursor-pointer">
-              <h3 className="text-2xl font-black flex items-center gap-1">
-                <Logo size={32} className="inline-block" />
-                <span className="gradient-text">Buzz</span>
-                <span className="text-white">BoldMarketing</span>
-              </h3>
-            </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <button
+              onClick={() => handleScroll("#home")}
+              className="mb-6 flex items-center gap-2 text-left text-slate-100 transition-transform duration-200 hover:-translate-y-0.5"
+            >
+              <Logo size={28} className="shrink-0" />
+              <div className="flex flex-col leading-tight">
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-orange-400">BuzzBold</span>
+                <span className="text-base font-semibold text-white">Marketing</span>
+              </div>
+            </button>
+            <p className="mb-6 max-w-md text-sm leading-relaxed text-gray-300">
               We help UK local businesses grow with professional websites, local SEO, review management,
               and social posting powered by BrightLocal&apos;s industry-leading platform.
             </p>
             <div className="flex gap-3">
               {[
-                {
-                  icon: Twitter,
-                  label: "Twitter",
-                  gradient: "from-blue-400 to-blue-600",
-                  url: "https://twitter.com/buzzboldmarketing",
-                },
-                {
-                  icon: Linkedin,
-                  label: "LinkedIn",
-                  gradient: "from-blue-600 to-blue-800",
-                  url: "https://linkedin.com/company/buzzboldmarketing",
-                },
-                {
-                  icon: Instagram,
-                  label: "Instagram",
-                  gradient: "from-pink-500 to-purple-600",
-                  url: "https://instagram.com/buzzboldmarketing",
-                },
-                {
-                  icon: Facebook,
-                  label: "Facebook",
-                  gradient: "from-blue-500 to-indigo-600",
-                  url: "https://facebook.com/buzzboldmarketing",
-                },
-                {
-                  icon: Youtube,
-                  label: "YouTube",
-                  gradient: "from-red-500 to-red-700",
-                  url: "https://youtube.com/@buzzboldmarketing",
-                },
-              ].map((social, index) => (
+                { icon: Twitter, label: "Twitter", url: "https://twitter.com/buzzboldmarketing" },
+                { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/company/buzzboldmarketing" },
+                { icon: Instagram, label: "Instagram", url: "https://instagram.com/buzzboldmarketing" },
+                { icon: Facebook, label: "Facebook", url: "https://facebook.com/buzzboldmarketing" },
+                { icon: Youtube, label: "YouTube", url: "https://youtube.com/@buzzboldmarketing" },
+              ].map((social) => (
                 <a
-                  key={index}
+                  key={social.label}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative p-3 rounded-xl bg-white/5 border border-white/10 hover:border-transparent transition-all duration-300 hover:scale-110"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/12 bg-white/5 text-slate-200 transition-transform duration-200 hover:-translate-y-1 hover:border-orange-400/60 hover:text-white"
                   aria-label={social.label}
                 >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${social.gradient} opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300`}
-                  />
-                  <social.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors relative z-10" />
+                  <social.icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
@@ -137,17 +111,17 @@ const Footer = () => {
                 { label: "Home", target: "#home" },
                 { label: "Services", target: "#services" },
                 { label: "Example Work", target: "#examples" },
-                { label: "Our Winning Strategy", target: "#portfolio" },
+                { label: "Our Process", target: "#portfolio" },
                 { label: "Contact", target: "#contact" },
-              ].map((link, index) => (
-                <li key={index}>
+              ].map((link) => (
+                <li key={link.label}>
                   <button
                     onClick={() => handleScroll(link.target)}
-                    className="text-gray-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-300 group"
+                    className="group inline-block transform text-gray-400 transition-colors duration-300 hover:translate-x-1 hover:text-white"
                   >
                     <span className="relative">
                       {link.label}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300" />
+                      <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-orange-400 transition-all duration-300 group-hover:w-full" />
                     </span>
                   </button>
                 </li>
@@ -160,19 +134,19 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 text-white">Services</h4>
             <ul className="space-y-4">
               {[
-                "High Quality Websites",
-                "Local SEO to Dominate",
-                "Social Media Management",
-                "Account Management",
+                "Website design & build",
+                "Local SEO programmes",
+                "Always-on optimisation",
+                "Content & campaign support",
               ].map((service, index) => (
                 <li key={index}>
                   <button
                     onClick={() => handleScroll("#services")}
-                    className="text-gray-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-300 group"
+                    className="group inline-block transform text-gray-400 transition-colors duration-300 hover:translate-x-1 hover:text-white"
                   >
                     <span className="relative">
                       {service}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300" />
+                      <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-orange-400 transition-all duration-300 group-hover:w-full" />
                     </span>
                   </button>
                 </li>
@@ -238,11 +212,11 @@ const Footer = () => {
         {/* Scroll to top button */}
         <button
           onClick={() => handleScroll("#home")}
-          className="fixed bottom-8 right-8 p-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white shadow-2xl hover:scale-110 transition-all duration-300 z-40 group"
+          className="group fixed bottom-8 right-8 z-40 rounded-full bg-orange-500 p-4 text-slate-900 shadow-[0_12px_30px_rgba(249,115,22,0.4)] transition-transform duration-200 hover:-translate-y-1 hover:bg-orange-400"
           aria-label="Scroll to top"
         >
           <svg
-            className="w-6 h-6 transform group-hover:-translate-y-1 transition-transform"
+            className="h-6 w-6 -translate-y-0.5 transition-transform duration-200 group-hover:-translate-y-1"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

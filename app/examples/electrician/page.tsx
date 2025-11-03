@@ -111,7 +111,7 @@ export default function BrightWaveElectrical() {
       title: '24h Emergency Call-out',
       icon: AlertTriangle,
       description: 'Urgent electrical faults, power loss, safety hazards',
-      image: 'photo-1518640426253-4b6eb7e57b6f',
+      image: 'photo-1603172159066-6ade2af706c4',
       details: 'Round-the-clock emergency electrical service for urgent faults, complete power loss, burning smells, sparking outlets, and other safety hazards.',
       safety: 'Rapid response team available 24/7. Same-day emergency repairs with immediate safety assessments.'
     }
@@ -226,177 +226,418 @@ export default function BrightWaveElectrical() {
 
   const renderHomePage = () => (
     <div className="space-y-0">
-      {/* Emergency Banner */}
-      <div className="bg-red-600 text-white py-3 text-center font-bold">
-        <Phone className="inline w-5 h-5 mr-2" />
-        24/7 EMERGENCY: Call 020 1234 5678 Now
-      </div>
-
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center">
-        <Image
-          src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1800&q=80"
-          alt="Electrician testing consumer unit for safety compliance"
-          fill
-          priority={true}
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 text-center text-white max-w-4xl px-6">
-          <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 rounded-full bg-[#FFA700] flex items-center justify-center">
-              <Zap className="w-12 h-12 text-[#1E1E1E]" />
+      <section className="relative bg-gradient-to-br from-[#1E3A5F] via-[#2C5282] to-[#1E3A5F] overflow-hidden">
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+        
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-0">
+            {/* Left Content */}
+            <div className="flex items-center px-6 sm:px-12 lg:px-16 py-20 lg:py-32 relative z-10">
+              <div className="max-w-xl">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-white/20">
+                  <Shield className="w-4 h-4 text-[#F59E0B]" />
+                  <span className="text-sm font-semibold text-white">NICEIC Approved • Fully Insured</span>
+                </div>
+                
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-[1.15] tracking-tight">
+                  Professional Electrical Services
+                  <span className="block text-[#F59E0B] mt-2">You Can Trust</span>
+                </h1>
+                
+                <p className="text-lg sm:text-xl text-white/80 mb-10 leading-relaxed font-light">
+                  Expert electricians delivering safe, reliable solutions across London. From emergency repairs to full installations — we've got you covered.
+                </p>
+                
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                  <a
+                    href="tel:02012345678"
+                    className="group px-8 py-4 bg-[#F59E0B] hover:bg-[#E08A00] text-white text-lg font-bold rounded-xl transition-all min-h-[56px] flex items-center justify-center gap-3 shadow-2xl hover:shadow-orange-500/50 hover:scale-105 active:scale-95"
+                  >
+                    <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                    <span>020 1234 5678</span>
+                  </a>
+                  <button
+                    onClick={() => setActivePage('contact')}
+                    className="px-8 py-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white text-lg font-bold rounded-xl transition-all min-h-[56px] border-2 border-white/30 hover:border-white/50"
+                  >
+                    Get Free Quote
+                  </button>
+                </div>
+                
+                {/* Trust Indicators */}
+                <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/20">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-[#F59E0B]" />
+                    <span className="text-sm text-white/80 font-medium">Same-Day Service</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-[#F59E0B]" />
+                    <span className="text-sm text-white/80 font-medium">12-Month Guarantee</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-[#F59E0B]" />
+                    <span className="text-sm text-white/80 font-medium">Fixed Pricing</span>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            BrightWave Electrical
-          </h1>
-          <p className="text-2xl md:text-3xl mb-8">
-            Safe, smart electrical work you can trust.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:02012345678"
-              className="bg-[#FFA700] text-black font-bold px-8 py-4 rounded-lg hover:bg-[#FF9500] transition-colors min-h-[44px] flex items-center justify-center"
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Call Us Now
-            </a>
-            <button
-              onClick={() => setActivePage('contact')}
-              className="border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white hover:text-[#1E1E1E] transition-colors min-h-[44px]"
-            >
-              Book a Safety Check
-            </button>
+            
+            {/* Right Image */}
+            <div className="relative h-[400px] lg:h-[600px]">
+            <Image
+              src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1800&q=80"
+              alt="Professional electrician team"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority={true}
+              className="object-cover"
+            />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A5F]/80 via-[#1E3A5F]/40 to-transparent lg:from-transparent"></div>
+              
+              {/* Floating review card */}
+              <div className="absolute bottom-8 left-8 right-8 lg:left-auto lg:right-8 lg:max-w-xs bg-white rounded-2xl p-6 shadow-2xl">
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-[#F59E0B] text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-[#1E3A5F] font-semibold mb-2">"Excellent service, arrived on time!"</p>
+                <p className="text-sm text-gray-600">— James R., Camden</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Certifications Row */}
-      <section className="bg-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-2">Fully Certified & Trusted</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1E3A5F]">Industry Accreditations</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 sm:gap-6">
             {certifications.map((cert, index) => {
               const IconComponent = cert.icon;
               return (
-                <div key={index} className="text-center">
-                  <IconComponent className="w-12 h-12 mx-auto mb-3 text-[#0066FF]" />
-                  <p className="text-sm font-semibold text-[#1E1E1E]">{cert.name}</p>
+                <div key={index} className="group bg-white p-6 rounded-xl border border-gray-200 text-center hover:border-[#F59E0B] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <IconComponent className="w-10 h-10 mx-auto mb-3 text-[#1E3A5F] group-hover:text-[#F59E0B] transition-colors" />
+                  <p className="text-xs sm:text-sm font-semibold text-[#1E3A5F] leading-tight">{cert.name}</p>
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-[#1E1E1E] py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-[#FFA700] mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-white text-lg">{stat.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12 text-[#1E1E1E]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Our Services
-          </h2>
+      <section className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-3">What We Do</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] mb-4">
+              Our Services
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Professional electrical solutions for homes and businesses across London
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, 5).map((service, index) => {
+            {services.slice(0, 6).map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div 
+                  key={index} 
+                  onClick={() => setActivePage('services')}
+                  className="group bg-white rounded-2xl border-2 border-gray-100 overflow-hidden hover:border-[#F59E0B] hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                >
+                  <div className="relative h-56 overflow-hidden bg-gradient-to-br from-[#1E3A5F] to-[#2C5282]">
+                    <Image
+                      src={`https://images.unsplash.com/${service.image}?w=800&q=80`}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover opacity-40 group-hover:opacity-50 group-hover:scale-110 transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-2xl bg-[#F59E0B] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+                  </div>
                   <div className="p-6">
-                    <IconComponent className="w-12 h-12 text-[#FFA700] mb-4" />
-                    <h3 className="text-xl font-bold mb-3 text-[#1E1E1E]">{service.title}</h3>
-                    <p className="text-gray-700">{service.description}</p>
+                    <h3 className="text-xl font-bold text-[#1E3A5F] mb-3 group-hover:text-[#F59E0B] transition-colors">{service.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{service.description}</p>
+                    <div className="flex items-center text-[#F59E0B] font-semibold text-sm group-hover:gap-2 transition-all">
+                      <span>Learn more</span>
+                      <ChevronDown className="w-4 h-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
-          <div className="text-center mt-12">
-            <button
-              onClick={() => setActivePage('services')}
-              className="bg-[#0066FF] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#0052CC] transition-colors min-h-[44px]"
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="relative bg-gradient-to-br from-[#1E3A5F] via-[#2C5282] to-[#1E3A5F] py-24 overflow-hidden">
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-3">The BrightWave Difference</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">Why Choose Us?</h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Trusted by hundreds of customers across London
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {[
+              { icon: Shield, title: "Licensed & Insured", desc: "Fully qualified electricians with comprehensive insurance coverage" },
+              { icon: Award, title: "Upfront Pricing", desc: "Fixed quotes with no hidden fees or surprise charges" },
+              { icon: Clock, title: "Fast Response", desc: "Same-day service available for all urgent electrical issues" },
+              { icon: CheckCircle, title: "Quality Guaranteed", desc: "12-month warranty on all workmanship and installations" }
+            ].map((item, idx) => (
+              <div key={idx} className="group text-center">
+                <div className="relative inline-block mb-6">
+                  <div className="absolute inset-0 bg-[#F59E0B] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                  <div className="relative w-20 h-20 bg-[#F59E0B] rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <item.icon className="w-10 h-10 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-white/80 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="tel:02012345678"
+              className="group px-10 py-5 bg-[#F59E0B] hover:bg-[#E08A00] text-white text-lg font-bold rounded-xl transition-all min-h-[60px] flex items-center justify-center gap-3 shadow-2xl hover:shadow-orange-500/50 hover:scale-105"
             >
-              View All Services
+              <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <span>020 1234 5678</span>
+            </a>
+            <button
+              onClick={() => setActivePage('contact')}
+              className="px-10 py-5 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white text-lg font-bold rounded-xl transition-all min-h-[60px] border-2 border-white/30 hover:border-white/50"
+            >
+              Request Free Quote
             </button>
           </div>
         </div>
       </section>
 
-      {/* Service Area Map */}
-      <section className="bg-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12 text-[#1E1E1E]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Areas We Cover
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-            {serviceAreas.map((area, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow flex items-center">
-                <MapPin className="w-5 h-5 text-[#FFA700] mr-3 flex-shrink-0" />
-                <span className="text-[#1E1E1E] font-medium">{area}</span>
+      {/* Testimonials */}
+      <section className="bg-gradient-to-b from-white to-gray-50 py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-3">Customer Reviews</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] mb-4">What Our Customers Say</h2>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8">
+              <div className="flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-md">
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-[#F59E0B] text-lg">★</span>
+                  ))}
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-bold text-[#1E3A5F]">4.8/5 on Google</p>
+                  <p className="text-xs text-gray-600">388+ Reviews</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-md">
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-[#F59E0B] text-lg">★</span>
+                  ))}
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-bold text-[#1E3A5F]">4.9/5 on Facebook</p>
+                  <p className="text-xs text-gray-600">200+ Reviews</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { quote: "Arrived on time, explained everything clearly, and fixed my wiring issue without any hassle. Professional service from start to finish!", name: "Sarah Mitchell", location: "Camden, London", rating: 5 },
+              { quote: "Very friendly team, quick to respond, and the price matched the quote exactly. Super happy with their service and would highly recommend!", name: "James Robertson", location: "Islington, London", rating: 5 },
+              { quote: "They installed my new lights perfectly and cleaned up afterward. The attention to detail was impressive. Will definitely use them again!", name: "Olivia Parker", location: "Westminster, London", rating: 5 }
+            ].map((testimonial, index) => (
+              <div key={index} className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#F59E0B]">
+                <div className="flex items-center gap-1 mb-5">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="text-[#F59E0B] text-xl">★</span>
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed text-base italic">"{testimonial.quote}"</p>
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1E3A5F] to-[#2C5282] flex items-center justify-center text-white font-bold text-lg">
+                    {testimonial.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#1E3A5F]">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.location}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WhatsApp CTA */}
-      <section className="bg-[#1E1E1E] py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">
-            Quick Response via WhatsApp
-          </h2>
-          <p className="text-gray-300 mb-8 text-lg">
-            Get fast answers to your electrical questions or book a service through WhatsApp
-          </p>
-          <a
-            href="https://wa.me/442012345678"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-lg min-h-[44px] font-bold hover:bg-[#20BD5A] transition-colors"
-          >
-            <MessageCircle className="w-5 h-5" />
-            WhatsApp Us
-          </a>
+      {/* Service Area Map */}
+      <section className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-3">Service Coverage</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] mb-4">
+              Areas We Serve
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Professional electrical services across all London boroughs
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+            {serviceAreas.map((area, index) => (
+              <div key={index} className="group bg-gradient-to-br from-gray-50 to-white p-4 rounded-xl border border-gray-200 flex items-center gap-3 hover:border-[#F59E0B] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <MapPin className="w-4 h-4 text-[#F59E0B] flex-shrink-0 group-hover:scale-125 transition-transform" />
+                <span className="text-[#1E3A5F] font-medium text-sm">{area}</span>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-6">Don't see your area? <a href="tel:02012345678" className="text-[#F59E0B] font-semibold hover:underline">Call us</a> to check coverage.</p>
+          </div>
         </div>
       </section>
 
       {/* FAQs */}
-      <section className="bg-white py-16" id="faqs">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12 text-[#1E1E1E]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Frequently Asked Questions
-          </h2>
+      <section className="bg-gradient-to-b from-gray-50 to-white py-24" id="faqs">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-3">Got Questions?</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Everything you need to know about our electrical services
+            </p>
+          </div>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg">
+              <div 
+                key={index} 
+                className={`rounded-2xl bg-white transition-all duration-300 overflow-hidden ${
+                  openFaq === index 
+                    ? 'shadow-xl border-2 border-[#F59E0B]' 
+                    : 'shadow-md border-2 border-gray-100 hover:border-gray-200'
+                }`}
+              >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 min-h-[44px]"
+                  className="w-full px-8 py-6 text-left flex justify-between items-start gap-4 min-h-[44px]"
                 >
-                  <span className="font-semibold text-[#1E1E1E]">{faq.question}</span>
-                  <ChevronDown className={`w-5 h-5 text-[#FFA700] transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
+                  <span className="font-bold text-lg text-[#1E3A5F] leading-snug">{faq.question}</span>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                    openFaq === index 
+                      ? 'bg-[#F59E0B] text-white scale-110' 
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}>
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
+                  </div>
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
-                    <p className="text-gray-700">{faq.answer}</p>
+                  <div className="px-8 pb-6 animate-fadeIn">
+                    <div className="pt-4 border-t border-gray-100">
+                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </div>
                   </div>
                 )}
               </div>
             ))}
+          </div>
+          
+          {/* WhatsApp CTA integrated */}
+          <div className="mt-16 bg-gradient-to-r from-[#25D366] to-[#20BD5A] rounded-2xl p-8 text-center shadow-xl">
+            <p className="text-white/90 mb-4 text-lg font-medium">
+              Still have questions? Get instant answers via WhatsApp
+            </p>
+            <a
+              href="https://wa.me/442012345678"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white text-[#25D366] px-8 py-4 rounded-xl min-h-[56px] font-bold hover:bg-gray-50 hover:scale-105 transition-all shadow-lg"
+            >
+              <MessageCircle className="w-5 h-5" />
+              <span>Chat on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative bg-gradient-to-br from-[#1E3A5F] via-[#2C5282] to-[#1E3A5F] py-32 overflow-hidden">
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+        
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-white/20">
+            <Clock className="w-4 h-4 text-[#F59E0B]" />
+            <span className="text-sm font-semibold text-white">24/7 Emergency Response Available</span>
+          </div>
+          
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+            Ready to Get Started?
+          </h2>
+          <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Professional electrical services with fixed pricing and a 12-month guarantee. Call us today or request a free quote.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-12">
+            <a
+              href="tel:02012345678"
+              className="group px-12 py-5 bg-[#F59E0B] hover:bg-[#E08A00] text-white text-lg font-bold rounded-xl transition-all min-h-[64px] flex items-center justify-center gap-3 shadow-2xl hover:shadow-orange-500/50 hover:scale-105 active:scale-95"
+            >
+              <Phone className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+              <span>020 1234 5678</span>
+            </a>
+            <button
+              onClick={() => setActivePage('contact')}
+              className="px-12 py-5 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white text-lg font-bold rounded-xl transition-all min-h-[64px] border-2 border-white/30 hover:border-white/50 hover:scale-105"
+            >
+              Request Free Quote
+            </button>
+          </div>
+          
+          {/* Trust badges */}
+          <div className="flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-white/20">
+            <div className="flex items-center gap-2 text-white/80">
+              <CheckCircle className="w-5 h-5 text-[#F59E0B]" />
+              <span className="text-sm font-medium">NICEIC Approved</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/80">
+              <CheckCircle className="w-5 h-5 text-[#F59E0B]" />
+              <span className="text-sm font-medium">Fully Insured</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/80">
+              <CheckCircle className="w-5 h-5 text-[#F59E0B]" />
+              <span className="text-sm font-medium">12-Month Warranty</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/80">
+              <CheckCircle className="w-5 h-5 text-[#F59E0B]" />
+              <span className="text-sm font-medium">4.8★ Rated</span>
+            </div>
           </div>
         </div>
       </section>
@@ -404,51 +645,63 @@ export default function BrightWaveElectrical() {
   );
 
   const renderServicesPage = () => (
-    <div className="space-y-16 py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <h1 className="text-5xl font-bold text-center mb-6 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          Our Electrical Services
-        </h1>
-        <p className="text-xl text-center text-gray-300 mb-16 max-w-3xl mx-auto">
-          Professional electrical services backed by NICEIC certification and 2-year guarantee
-        </p>
+    <div className="bg-gradient-to-b from-white to-gray-50 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-3">What We Offer</p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E3A5F] mb-6">
+            Our Electrical Services
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Professional electrical services backed by NICEIC certification and comprehensive guarantees
+          </p>
+        </div>
 
-        <div className="space-y-16">
+        {/* Services List */}
+        <div className="space-y-20">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             const isEven = index % 2 === 0;
             return (
-              <div key={index} className={`grid md:grid-cols-2 gap-8 items-center ${!isEven ? 'md:flex-row-reverse' : ''}`}>
+              <div key={index} className={`grid md:grid-cols-2 gap-12 items-center ${!isEven ? 'md:flex-row-reverse' : ''}`}>
                 <div className={isEven ? 'md:order-1' : 'md:order-2'}>
-                  <div className="relative h-[400px] rounded-lg overflow-hidden">
+                  <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-2xl group">
                     <Image
                       src={`https://images.unsplash.com/${service.image}?w=1200&q=80`}
                       alt={`${service.title} - Professional electrical service`}
                       fill
-                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E3A5F]/70 via-[#1E3A5F]/20 to-transparent"></div>
                   </div>
                 </div>
                 <div className={isEven ? 'md:order-2' : 'md:order-1'}>
-                  <div className="flex items-center mb-4">
-                    <IconComponent className="w-12 h-12 text-[#FFA700] mr-4" />
-                    <h2 className="text-3xl font-bold text-white">{service.title}</h2>
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-xl bg-[#F59E0B] flex items-center justify-center shadow-lg">
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl font-black text-[#1E3A5F]">{service.title}</h2>
                   </div>
-                  <p className="text-gray-300 text-lg mb-4">{service.details}</p>
-                  <div className="bg-[#0066FF]/20 border border-[#0066FF] rounded-lg p-4 mb-6">
-                    <div className="flex items-start">
-                      <Shield className="w-6 h-6 text-[#0066FF] mr-3 flex-shrink-0 mt-1" />
+                  <p className="text-gray-600 text-lg mb-6 leading-relaxed">{service.details}</p>
+                  <div className="bg-gradient-to-br from-[#1E3A5F]/5 to-[#2C5282]/5 border-2 border-[#1E3A5F]/10 rounded-xl p-5 mb-8">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-[#F59E0B]/10 flex items-center justify-center flex-shrink-0">
+                        <Shield className="w-6 h-6 text-[#F59E0B]" />
+                      </div>
                       <div>
-                        <h4 className="font-bold text-white mb-1">Safety & Compliance</h4>
-                        <p className="text-gray-300 text-sm">{service.safety}</p>
+                        <h4 className="font-bold text-[#1E3A5F] mb-2 text-lg">Safety & Compliance</h4>
+                        <p className="text-gray-700 leading-relaxed">{service.safety}</p>
                       </div>
                     </div>
                   </div>
                   <button
                     onClick={() => setActivePage('contact')}
-                    className="bg-[#FFA700] text-black font-bold px-6 py-3 rounded-lg hover:bg-[#FF9500] transition-colors min-h-[44px]"
+                    className="group px-8 py-4 bg-[#F59E0B] hover:bg-[#E08A00] text-white font-bold rounded-xl transition-all min-h-[56px] shadow-xl hover:shadow-2xl hover:shadow-orange-500/30 hover:scale-105 flex items-center gap-2"
                   >
-                    Get a Quote
+                    <span>Get a Quote</span>
+                    <ChevronDown className="w-5 h-5 -rotate-90 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>
@@ -460,88 +713,85 @@ export default function BrightWaveElectrical() {
   );
 
   const renderAboutPage = () => (
-    <div className="py-16">
-      <div className="max-w-5xl mx-auto px-6">
-        <h1 className="text-5xl font-bold text-center mb-6 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          About BrightWave Electrical
-        </h1>
-        <p className="text-xl text-center text-gray-300 mb-16">
-          London's trusted electrical experts since 2009
-        </p>
+    <div className="bg-gradient-to-b from-white to-gray-50 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-3">Who We Are</p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E3A5F] mb-6">
+            About BrightWave Electrical
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            London's trusted electrical experts since 2009
+          </p>
+        </div>
 
-        <div className="bg-white rounded-lg p-8 mb-12 text-[#1E1E1E]">
-          <h2 className="text-3xl font-bold mb-6">Our Qualified Team</h2>
-          <div className="space-y-4">
-            <div className="flex items-start">
-              <CheckCircle className="w-6 h-6 text-[#0066FF] mr-3 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-lg mb-1">NICEIC Approved Contractors</h3>
-                <p className="text-gray-700">All our electricians are NICEIC registered and regularly assessed to ensure the highest standards of workmanship and safety.</p>
-              </div>
+        {/* Qualified Team */}
+        <div className="bg-white rounded-2xl p-8 sm:p-12 mb-12 shadow-xl border-2 border-gray-100">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-14 h-14 rounded-xl bg-[#F59E0B] flex items-center justify-center">
+              <Shield className="w-8 h-8 text-white" />
             </div>
-            <div className="flex items-start">
-              <CheckCircle className="w-6 h-6 text-[#0066FF] mr-3 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-lg mb-1">Part P Certified</h3>
-                <p className="text-gray-700">Fully qualified to carry out all domestic electrical installations in compliance with Building Regulations Part P.</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#1E3A5F]">Our Qualified Team</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: "NICEIC Approved Contractors", desc: "All our electricians are NICEIC registered and regularly assessed to ensure the highest standards of workmanship and safety." },
+              { title: "Part P Certified", desc: "Fully qualified to carry out all domestic electrical installations in compliance with Building Regulations Part P." },
+              { title: "18th Edition BS7671", desc: "All team members hold current 18th Edition Wiring Regulations qualifications, ensuring compliance with the latest electrical safety standards." },
+              { title: "Comprehensive Insurance", desc: "We carry £5 million public liability insurance and £10 million professional indemnity insurance for your complete peace of mind." },
+              { title: "Method Statements & Risk Assessments", desc: "For all commercial work, we provide detailed method statements and risk assessments to ensure safe working practices." },
+              { title: "Continuous Training", desc: "Our team undergoes regular training to stay current with the latest electrical technologies and safety standards." }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-[#F59E0B]/10 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-6 h-6 text-[#F59E0B]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2 text-[#1E3A5F]">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
               </div>
-            </div>
-            <div className="flex items-start">
-              <CheckCircle className="w-6 h-6 text-[#0066FF] mr-3 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-lg mb-1">18th Edition BS7671</h3>
-                <p className="text-gray-700">All team members hold current 18th Edition Wiring Regulations qualifications, ensuring compliance with the latest electrical safety standards.</p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <CheckCircle className="w-6 h-6 text-[#0066FF] mr-3 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-lg mb-1">Comprehensive Insurance</h3>
-                <p className="text-gray-700">We carry £5 million public liability insurance and £10 million professional indemnity insurance for your complete peace of mind.</p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <CheckCircle className="w-6 h-6 text-[#0066FF] mr-3 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-lg mb-1">Method Statements & Risk Assessments</h3>
-                <p className="text-gray-700">For all commercial work, we provide detailed method statements and risk assessments to ensure safe working practices.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className="bg-[#FFA700] rounded-lg p-8 mb-12 text-[#1E1E1E]">
-          <div className="flex items-center mb-4">
-            <Award className="w-12 h-12 mr-4" />
-            <h2 className="text-3xl font-bold">Our 2-Year Guarantee</h2>
+        {/* Guarantee Card */}
+        <div className="bg-gradient-to-br from-[#F59E0B] to-[#E08A00] rounded-2xl p-8 sm:p-12 mb-12 text-white shadow-2xl">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+              <Award className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black">Our 12-Month Guarantee</h2>
           </div>
-          <p className="text-lg mb-4">
-            Every electrical installation and repair comes with our comprehensive 2-year guarantee covering both parts and labour. This demonstrates our confidence in the quality of our work and our commitment to customer satisfaction.
+          <p className="text-lg mb-4 leading-relaxed opacity-95">
+            Every electrical installation and repair comes with our comprehensive 12-month guarantee covering both parts and labour. This demonstrates our confidence in the quality of our work and our commitment to customer satisfaction.
           </p>
-          <p className="text-lg">
+          <p className="text-lg leading-relaxed opacity-95">
             As NICEIC approved contractors, certain installations are also covered by the NICEIC Platinum Promise guarantee for up to 6 years, providing you with additional protection and peace of mind.
           </p>
         </div>
 
-        <div className="bg-white rounded-lg p-8 text-[#1E1E1E]">
-          <h2 className="text-3xl font-bold mb-6">Why Choose BrightWave?</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="font-bold text-lg mb-2 text-[#0066FF]">Rapid Response</h3>
-              <p className="text-gray-700">24/7 emergency service with 60-90 minute response times across London</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-2 text-[#0066FF]">Transparent Service</h3>
-              <p className="text-gray-700">Clear communication and detailed quotations before any work begins</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-2 text-[#0066FF]">Clean & Tidy</h3>
-              <p className="text-gray-700">We respect your property and leave every job site clean and organized</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-2 text-[#0066FF]">Latest Technology</h3>
-              <p className="text-gray-700">Experts in smart home systems and energy-efficient solutions</p>
-            </div>
+        {/* Why Choose */}
+        <div className="bg-white rounded-2xl p-8 sm:p-12 shadow-xl border-2 border-gray-100">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#1E3A5F] mb-10 text-center">Why Choose BrightWave?</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { icon: Clock, title: "Rapid Response", desc: "24/7 emergency service with 60-90 minute response times across London" },
+              { icon: Award, title: "Transparent Service", desc: "Clear communication and detailed quotations before any work begins" },
+              { icon: CheckCircle, title: "Clean & Tidy", desc: "We respect your property and leave every job site clean and organized" },
+              { icon: Zap, title: "Latest Technology", desc: "Experts in smart home systems and energy-efficient solutions" }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-4 p-6 rounded-xl bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100 hover:border-[#F59E0B] hover:shadow-lg transition-all group">
+                <div className="w-12 h-12 rounded-xl bg-[#F59E0B] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <item.icon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-xl mb-2 text-[#1E3A5F]">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -549,80 +799,150 @@ export default function BrightWaveElectrical() {
   );
 
   const renderProjectsPage = () => (
-    <div className="py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <h1 className="text-5xl font-bold text-center mb-6 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          Recent Projects
-        </h1>
-        <p className="text-xl text-center text-gray-300 mb-16 max-w-3xl mx-auto">
-          Real electrical challenges we've solved for London customers
-        </p>
-
-        <div className="space-y-12">
-          {caseStudies.map((study, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-xl">
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-[400px]">
-                  <Image
-                    src={`https://images.unsplash.com/${study.image}?w=1200&q=80`}
-                    alt={`Case study: ${study.title} - Electrical repair and installation`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-8">
-                  <h2 className="text-3xl font-bold mb-6 text-[#1E1E1E]">{study.title}</h2>
-
-                  <div className="mb-6">
-                    <div className="flex items-start mb-3">
-                      <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3 flex-shrink-0">
-                        <AlertTriangle className="w-5 h-5 text-red-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg mb-1 text-[#1E1E1E]">Problem</h3>
-                        <p className="text-gray-700">{study.problem}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <div className="flex items-start mb-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
-                        <Zap className="w-5 h-5 text-[#0066FF]" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg mb-1 text-[#1E1E1E]">Solution</h3>
-                        <p className="text-gray-700">{study.solution}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex items-start">
-                      <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3 flex-shrink-0">
-                        <CheckCircle className="w-5 h-5 text-green-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg mb-1 text-[#1E1E1E]">Result</h3>
-                        <p className="text-gray-700">{study.result}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+    <div className="bg-gray-50 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-4">
+          <p className="text-xs font-bold text-[#F59E0B] uppercase tracking-wider mb-1">Case Studies</p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] mb-2 leading-tight">
+            Recent Projects
+          </h1>
+          <p className="text-sm text-gray-600 max-w-xl mx-auto">
+            Real electrical challenges we've solved for London customers
+          </p>
         </div>
 
-        <div className="text-center mt-16">
-          <p className="text-xl text-gray-300 mb-6">
-            Have an electrical challenge? We'd love to help.
+        <div className="space-y-6">
+          {caseStudies.map((study, index) => {
+            const stageDetails = [
+              {
+                key: 'problem',
+                label: 'Problem',
+                icon: AlertTriangle,
+                description: study.problem,
+                cardClasses: 'border-red-100 hover:border-red-200 bg-gradient-to-br from-rose-50 via-red-50/70 to-white',
+                iconClasses: 'bg-gradient-to-br from-red-500 to-rose-500'
+              },
+              {
+                key: 'solution',
+                label: 'Solution',
+                icon: Zap,
+                description: study.solution,
+                cardClasses: 'border-blue-100 hover:border-[#F59E0B] bg-gradient-to-br from-blue-50 via-indigo-50/70 to-white',
+                iconClasses: 'bg-gradient-to-br from-[#F59E0B] to-[#E08A00]'
+              }
+            ] as const;
+
+            return (
+              <article
+                key={study.title}
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              >
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-br from-slate-100 via-transparent to-amber-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  aria-hidden="true"
+                />
+                <div className="relative grid md:grid-cols-[1.15fr_1fr]">
+                  {/* Media */}
+                  <div className="relative h-[260px] sm:h-[320px] md:h-full overflow-hidden">
+                    <Image
+                      src={`https://images.unsplash.com/${study.image}?w=1200&q=80`}
+                      alt={study.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-[#1E3A5F]/70 via-[#1E3A5F]/20 to-transparent"
+                      aria-hidden="true"
+                    />
+                    <div className="absolute top-4 left-4 flex items-center gap-2">
+                      <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#1E3A5F] shadow-sm">
+                        Case #{index + 1}
+                      </span>
+                      <span className="rounded-full bg-[#F59E0B] px-3 py-1 text-xs font-semibold text-white shadow-sm">
+                        Project Spotlight
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative p-6 sm:p-8">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#F59E0B]">
+                          Case Study
+                        </span>
+                        <h2 className="mt-2 text-2xl sm:text-3xl font-black leading-tight text-[#1E3A5F]">
+                          {study.title}
+                        </h2>
+                      </div>
+                      <div className="hidden shrink-0 items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600 shadow-sm sm:flex">
+                        <Clock className="h-3.5 w-3.5 text-[#F59E0B]" />
+                        Rapid Response Team
+                      </div>
+                    </div>
+
+                    <div className="mt-5 grid gap-3 md:grid-cols-2">
+                      {stageDetails.map((stage) => {
+                        const StageIcon = stage.icon;
+                        return (
+                          <div
+                            key={stage.key}
+                            className={`relative flex gap-3 rounded-2xl border p-4 shadow-sm transition-all ${stage.cardClasses}`}
+                          >
+                            <div
+                              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-md ${stage.iconClasses}`}
+                            >
+                              <StageIcon className="h-4 w-4" />
+                            </div>
+                            <div>
+                              <h3 className="text-xs font-bold uppercase tracking-wide text-[#1E3A5F]">
+                                {stage.label}
+                              </h3>
+                              <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                                {stage.description}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-4 flex gap-3 rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-white p-5 shadow-sm">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-md">
+                        <CheckCircle className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-xs font-bold uppercase tracking-wide text-emerald-700">
+                          Result
+                        </h3>
+                        <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                          {study.result}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center mt-4 bg-gradient-to-r from-[#1E3A5F] to-[#2C5282] rounded-lg p-6 shadow-lg">
+          <p className="text-lg font-bold text-white mb-1">
+            Have an electrical challenge?
+          </p>
+          <p className="text-sm text-white/90 mb-4">
+            We'd love to help solve it for you
           </p>
           <button
             onClick={() => setActivePage('contact')}
-            className="bg-[#FFA700] text-black font-bold px-8 py-4 rounded-lg hover:bg-[#FF9500] transition-colors min-h-[44px]"
+            className="group px-6 py-3 bg-[#F59E0B] hover:bg-[#E08A00] text-white font-bold rounded-lg transition-all shadow-md hover:shadow-lg hover:scale-105 flex items-center gap-2 mx-auto"
           >
-            Discuss Your Project
+            <span>Discuss Your Project</span>
+            <ChevronDown className="w-4 h-4 -rotate-90 group-hover:translate-x-2 transition-transform" />
           </button>
         </div>
       </div>
@@ -630,91 +950,102 @@ export default function BrightWaveElectrical() {
   );
 
   const renderContactPage = () => (
-    <div className="py-16">
-      <div className="max-w-5xl mx-auto px-6">
-        <h1 className="text-5xl font-bold text-center mb-6 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          Contact BrightWave Electrical
-        </h1>
+    <div className="bg-gradient-to-b from-white to-gray-50 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold text-[#F59E0B] uppercase tracking-wide mb-3">Get In Touch</p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E3A5F] mb-6">
+            Contact BrightWave Electrical
+          </h1>
+        </div>
 
-        {/* Emergency Callout Highlight */}
-        <div className="bg-red-600 text-white rounded-lg p-8 mb-12 text-center">
-          <AlertTriangle className="w-16 h-16 mx-auto mb-4" />
-          <h2 className="text-3xl font-bold mb-4">24-Hour Emergency Service</h2>
-          <p className="text-xl mb-6">
+        {/* Emergency Callout */}
+        <div className="bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white rounded-2xl p-8 sm:p-12 mb-12 text-center shadow-2xl">
+          <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-6">
+            <AlertTriangle className="w-10 h-10 text-white" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black mb-4">24-Hour Emergency Service</h2>
+          <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
             Electrical emergency? Don't wait - call us now for immediate assistance
           </p>
           <a
             href="tel:02012345678"
-            className="inline-flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors min-h-[44px] text-2xl"
+            className="inline-flex items-center gap-3 bg-white text-[#DC2626] font-bold px-10 py-5 rounded-xl hover:bg-gray-50 transition-all min-h-[64px] text-xl shadow-xl hover:scale-105"
           >
             <Phone className="w-6 h-6" />
             020 1234 5678
           </a>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-12">
+        <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-lg p-8">
-            <h2 className="text-2xl font-bold mb-6 text-[#1E1E1E]">Request a Callback</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gray-100">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 rounded-xl bg-[#F59E0B] flex items-center justify-center">
+                <Mail className="w-6 h-6 text-white" />
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-[#1E3A5F]">Request a Callback</h2>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-semibold mb-2 text-[#1E1E1E]">
+                <label className="block text-sm font-bold mb-2 text-[#1E3A5F]">
                   Name *
                 </label>
                 <input
                   type="text"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0066FF] min-h-[44px] text-[#1E1E1E]"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#F59E0B] min-h-[52px] text-[#1E3A5F] transition-colors"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 text-[#1E1E1E]">
+                <label className="block text-sm font-bold mb-2 text-[#1E3A5F]">
                   Phone *
                 </label>
                 <input
                   type="tel"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0066FF] min-h-[44px] text-[#1E1E1E]"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#F59E0B] min-h-[52px] text-[#1E3A5F] transition-colors"
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 text-[#1E1E1E]">
+                <label className="block text-sm font-bold mb-2 text-[#1E3A5F]">
                   Email *
                 </label>
                 <input
                   type="email"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0066FF] min-h-[44px] text-[#1E1E1E]"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#F59E0B] min-h-[52px] text-[#1E3A5F] transition-colors"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 text-[#1E1E1E]">
+                <label className="block text-sm font-bold mb-2 text-[#1E3A5F]">
                   Postcode *
                 </label>
                 <input
                   type="text"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0066FF] min-h-[44px] text-[#1E1E1E]"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#F59E0B] min-h-[52px] text-[#1E3A5F] transition-colors"
                   value={formData.postcode}
                   onChange={(e) => setFormData({...formData, postcode: e.target.value})}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 text-[#1E1E1E]">
+                <label className="block text-sm font-bold mb-2 text-[#1E3A5F]">
                   Service Required
                 </label>
                 <select
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0066FF] min-h-[44px] text-[#1E1E1E]"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#F59E0B] min-h-[52px] text-[#1E3A5F] transition-colors"
                   value={formData.service}
                   onChange={(e) => setFormData({...formData, service: e.target.value})}
                 >
@@ -728,19 +1059,19 @@ export default function BrightWaveElectrical() {
               </div>
 
               <div>
-                <label className="flex items-start gap-3 cursor-pointer">
+                <label className="flex items-start gap-3 cursor-pointer p-4 rounded-xl hover:bg-gray-50 transition-colors">
                   <input
                     type="checkbox"
-                    className="mt-1 w-5 h-5"
+                    className="mt-1 w-5 h-5 accent-[#F59E0B]"
                     checked={formData.isEmergency}
                     onChange={(e) => setFormData({...formData, isEmergency: e.target.checked})}
                   />
-                  <span className="text-sm text-[#1E1E1E]">
-                    <strong className="text-red-600">This is an emergency</strong> - I need urgent assistance today
+                  <span className="text-sm text-[#1E3A5F]">
+                    <strong className="text-[#DC2626]">This is an emergency</strong> - I need urgent assistance today
                   </span>
                 </label>
                 {formData.isEmergency && (
-                  <div className="mt-2 p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="mt-2 p-4 bg-red-50 border-2 border-red-200 rounded-xl">
                     <p className="text-sm text-red-800">
                       For immediate emergency assistance, please call us directly on <strong>020 1234 5678</strong>
                     </p>
@@ -749,13 +1080,13 @@ export default function BrightWaveElectrical() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 text-[#1E1E1E]">
+                <label className="block text-sm font-bold mb-2 text-[#1E3A5F]">
                   Message *
                 </label>
                 <textarea
                   required
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0066FF] text-[#1E1E1E]"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#F59E0B] text-[#1E3A5F] transition-colors"
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                 />
@@ -763,7 +1094,7 @@ export default function BrightWaveElectrical() {
 
               <button
                 type="submit"
-                className="w-full bg-[#FFA700] text-black font-bold px-6 py-4 rounded-lg hover:bg-[#FF9500] transition-colors min-h-[44px]"
+                className="w-full bg-[#F59E0B] hover:bg-[#E08A00] text-white font-bold px-6 py-4 rounded-xl transition-all min-h-[60px] shadow-xl hover:shadow-2xl hover:shadow-orange-500/30 hover:scale-[1.02]"
               >
                 Send Enquiry
               </button>
@@ -772,53 +1103,59 @@ export default function BrightWaveElectrical() {
 
           {/* Contact Information */}
           <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6">
-              <div className="flex items-start mb-4">
-                <Phone className="w-6 h-6 text-[#FFA700] mr-3 flex-shrink-0 mt-1" />
+            <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100 hover:shadow-2xl transition-all">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-[#F59E0B] flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-1 text-[#1E1E1E]">Phone</h3>
-                  <a href="tel:02012345678" className="text-[#0066FF] hover:underline text-lg">
+                  <h3 className="font-bold text-lg mb-2 text-[#1E3A5F]">Phone</h3>
+                  <a href="tel:02012345678" className="text-[#F59E0B] hover:text-[#E08A00] font-bold text-xl hover:underline block mb-2">
                     020 1234 5678
                   </a>
-                  <p className="text-sm text-gray-600 mt-1">24/7 Emergency Line</p>
+                  <p className="text-sm text-gray-600">24/7 Emergency Line</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-6">
-              <div className="flex items-start mb-4">
-                <Mail className="w-6 h-6 text-[#FFA700] mr-3 flex-shrink-0 mt-1" />
+            <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100 hover:shadow-2xl transition-all">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-[#F59E0B] flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-1 text-[#1E1E1E]">Email</h3>
-                  <a href="mailto:info@brightwaveelectrical.co.uk" className="text-[#0066FF] hover:underline">
+                  <h3 className="font-bold text-lg mb-2 text-[#1E3A5F]">Email</h3>
+                  <a href="mailto:info@brightwaveelectrical.co.uk" className="text-[#F59E0B] hover:text-[#E08A00] hover:underline break-all">
                     info@brightwaveelectrical.co.uk
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-6">
-              <div className="flex items-start mb-4">
-                <Clock className="w-6 h-6 text-[#FFA700] mr-3 flex-shrink-0 mt-1" />
+            <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100 hover:shadow-2xl transition-all">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-[#F59E0B] flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#1E1E1E]">Opening Hours</h3>
-                  <div className="space-y-1 text-gray-700">
-                    <p><strong>Monday - Friday:</strong> 8am - 6pm</p>
-                    <p><strong>Saturday:</strong> 9am - 5pm</p>
-                    <p><strong>Sunday:</strong> Emergency only</p>
-                    <p className="text-red-600 font-bold mt-2">24/7 Emergency Service</p>
+                  <h3 className="font-bold text-lg mb-3 text-[#1E3A5F]">Opening Hours</h3>
+                  <div className="space-y-2 text-gray-700">
+                    <p><strong className="text-[#1E3A5F]">Monday - Friday:</strong> 8am - 6pm</p>
+                    <p><strong className="text-[#1E3A5F]">Saturday:</strong> 9am - 5pm</p>
+                    <p><strong className="text-[#1E3A5F]">Sunday:</strong> Emergency only</p>
+                    <p className="text-[#DC2626] font-bold mt-3">24/7 Emergency Service</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-3 text-[#1E1E1E]">Quick Contact</h3>
+            <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100">
+              <h3 className="font-bold text-lg mb-4 text-[#1E3A5F]">Quick Contact</h3>
               <a
                 href="https://wa.me/442012345678"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-lg min-h-[44px] font-bold hover:bg-[#20BD5A] transition-colors mb-3"
+                className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white px-6 py-4 rounded-xl min-h-[56px] font-bold transition-all shadow-lg hover:shadow-xl hover:scale-105 mb-4"
               >
                 <MessageCircle className="w-5 h-5" />
                 WhatsApp Us
@@ -828,7 +1165,7 @@ export default function BrightWaveElectrical() {
                   href="https://facebook.com/brightwaveelectrical"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-[#0066FF] text-white rounded-lg hover:bg-[#0052CC] transition-colors"
+                  className="flex items-center justify-center w-12 h-12 bg-[#1877F2] text-white rounded-xl hover:bg-[#166FE5] transition-all hover:scale-110"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-6 h-6" />
@@ -837,7 +1174,7 @@ export default function BrightWaveElectrical() {
                   href="https://twitter.com/brightwaveelec"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1A8CD8] transition-colors"
+                  className="flex items-center justify-center w-12 h-12 bg-[#1DA1F2] text-white rounded-xl hover:bg-[#1A8CD8] transition-all hover:scale-110"
                   aria-label="Twitter"
                 >
                   <Twitter className="w-6 h-6" />
@@ -845,9 +1182,9 @@ export default function BrightWaveElectrical() {
               </div>
             </div>
 
-            <div className="bg-[#FFA700] rounded-lg p-6 text-[#1E1E1E]">
+            <div className="bg-gradient-to-br from-[#F59E0B] to-[#E08A00] rounded-2xl p-6 text-white shadow-xl">
               <h3 className="font-bold text-lg mb-3">Need Help?</h3>
-              <p className="mb-3">
+              <p className="mb-4 opacity-95">
                 Check our FAQ section for answers to common electrical questions
               </p>
               <button
@@ -857,9 +1194,9 @@ export default function BrightWaveElectrical() {
                     document.querySelector('#faqs')?.scrollIntoView({ behavior: 'smooth' });
                   }, 100);
                 }}
-                className="text-[#0066FF] font-bold hover:underline"
+                className="text-white font-bold hover:underline underline-offset-2"
               >
-                View FAQs
+                View FAQs →
               </button>
             </div>
           </div>
@@ -873,43 +1210,71 @@ export default function BrightWaveElectrical() {
     { name: 'Services', id: 'services' },
     { name: 'About', id: 'about' },
     { name: 'Projects', id: 'projects' },
-    { name: 'Contact', id: 'contact' }
+    { name: 'Contact Us', id: 'contact' }
   ];
 
   return (
     <>
-      <head>
-        <title>BrightWave Electrical | 24h Electricians and Smart Home</title>
-        <meta name="description" content="Certified electricians for repairs, rewires, and smart installs. Call our 24h line." />
+      <div className="min-h-screen bg-white">
+        {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-      </head>
-
-      <div className="min-h-screen bg-[#1E1E1E]" style={{ fontFamily: 'Roboto, sans-serif' }}>
-        {/* Header */}
-        <header className="bg-[#1E1E1E] border-b border-gray-700 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex items-center justify-between h-20">
-              <div className="flex items-center cursor-pointer" onClick={() => setActivePage('home')}>
-                <div className="w-12 h-12 rounded-full bg-[#FFA700] flex items-center justify-center mr-3">
-                  <Zap className="w-8 h-8 text-[#1E1E1E]" />
+        {/* Top Bar with Reviews */}
+        <div className="bg-[#1E3A5F] text-white py-3 sticky top-0 z-50 border-b border-[#2A4A6F]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-[#F59E0B]" />
+                <span className="font-medium">Fixed Pricing, No Hidden Fees</span>
+              </div>
+              <div className="hidden sm:flex items-center gap-2">
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-[#F59E0B] text-base">★</span>
+                  ))}
                 </div>
-                <span className="text-2xl font-bold text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  BrightWave
-                </span>
+                <span className="font-semibold">4.8/5</span>
+                <span className="text-white/70">• 388+ Reviews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Emergency Banner */}
+        <div className="bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white py-3 text-center font-semibold shadow-lg sticky top-[48px] z-50">
+          <div className="flex items-center justify-center gap-2 animate-pulse">
+            <AlertTriangle className="w-5 h-5" />
+            <span className="text-sm sm:text-base">24/7 Emergency Response • Call <a href="tel:02012345678" className="underline font-bold hover:text-yellow-200">020 1234 5678</a></span>
+          </div>
+        </div>
+
+        {/* Header */}
+        <header className="bg-[#1E3A5F] border-b border-[#2A4A6F] sticky top-[96px] z-40 backdrop-blur-md bg-[#1E3A5F]/98 shadow-lg">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-20">
+              <div className="flex items-center gap-4 cursor-pointer group" onClick={() => setActivePage('home')}>
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#E08A00] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                  <Zap className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <span className="text-2xl font-black text-white tracking-tight block leading-none">
+                    BrightWave
+                  </span>
+                  <span className="text-xs text-white/60 font-medium">Electrical Services</span>
+                </div>
               </div>
 
-              <nav className="hidden md:flex space-x-8">
+              <nav className="hidden lg:flex items-center gap-2">
                 {navigation.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => setActivePage(item.id)}
-                    className={`text-lg font-medium transition-colors min-h-[44px] px-2 ${
+                    className={`px-5 py-2.5 text-sm font-semibold rounded-lg transition-all ${
                       activePage === item.id
-                        ? 'text-[#FFA700]'
-                        : 'text-gray-300 hover:text-white'
+                        ? 'bg-[#F59E0B] text-white shadow-lg shadow-orange-500/30'
+                        : 'text-gray-300 hover:text-white hover:bg-white/10'
                     }`}
                   >
                     {item.name}
@@ -917,26 +1282,38 @@ export default function BrightWaveElectrical() {
                 ))}
               </nav>
 
-              <a
-                href="tel:02012345678"
-                className="hidden md:flex items-center gap-2 bg-[#FFA700] text-black font-bold px-6 py-3 rounded-lg hover:bg-[#FF9500] transition-colors min-h-[44px]"
-              >
-                <Phone className="w-5 h-5" />
-                020 1234 5678
-              </a>
+              <div className="hidden lg:flex items-center gap-4">
+                <button
+                  onClick={() => setActivePage('contact')}
+                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all cursor-pointer hover:scale-105"
+                >
+                  <span className="text-sm font-bold text-white">Get Free Quote</span>
+                </button>
+                <a
+                  href="tel:02012345678"
+                  className="flex items-center gap-2 bg-[#F59E0B] hover:bg-[#E08A00] text-white font-bold px-6 py-3 rounded-xl transition-all text-sm shadow-xl hover:scale-105"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>020 1234 5678</span>
+                </a>
+              </div>
+
+              <button className="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors">
+                <ChevronDown className="w-6 h-6" />
+              </button>
             </div>
 
             {/* Mobile Navigation */}
-            <div className="md:hidden pb-4">
+            <div className="lg:hidden pb-4">
               <div className="flex flex-wrap gap-2">
                 {navigation.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => setActivePage(item.id)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all min-h-[44px] text-sm ${
                       activePage === item.id
-                        ? 'bg-[#FFA700] text-black'
-                        : 'bg-gray-700 text-white hover:bg-gray-600'
+                        ? 'bg-[#F59E0B] text-white shadow-lg'
+                        : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
                     }`}
                   >
                     {item.name}

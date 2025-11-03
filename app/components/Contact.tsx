@@ -123,14 +123,14 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20" id="contact">
+    <section ref={sectionRef} className="bg-[#05070f] py-20 text-slate-200" id="contact">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Side - Form */}
             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                Get Your <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">Free SEO Audit</span>
+                Get Your <span className="text-orange-400">Free SEO Audit</span>
               </h2>
               <p className="text-gray-600 mb-8">
                 Every consultation includes a free SEO audit revealing exactly where you&apos;re losing customers online and how to win them back.
@@ -338,7 +338,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="btn-primary flex w-full items-center justify-center gap-2 px-8 py-4 text-base disabled:cursor-not-allowed disabled:opacity-50"
                   aria-label="Submit contact form to request free SEO audit"
                 >
                   {isSubmitting ? "Sending..." : "Get Your Free SEO Audit"}
@@ -358,7 +358,7 @@ const Contact = () => {
 
             {/* Right Side - Info Cards */}
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-3xl p-8 text-white shadow-2xl">
+              <div className="surface-card rounded-3xl border border-white/12 p-8 text-slate-200">
                 <Phone className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-2">Call Us Directly</h3>
                 <a href="tel:02012345678" className="text-xl font-semibold mb-2 hover:underline">020 1234 5678</a>
@@ -382,7 +382,7 @@ const Contact = () => {
                 <p className="text-gray-600 mt-2">Weekend? Leave us a message.</p>
               </div>
 
-              <div className="bg-gradient-to-br from-orange-600 to-red-600 rounded-3xl p-8 text-white shadow-2xl">
+              <div className="surface-card rounded-3xl border border-white/12 p-8 text-slate-200">
                 <MapPin className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-2">Serving UK Businesses</h3>
                 <p className="text-orange-100">Nationwide coverage across the UK</p>
@@ -411,7 +411,7 @@ const Contact = () => {
           aria-modal="true"
           aria-labelledby="success-title"
         >
-          <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-white/10 rounded-3xl p-8 md:p-12 max-w-md w-full shadow-2xl relative animate-in zoom-in duration-500">
+          <div className="surface-card relative max-w-md w-full animate-in zoom-in duration-500 p-8 md:p-12">
             {/* Close button */}
             <button
               ref={popupCloseButtonRef}
@@ -423,19 +423,16 @@ const Contact = () => {
             </button>
 
             {/* Success icon with gradient */}
-            <div className="flex justify-center mb-6">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 blur-2xl opacity-50 animate-pulse" />
-                <div className="relative bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 rounded-full p-4">
-                  <CheckCircle className="w-16 h-16 text-white" />
-                </div>
+            <div className="mb-6 flex justify-center">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full border border-orange-400/40 bg-orange-500/10 text-orange-300">
+                <CheckCircle className="h-10 w-10" />
               </div>
             </div>
 
             {/* Success message */}
             <div className="text-center space-y-4">
               <h3 id="success-title" className="text-3xl font-black text-white">
-                Message <span className="gradient-text">Received!</span>
+                Message <span className="text-orange-400">Received!</span>
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed">
                 Thank you for reaching out. Our team will review your inquiry and get back to you within <span className="font-bold text-white">24 hours</span>.

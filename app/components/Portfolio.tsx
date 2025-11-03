@@ -3,32 +3,31 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Target, Rocket, TrendingUp, Headset } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Target, Rocket, TrendingUp } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const processSteps = [
+const steps = [
   {
-    id: 1,
-    icon: Target,
-    title: "Discovery & Strategy",
-    headline: "Understand Your Business Needs",
-    gradient: "from-orange-500 to-red-500",
+    icon: <Target className="h-6 w-6 text-orange-300" />,
+    title: "Discover & prioritise",
+    detail: "Workshops to align goals, messaging, and audience so we know exactly what to build and measure.",
+    timeline: "Days 1 - 5",
   },
   {
-    id: 2,
-    icon: Rocket,
-    title: "Build & Optimize",
-    headline: "Build Your Online Presence",
-    gradient: "from-red-500 to-pink-500",
+    icon: <Rocket className="h-6 w-6 text-orange-300" />,
+    title: "Design, build & launch",
+    detail:
+      "High-fidelity design, purposeful copy, and a fast Next.js build. We go live once performance and QA checks pass.",
+    timeline: "Days 6 - 21",
   },
   {
-    id: 3,
-    icon: TrendingUp,
-    title: "Execute & Monitor",
-    headline: "Execute. Monitor. Grow With You.",
-    gradient: "from-pink-500 to-purple-500",
+    icon: <TrendingUp className="h-6 w-6 text-orange-300" />,
+    title: "Optimise & grow",
+    detail:
+      "Monitor metrics, test new ideas, and keep expanding what works. Monthly reviews keep everyone accountable.",
+    timeline: "Month 2 onwards",
   },
 ];
 
@@ -39,43 +38,28 @@ const Portfolio = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(
         titleRef.current,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
+          duration: 0.9,
+          scrollTrigger: { trigger: titleRef.current, start: "top 85%" },
         },
       );
 
-      // Staggered card animations
       cardsRef.current.forEach((card, index) => {
         gsap.fromTo(
           card,
-          {
-            opacity: 0,
-            y: 100,
-            scale: 0.8,
-          },
+          { opacity: 0, y: 55 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: "back.out(1.2)",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-            delay: index * 0.2,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: { trigger: card, start: "top 85%" },
+            delay: index * 0.1,
           },
         );
       });
@@ -85,99 +69,59 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="section-padding bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
-      id="process"
-    >
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
-      <div className="blur-gradient-red top-0 left-0" />
-      <div className="blur-gradient-orange bottom-0 right-0" />
-
-      <div className="container mx-auto container-padding relative z-10">
-        {/* Section header */}
-        <div ref={titleRef} className="text-center mb-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            How We <span className="gradient-text">Get You Results</span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-400">
-            No guesswork. No trial and error. Just a proven system that gets local businesses found online and booked solid.
+    <section id="portfolio" ref={sectionRef} className="section-padding border-t border-white/5 bg-[#070b18]">
+      <div className="container mx-auto container-padding">
+        <div ref={titleRef} className="mx-auto mb-14 max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-400">Our process</p>
+          <h2 className="mt-4 text-4xl font-black text-white md:text-5xl">How we take websites from plan to growth.</h2>
+          <p className="mt-4 text-base text-gray-400 md:text-lg">
+            Simple, transparent phases. You always know what we are working on, what we need from you, and the results
+            we are targeting.
           </p>
         </div>
 
-        {/* Process steps grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {processSteps.map((step, index) => {
-            const IconComponent = step.icon;
-            return (
-              <div
-                key={step.id}
-                ref={(el) => {
-                  if (el) cardsRef.current[index] = el;
-                }}
-                className="group"
-              >
-                <Card className="h-full bg-gradient-to-br from-gray-900/90 to-gray-900/50 border-2 border-gray-800 rounded-2xl backdrop-blur-sm hover:border-transparent transition-all duration-500 relative overflow-hidden">
-                  {/* Gradient overlay on hover */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                  />
-
-                  {/* Animated border */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-r ${step.gradient} blur-xl opacity-50`}
-                    />
-                  </div>
-
-                  <CardHeader className="relative z-10 flex flex-col items-start p-6 space-y-3">
-                    {/* Step number badge */}
-                    <div className="flex items-center gap-4 w-full mb-2">
-                      <div
-                        className={`px-3 py-1.5 rounded-full bg-gradient-to-r ${step.gradient} text-white font-bold text-xs`}
-                      >
-                        Step {step.id}
-                      </div>
-                    </div>
-
-                    {/* Icon with gradient */}
-                    <div
-                      className={`p-3 rounded-xl bg-gradient-to-br ${step.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <IconComponent className="w-8 h-8" />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-white leading-tight">
-                      {step.headline}
-                    </CardTitle>
-                  </CardHeader>
-                </Card>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {steps.map((step, index) => (
+            <Card
+              key={step.title}
+              ref={(el) => {
+                if (el) cardsRef.current[index] = el;
+              }}
+              className="surface-card flex h-full flex-col gap-4 p-6 transition-transform duration-200 hover:-translate-y-1 hover:border-orange-400/50"
+            >
+              <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-gray-400">
+                <span>{step.timeline}</span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5">{step.icon}</div>
               </div>
-            );
-          })}
+              <h3 className="text-lg font-semibold text-white">{step.title}</h3>
+              <p className="text-sm text-gray-300">{step.detail}</p>
+            </Card>
+          ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-12 text-center">
-          <div className="max-w-2xl mx-auto mb-8">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Start Growing?
-            </h3>
-            <p className="text-gray-400 text-lg">
-              Let&apos;s talk about your business goals and create a custom plan to help you dominate your local market.
+        <div className="surface-card mt-16 grid gap-8 p-10 md:grid-cols-[1.2fr_1fr] md:items-center">
+          <div>
+            <h3 className="text-2xl font-semibold text-white md:text-3xl">Stay focused on delivery; we handle growth.</h3>
+            <p className="mt-3 text-sm text-gray-300 md:text-base">
+              We plug into your team as a partner, sharing updates in plain language, highlighting the metrics that
+              matter, and proactively recommending next steps.
             </p>
           </div>
-          <button
-            onClick={() => {
-              const element = document.querySelector("#contact");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
-            className="px-10 py-5 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            Request a Free Website Audit
-          </button>
+          <div className="rounded-2xl border border-white/12 bg-[#101a2d] p-6 text-left text-sm text-gray-300">
+            <p className="font-semibold text-white">What collaboration feels like:</p>
+            <ul className="mt-4 space-y-3">
+              {[
+                "Weekly async updates in your preferred channel",
+                "Monthly performance reviews with next actions",
+                "Direct access to the strategist and lead designer",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-orange-400" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

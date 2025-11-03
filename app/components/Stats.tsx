@@ -19,7 +19,7 @@ const Stats = () => {
         if (counter) {
           const target = parseInt(counter.getAttribute("data-target") || "0");
           const suffix = counter.getAttribute("data-suffix") || "";
-          const duration = 2000;
+          const duration = 1400;
           const increment = target / (duration / 16);
           let current = 0;
 
@@ -39,7 +39,6 @@ const Stats = () => {
     };
 
     const ctx = gsap.context(() => {
-      // Animate stats on scroll
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top 70%",
@@ -51,26 +50,16 @@ const Stats = () => {
         },
       });
 
-      // Stagger animation for stat cards
       gsap.fromTo(
         statsRef.current,
-        {
-          opacity: 0,
-          y: 100,
-          scale: 0.8,
-        },
+        { opacity: 0, y: 45 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "back.out(1.4)",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 75%",
-            toggleActions: "play none none none",
-          },
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.12,
+          scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
         },
       );
     });
@@ -80,130 +69,65 @@ const Stats = () => {
 
   const stats = [
     {
-      icon: <Users className="w-8 h-8" />,
-      value: 100,
+      icon: <Users className="h-6 w-6 text-orange-300" />,
+      value: 120,
       suffix: "+",
-      label: "Tradesmen Helped",
-      description: "Plumbers, electricians, builders & more",
-      gradient: "from-orange-500 to-red-500",
+      label: "Trades businesses supported",
+      description: "Plumbers, electricians, builders, HVAC, and landscaping teams.",
     },
     {
-      icon: <TrendingUp className="w-8 h-8" />,
-      value: 25,
-      suffix: " Years",
-      label: "Combined Experience",
-      description: "Tech expertise meets sales mastery",
-      gradient: "from-red-500 to-pink-500",
+      icon: <TrendingUp className="h-6 w-6 text-orange-300" />,
+      value: 3,
+      suffix: "x",
+      label: "Average pipeline uplift",
+      description: "Measured across launch + 90 day optimisation windows.",
     },
     {
-      icon: <Award className="w-8 h-8" />,
+      icon: <Award className="h-6 w-6 text-orange-300" />,
       value: 7,
-      suffix: " Days",
-      label: "Average Launch",
-      description: "From start to live website",
-      gradient: "from-pink-500 to-purple-500",
+      suffix: "d",
+      label: "Typical go-live timeframe",
+      description: "From kick-off workshop to polished public launch.",
     },
     {
-      icon: <Rocket className="w-8 h-8" />,
+      icon: <Rocket className="h-6 w-6 text-orange-300" />,
       value: 98,
       suffix: "%",
-      label: "Client Satisfaction",
-      description: "Real results, real reviews",
-      gradient: "from-purple-500 to-indigo-500",
+      label: "Client satisfaction rating",
+      description: "Based on quarterly NPS-style feedback across retainers.",
     },
   ];
 
   return (
-    <section
-      ref={sectionRef}
-      className="section-padding bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
-    >
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
-      <div className="blur-gradient-red top-1/2 left-1/4" />
-      <div className="blur-gradient-pink top-1/2 right-1/4" />
-
-      <div className="container mx-auto container-padding relative z-10">
-        {/* Section header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Built By People Who <span className="gradient-text">Get It</span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-400 mb-8">
-            25 years of combined expertise in tech, sales, and getting tradesmen real results.
-            We come from tech and marketing backgrounds. We understand your business because
-            we know what works, and we deliver it fast.
+    <section ref={sectionRef} className="section-padding border-t border-white/5 bg-[#05070f]">
+      <div className="container mx-auto container-padding">
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-400">Proof points</p>
+          <h2 className="mt-4 text-4xl font-black text-white md:text-5xl">What working with BuzzBold looks like.</h2>
+          <p className="mt-4 text-base text-gray-400 md:text-lg">
+            The numbers we track to make sure your website and marketing stack are pushing growth—not adding clutter.
           </p>
         </div>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
-              key={index}
+              key={stat.label}
               ref={(el) => {
                 if (el) statsRef.current[index] = el;
               }}
-              className="group relative"
+              className="surface-card flex h-full flex-col gap-4 p-6 transition-transform duration-200 hover:-translate-y-1 hover:border-orange-400/40"
             >
-              <div className="h-full p-8 rounded-2xl bg-gradient-to-br from-gray-900/90 to-gray-900/50 border-2 border-gray-800 backdrop-blur-sm hover:border-transparent transition-all duration-500 relative overflow-hidden">
-                {/* Gradient overlay on hover */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                />
-
-                {/* Animated glow on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r ${stat.gradient} blur-2xl opacity-30`}
-                  />
-                </div>
-
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div
-                    className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${stat.gradient} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    {stat.icon}
-                  </div>
-
-                  {/* Counter */}
-                  <div className="mb-2">
-                    <span
-                      className="counter text-5xl md:text-6xl font-black gradient-text block"
-                      data-target={stat.value}
-                      data-suffix={stat.suffix}
-                    >
-                      0{stat.suffix}
-                    </span>
-                  </div>
-
-                  {/* Label */}
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {stat.label}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-400 text-sm">{stat.description}</p>
-                </div>
-
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-20 h-20 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} transform rotate-45 translate-x-10 -translate-y-10`}
-                  />
-                </div>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5">{stat.icon}</div>
+              <div>
+                <span className="counter text-4xl font-semibold text-white md:text-5xl" data-target={stat.value} data-suffix={stat.suffix}>
+                  0{stat.suffix}
+                </span>
               </div>
+              <h3 className="text-lg font-semibold text-white">{stat.label}</h3>
+              <p className="text-sm text-gray-300">{stat.description}</p>
             </div>
           ))}
-        </div>
-
-        {/* Bottom text */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-500 text-sm max-w-2xl mx-auto">
-            We&apos;re not here to impress you with buzzwords. We&apos;re here to get you more customers,
-            more bookings, and more revenue. Simple as that.
-          </p>
         </div>
       </div>
     </section>

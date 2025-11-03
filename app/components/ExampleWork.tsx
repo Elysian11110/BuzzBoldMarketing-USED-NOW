@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Wrench, Leaf, Zap } from "lucide-react";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const ExampleWork = () => {
@@ -14,43 +15,36 @@ const ExampleWork = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(
         titleRef.current,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 0.9,
           scrollTrigger: {
             trigger: titleRef.current,
-            start: "top 80%",
+            start: "top 85%",
             toggleActions: "play none none none",
           },
         },
       );
 
-      // Staggered card animations
       cardsRef.current.forEach((card, index) => {
         gsap.fromTo(
           card,
-          {
-            opacity: 0,
-            y: 100,
-            scale: 0.9,
-          },
+          { opacity: 0, y: 60 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: "back.out(1.2)",
+            duration: 0.7,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: card,
               start: "top 85%",
               toggleActions: "play none none none",
             },
-            delay: index * 0.15,
+            delay: index * 0.1,
           },
         );
       });
@@ -62,39 +56,51 @@ const ExampleWork = () => {
   const examples = [
     {
       title: "FlowPrime Plumbing",
-      icon: <Wrench className="w-8 h-8" />,
-      gradient: "from-blue-600 to-cyan-500",
-      description: "24/7 emergency repairs, leak detection, boiler installations",
+      icon: <Wrench className="h-6 w-6" />,
+      description: "Emergency callouts, leak detection, boiler installs and servicing for London homes.",
       link: "/examples/plumber",
       mockup: {
-        headline: "Reliable Plumbing. Local Experts.",
-        subheadline: "Gas Safe Registered • Fully Insured",
-        cta: "Get Free Quote",
+        headline: "Reliable plumbing. Local experts.",
+        subheadline: "Gas Safe registered - fully insured",
       },
+      accentGradient: "from-sky-500/60 via-cyan-400/25 to-transparent",
+      metrics: [
+        { label: "Launch timeframe", value: "3 weeks" },
+        { label: "Lead uplift", value: "+212%" },
+        { label: "Primary goal", value: "Emergency calls" },
+      ],
     },
     {
       title: "GreenFrame Landscapes",
-      icon: <Leaf className="w-8 h-8" />,
-      gradient: "from-green-700 to-green-400",
-      description: "Garden design, decking & fencing, patios & driveways",
+      icon: <Leaf className="h-6 w-6" />,
+      description: "Design-led landscaping studio producing seasonal projects and maintenance retainers.",
       link: "/examples/landscaper",
       mockup: {
-        headline: "Transform Your Outdoor Space",
-        subheadline: "Professional Garden Design & Build",
-        cta: "Get Free Quote",
+        headline: "Transform your outdoor space.",
+        subheadline: "High-impact design and build packages",
       },
+      accentGradient: "from-emerald-500/55 via-lime-400/25 to-transparent",
+      metrics: [
+        { label: "Launch timeframe", value: "4 weeks" },
+        { label: "Project enquiries", value: "×2.3" },
+        { label: "Avg. order value", value: "+38%" },
+      ],
     },
     {
       title: "BrightWave Electrical",
-      icon: <Zap className="w-8 h-8" />,
-      gradient: "from-amber-500 to-orange-600",
-      description: "Wiring upgrades, fuse box safety, smart home installations",
+      icon: <Zap className="h-6 w-6" />,
+      description: "NICEIC certified electricians specialising in rewires, smart home upgrades, and compliance.",
       link: "/examples/electrician",
       mockup: {
-        headline: "Safe, Certified Electrical Work",
-        subheadline: "NICEIC Approved • Part P Certified",
-        cta: "Get Free Quote",
+        headline: "Certified electrical work.",
+        subheadline: "Rapid response teams across the city",
       },
+      accentGradient: "from-amber-400/55 via-orange-400/25 to-transparent",
+      metrics: [
+        { label: "Launch timeframe", value: "2.5 weeks" },
+        { label: "Booked jobs", value: "×3.1" },
+        { label: "Local rank", value: "Top 3" },
+      ],
     },
   ];
 
@@ -102,95 +108,87 @@ const ExampleWork = () => {
     <section
       id="examples"
       ref={sectionRef}
-      className="section-padding bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
+      className="relative overflow-hidden border-t border-white/5 bg-[#050810] py-20"
     >
-      {/* Background gradients */}
-      <div className="blur-gradient-orange top-0 left-0 opacity-20" />
-      <div className="blur-gradient-pink bottom-0 right-0 opacity-20" />
-
-      <div className="container mx-auto container-padding relative z-10">
-        {/* Section header */}
-        <div ref={titleRef} className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Example Work &amp; <span className="gradient-text">Design Styles</span>
+      <div className="absolute -top-40 right-10 h-72 w-72 rotate-12 rounded-full bg-gradient-to-br from-orange-500/20 via-transparent to-transparent blur-3xl" />
+      <div className="absolute -bottom-48 left-10 h-80 w-80 rounded-full bg-gradient-to-br from-sky-500/25 via-transparent to-transparent blur-3xl" />
+      <div className="container relative mx-auto container-padding">
+        <div ref={titleRef} className="mx-auto mb-14 max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-400">Selected work</p>
+          <h2 className="mt-4 text-4xl font-black text-white md:text-5xl">
+            Example websites that keep leads coming in.
           </h2>
-          <p className="text-lg md:text-xl text-gray-400">
-            See what we can build for your business. These are real examples of the modern, conversion-focused websites we create for UK tradesmen.
+          <p className="mt-4 text-base text-gray-400 md:text-lg">
+            A snapshot of recent launches. Each site is built around clear messaging, fast performance, and effortless
+            reader flows.
           </p>
         </div>
 
-        {/* Example cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
           {examples.map((example, index) => (
             <a
-              key={index}
+              key={example.title}
               href={example.link}
               target="_blank"
               rel="noopener noreferrer"
               ref={(el) => {
                 if (el) cardsRef.current[index] = el;
               }}
-              className="group block"
+              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/12 bg-[#0b1321] shadow-[0_25px_60px_rgba(2,6,23,0.55)] transition-transform duration-200 hover:-translate-y-1 hover:border-orange-400/60"
             >
-              <Card className="h-full bg-gradient-to-br from-gray-900/90 to-gray-900/50 border-2 border-gray-800 rounded-2xl backdrop-blur-sm hover:border-transparent transition-all duration-500 relative overflow-hidden cursor-pointer">
-                {/* Gradient overlay on hover */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${example.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                />
-
-                {/* Animated border */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r ${example.gradient} blur-xl opacity-50`}
-                  />
+              <div
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${example.accentGradient} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+              />
+              <div className="flex h-full flex-col justify-between p-6">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-orange-200 shadow-inner">
+                      {example.icon}
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.26em] text-orange-300">Case study</p>
+                      <h3 className="text-xl font-semibold text-white">{example.title}</h3>
+                    </div>
+                  </div>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-200">
+                    Web + SEO
+                  </span>
                 </div>
 
-                <CardContent className="relative z-10 p-6">
-                  {/* Icon */}
-                  <div
-                    className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${example.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300 mb-6`}
-                  >
-                    {example.icon}
+                <p className="mt-5 text-sm text-slate-200">{example.description}</p>
+
+                <div className="mt-6 rounded-2xl border border-white/10 bg-[#101a2d]/90 p-5">
+                  <div className="text-sm font-semibold text-white">{example.mockup.headline}</div>
+                  <div className="mt-2 text-xs uppercase tracking-wide text-orange-300">
+                    {example.mockup.subheadline}
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-white mb-3">
-                    {example.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-400 mb-6">{example.description}</p>
-
-                  {/* Mockup preview */}
-                  <div className="bg-white/5 rounded-lg p-4 mb-6 border border-white/10">
-                    <div className="text-white font-bold text-sm mb-2">
-                      {example.mockup.headline}
-                    </div>
-                    <div className="text-gray-400 text-xs mb-3">
-                      {example.mockup.subheadline}
-                    </div>
-                    <div
-                      className={`inline-block px-3 py-1 rounded-full bg-gradient-to-r ${example.gradient} text-white text-xs font-bold`}
-                    >
-                      {example.mockup.cta}
-                    </div>
+                  <div className="mt-4 grid gap-3">
+                    {example.metrics.map((metric) => (
+                      <div
+                        key={metric.label}
+                        className="flex items-center justify-between rounded-xl border border-white/5 bg-white/5 px-4 py-2 text-xs text-slate-200"
+                      >
+                        <span className="font-medium text-slate-300">{metric.label}</span>
+                        <span className="font-semibold text-white">{metric.value}</span>
+                      </div>
+                    ))}
                   </div>
+                </div>
+              </div>
 
-                  {/* View button */}
-                  <div className="flex items-center gap-2 text-white font-bold group-hover:gap-4 transition-all duration-300">
-                    View Example
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="flex items-center justify-between border-t border-white/10 px-6 py-4 text-sm text-slate-200">
+                <span className="font-semibold">View project</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </div>
             </a>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-400 mb-6 text-lg">
-            Want a website like these for your business?
+        <div className="mt-16 flex flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-white/15 bg-[#0b1321] px-8 py-10 text-center">
+          <h3 className="text-xl font-semibold text-white md:text-2xl">Need to see a specific sector?</h3>
+          <p className="max-w-2xl text-sm text-gray-400 md:text-base">
+            Ask for a tailored showcase. We can walk you through the structure, performance metrics, and lessons from
+            projects closest to your industry.
           </p>
           <button
             onClick={() => {
@@ -199,9 +197,10 @@ const ExampleWork = () => {
                 element.scrollIntoView({ behavior: "smooth" });
               }
             }}
-            className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-8 py-3 font-semibold text-black transition-transform duration-200 hover:-translate-y-1 hover:bg-orange-400"
           >
-            Get Your Free Website Audit
+            Schedule a walkthrough
+            <ArrowRight className="h-5 w-5" />
           </button>
         </div>
       </div>

@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,73 +12,28 @@ const Hero = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const ctaRef = useRef(null);
-  const gradientRef1 = useRef(null);
-  const gradientRef2 = useRef(null);
-  const gradientRef3 = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Initial entrance animations
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       tl.fromTo(
         titleRef.current,
-        {
-          opacity: 0,
-          y: 100,
-          scale: 0.8,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.2,
-          ease: "back.out(1.4)",
-        },
+        { opacity: 0, y: 80 },
+        { opacity: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" },
       )
         .fromTo(
           subtitleRef.current,
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 1 },
-          "-=0.6",
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.9 },
+          "-=0.5",
         )
         .fromTo(
           ctaRef.current,
-          { opacity: 0, y: 30, scale: 0.9 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.8 },
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.8 },
           "-=0.4",
         );
-
-      // Floating gradient orbs
-      gsap.to(gradientRef1.current, {
-        x: 100,
-        y: -100,
-        duration: 8,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      gsap.to(gradientRef2.current, {
-        x: -80,
-        y: 80,
-        duration: 10,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      gsap.to(gradientRef3.current, {
-        x: 60,
-        y: 120,
-        duration: 12,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      // Keep elements visible - no parallax fade out
-      // The tagline stays visible at all times
     });
 
     return () => ctx.revert();
@@ -102,98 +56,89 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-40 md:pt-32"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#05070f] pt-40 pb-20 md:pt-36"
     >
-      {/* Animated gradient orbs */}
-      <div ref={gradientRef1} className="blur-gradient-orange top-20 left-20" />
-      <div
-        ref={gradientRef2}
-        className="blur-gradient-red bottom-20 right-20"
-      />
-      <div
-        ref={gradientRef3}
-        className="blur-gradient-pink top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      />
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#13213a,transparent_65%)] opacity-45" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:120px_120px] opacity-20" />
+      </div>
 
-      {/* Grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
-
-      {/* Content */}
-      <div className="container mx-auto px-4 z-10 text-center">
-        <div className="max-w-5xl mx-auto">
-          {/* Badge - Removed animate-pulse-slow to avoid appearing clickable */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8">
-            <Sparkles className="w-4 h-4 text-orange-500" />
-            <span className="text-sm font-medium text-gray-300">
-              Trusted by Growing UK Businesses
-            </span>
+      <div className="container relative z-10 mx-auto px-4 text-center">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-gray-200">
+            <Sparkles className="h-4 w-4 text-orange-400" />
+            Trusted by growing UK service brands
           </div>
 
-          {/* Main Title */}
           <h1
             ref={titleRef}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
+            className="mb-6 text-5xl font-black leading-tight text-white md:text-6xl lg:text-7xl xl:text-8xl"
           >
-            <span className="gradient-text text-glow inline-block">
-              Build to Dominate.
-            </span>
+            <span className="text-glow inline-block text-white">Build to Dominate.</span>
           </h1>
 
-          {/* Subtitle */}
           <p
             ref={subtitleRef}
-            className="text-lg md:text-xl lg:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="mx-auto mb-12 max-w-3xl text-lg leading-relaxed text-gray-300 md:text-xl lg:text-2xl"
           >
-            Helping UK businesses grow visibility, leads, and revenue.
+            We design, build, and optimise websites that help UK trades and service businesses turn browsers into booked
+            jobs.
           </p>
 
-          {/* CTAs - Improved visual hierarchy with primary gradient CTA and secondary outline CTA */}
-          <div
-            ref={ctaRef}
-            className="flex flex-col sm:flex-row gap-6 items-center justify-center w-full"
-          >
+          <div ref={ctaRef} className="flex w-full flex-col items-center justify-center gap-5 text-base sm:flex-row">
             <button
               onClick={handleCtaClick}
-              className="px-12 py-6 text-xl font-black rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white transition-all duration-300 hover:scale-105 inline-flex items-center gap-3 shadow-[0_0_40px_rgba(249,115,22,0.6)] hover:shadow-[0_0_60px_rgba(249,115,22,0.8)]"
+              className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-10 py-4 font-semibold text-black shadow-[0_12px_30px_rgba(249,115,22,0.35)] transition-transform duration-200 hover:-translate-y-1 hover:bg-orange-400"
             >
-              Get Free Website Audit
-              <ArrowRight className="w-6 h-6" />
+              Get a free website review
+              <ArrowRight className="h-5 w-5" />
             </button>
             <a
               href="tel:02012345678"
-              className="px-12 py-6 text-xl font-bold rounded-full border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 transition-all duration-300 hover:scale-105 inline-flex items-center gap-3"
+              className="inline-flex items-center gap-3 rounded-full border border-white/20 px-10 py-4 font-semibold text-gray-100 transition-all duration-200 hover:-translate-y-1 hover:bg-white/5"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
               </svg>
-              Call: 020 1234 5678
+              Call 020 1234 5678
             </a>
           </div>
 
-          {/* Stats bar */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {[
-              { value: "Local SEO", label: "Experts" },
-              { value: "Fast Delivery", label: "Professional Results" },
-              { value: "Full Transparency", label: "Clear Reporting" },
-              { value: "UK-Focused", label: "Local Business Specialists" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-orange-500/50 transition-all duration-300"
-              >
-                <div className="text-xl md:text-2xl font-bold gradient-text mb-2">
-                  {stat.value}
+          <div className="mx-auto mt-16 max-w-4xl rounded-2xl border border-white/12 bg-white/5 p-6">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+              {[
+                { value: "Local SEO", label: "Built in from day one" },
+                { value: "3 week builds", label: "Launch faster with polish" },
+                { value: "Transparent", label: "Weekly updates & reports" },
+                { value: "UK specialists", label: "Industry-focused team" },
+              ].map((stat) => (
+                <div
+                  key={stat.value}
+                  className="rounded-xl border border-white/10 bg-[#0b1321] px-4 py-6 text-center transition-colors duration-200 hover:border-orange-500/60"
+                >
+                  <div className="text-lg font-semibold text-white md:text-xl">{stat.value}</div>
+                  <div className="mt-2 text-xs text-gray-400 md:text-sm">{stat.label}</div>
                 </div>
-                <div className="text-xs md:text-sm text-gray-400">{stat.label}</div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 flex items-center justify-center gap-3 text-sm text-gray-400">
+            <span>Prefer to explore first?</span>
+            <button
+              onClick={handleServicesClick}
+              className="border-b border-transparent text-gray-200 transition-colors duration-200 hover:border-gray-400"
+            >
+              Browse our services
+            </button>
           </div>
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
     </section>
   );
 };

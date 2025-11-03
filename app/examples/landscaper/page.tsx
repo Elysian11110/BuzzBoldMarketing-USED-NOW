@@ -53,7 +53,7 @@ export default function GreenFrameLandscapes() {
     {
       id: 'lighting',
       title: 'Lighting & Water Features',
-      image: 'photo-1600607687644-c7171b42498b',
+      image: '/images/town-square-shenzhen.jpg',
       alt: 'Garden lighting installation highlighting pathways and feature plants at dusk',
       description: 'Professional outdoor lighting and water features. LED systems for energy efficiency and ambiance that extends garden enjoyment into evening.',
       materials: 'LED spike lights, wall washers, pond pumps, water feature reservoirs',
@@ -67,8 +67,8 @@ export default function GreenFrameLandscapes() {
     { id: 2, image: 'photo-1600585152915-d208bec867a1', alt: 'Multi-level timber decking with glass balustrade', category: 'decking', caption: 'Multi-Level Decking Project', outcome: 'Created functional zones with composite decking and frameless glass panels for uninterrupted views' },
     { id: 3, image: 'photo-1585320806297-9794b3e4eeae', alt: 'Complete garden redesign with mixed planting borders', category: 'complete', caption: 'Full Garden Transformation', outcome: 'Complete redesign including patio, planting scheme, and lawn installation for family-friendly space' },
     { id: 4, image: 'photo-1416879595882-3373a0480b5b', alt: 'Natural stone patio with built-in seating area', category: 'patios', caption: 'Sandstone Patio & Walls', outcome: 'Installed Indian sandstone patio with matching retaining walls and raised planting beds' },
-    { id: 5, image: 'photo-1600607687644-c7171b42498b', alt: 'Garden pathway with integrated LED lighting system', category: 'lighting', caption: 'Lighting Installation', outcome: 'Complete outdoor lighting scheme with pathway lights, uplighting, and automated timer system' },
-    { id: 6, image: 'photo-1600585152220-9f8b0e8c3b51', alt: 'Contemporary fence panels with horizontal slats', category: 'fencing', caption: 'Modern Fencing Installation', outcome: 'Replaced old panel fencing with contemporary slatted design for improved privacy and aesthetics' },
+    { id: 5, image: '/images/town-square-shenzhen.jpg', alt: 'Garden pathway with integrated LED lighting system', category: 'lighting', caption: 'Lighting Installation', outcome: 'Complete outdoor lighting scheme with pathway lights, uplighting, and automated timer system' },
+    { id: 6, image: '/images/wooden-trellis-overgrown-with-greenery-selective-focus-herbal-foliage-with-green-white-leaves-garden-trellis-background-screensaver-nature-banner.jpg', alt: 'Wooden trellis with lush greenery and foliage', category: 'fencing', caption: 'Modern Fencing Installation', outcome: 'Replaced old panel fencing with contemporary slatted design for improved privacy and aesthetics' },
     { id: 7, image: 'photo-1466692476868-aef1dfb1e735', alt: 'Lush border planting with perennials and grasses', category: 'planting', caption: 'Planting Scheme', outcome: 'Designed and installed low-maintenance perennial borders with year-round interest and structure' },
     { id: 8, image: 'photo-1523217582562-09d0def993a6', alt: 'Garden redesign with raised beds and seating', category: 'complete', caption: 'Urban Garden Makeover', outcome: 'Maximised small garden space with raised beds, built-in seating, and vertical planting' },
     { id: 9, image: 'photo-1600607687939-ce8a6c25118c', alt: 'Large format porcelain patio with outdoor kitchen', category: 'patios', caption: 'Entertaining Space Creation', outcome: 'Large porcelain patio with outdoor kitchen area, pergola, and integrated heating for year-round use' }
@@ -114,36 +114,42 @@ export default function GreenFrameLandscapes() {
     : portfolioItems.filter(item => item.category === portfolioFilter);
 
   const Header = () => (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-white border-b border-gray-100 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => setCurrentPage('home')}>
-            <div className="w-10 h-10 bg-[#2D6A4F] rounded flex items-center justify-center">
+        <div className="flex justify-between items-center h-20">
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setCurrentPage('home')}>
+            <div className="w-11 h-11 bg-[#2D6A4F] rounded-lg flex items-center justify-center">
               <Leaf className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-[#111111]">GreenFrame Landscapes</span>
+            <span className="text-2xl font-bold text-[#111111] tracking-tight">GreenFrame</span>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-1">
             {navigation.map((item) => (
               <button
                 key={item.page}
                 onClick={() => setCurrentPage(item.page)}
-                className={`text-sm font-medium transition-colors ${
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
                   currentPage === item.page
-                    ? 'text-[#2D6A4F] border-b-2 border-[#2D6A4F]'
-                    : 'text-[#2E2E2E] hover:text-[#2D6A4F]'
+                    ? 'bg-[#2D6A4F] text-white'
+                    : 'text-[#666666] hover:text-[#111111] hover:bg-gray-50'
                 }`}
               >
                 {item.name}
               </button>
             ))}
+            <button
+              onClick={() => setCurrentPage('contact')}
+              className="ml-4 px-6 py-2.5 bg-[#2D6A4F] text-white text-sm font-semibold rounded-lg hover:bg-[#1f4a37] transition-all shadow-sm"
+            >
+              Get Quote
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-[#2E2E2E]"
+            className="md:hidden p-2 text-[#111111] hover:bg-gray-50 rounded-lg"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -153,8 +159,8 @@ export default function GreenFrameLandscapes() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <nav className="px-4 py-4 space-y-2">
+        <div className="md:hidden bg-white border-t border-gray-100">
+          <nav className="px-4 py-4 space-y-1">
             {navigation.map((item) => (
               <button
                 key={item.page}
@@ -162,10 +168,10 @@ export default function GreenFrameLandscapes() {
                   setCurrentPage(item.page);
                   setMobileMenuOpen(false);
                 }}
-                className={`block w-full text-left px-4 py-2 rounded text-sm font-medium transition-colors ${
+                className={`block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                   currentPage === item.page
                     ? 'bg-[#2D6A4F] text-white'
-                    : 'text-[#2E2E2E] hover:bg-gray-100'
+                    : 'text-[#666666] hover:bg-gray-50 hover:text-[#111111]'
                 }`}
               >
                 {item.name}
@@ -180,94 +186,143 @@ export default function GreenFrameLandscapes() {
   const HomePage = () => (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative h-[600px] bg-white">
-        <Image
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80"
-          alt="Modern garden patio with contemporary seating and lush planting"
-          width={1800}
-          height={1200}
-          priority={true}
-          className="object-cover w-full h-full"
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center px-4">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Gardens designed for living.
-            </h1>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => setCurrentPage('contact')}
-                className="bg-[#2D6A4F] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1f4a37] transition-colors min-h-[44px]"
-              >
-                Book a site visit
-              </button>
-              <button
-                onClick={() => setCurrentPage('contact')}
-                className="bg-white text-[#2D6A4F] px-8 py-3 rounded-lg font-semibold border-2 border-white hover:bg-gray-50 transition-colors min-h-[44px]"
-              >
-                Get your free quote
-              </button>
+      <section className="relative min-h-[calc(100vh-80px)] bg-white">
+        <div className="grid lg:grid-cols-2 gap-0 min-h-[calc(100vh-80px)]">
+          {/* Left Content */}
+          <div className="flex items-center px-6 sm:px-12 lg:px-16 py-16 lg:py-0">
+            <div className="max-w-xl">
+              <div className="inline-flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full mb-8">
+                <div className="w-2 h-2 bg-[#2D6A4F] rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-[#666666]">Surrey & Kent Specialists</span>
+              </div>
+              
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#111111] mb-6 leading-[1.1] tracking-tight">
+                Transform your
+                <br />
+                outdoor space
+              </h1>
+              
+              <p className="text-xl text-[#666666] mb-10 leading-relaxed">
+                Expert landscaping that combines thoughtful design with quality craftsmanship. From patios to complete garden builds.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => setCurrentPage('contact')}
+                  className="px-8 py-4 bg-[#2D6A4F] text-white text-base font-semibold rounded-xl hover:bg-[#1f4a37] transition-all shadow-sm hover:shadow-md min-h-[44px]"
+                >
+                  Book Free Consultation
+                </button>
+                <button
+                  onClick={() => setCurrentPage('portfolio')}
+                  className="px-8 py-4 bg-white text-[#111111] text-base font-semibold rounded-xl border-2 border-gray-200 hover:border-[#2D6A4F] hover:text-[#2D6A4F] transition-all min-h-[44px]"
+                >
+                  View Our Work
+                </button>
+              </div>
+              
+              {/* Trust Indicators */}
+              <div className="mt-12 pt-12 border-t border-gray-100">
+                <div className="grid grid-cols-3 gap-6">
+                  <div>
+                    <p className="text-3xl font-bold text-[#111111]">5 Year</p>
+                    <p className="text-sm text-[#666666] mt-1">Warranty</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-[#111111]">500+</p>
+                    <p className="text-sm text-[#666666] mt-1">Projects</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-[#111111]">4.9★</p>
+                    <p className="text-sm text-[#666666] mt-1">Rating</p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          
+          {/* Right Image */}
+          <div className="relative h-[400px] lg:h-auto">
+            <Image
+              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80"
+              alt="Modern garden patio with contemporary seating and lush planting"
+              width={1800}
+              height={1200}
+              priority={true}
+              className="object-cover w-full h-full"
+            />
           </div>
         </div>
       </section>
 
       {/* Value Points Grid */}
-      <section className="py-16 bg-white">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#A7C957] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Leaf className="w-8 h-8 text-white" />
+            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:border-[#2D6A4F] transition-all hover:shadow-lg">
+              <div className="w-14 h-14 bg-[#2D6A4F] rounded-xl flex items-center justify-center mb-5">
+                <Leaf className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-[#111111] mb-2">Expert Design</h3>
-              <p className="text-[#2E2E2E]">Tailored solutions that complement your home and lifestyle</p>
+              <h3 className="text-xl font-bold text-[#111111] mb-3">Expert Design</h3>
+              <p className="text-[#666666] leading-relaxed">Tailored solutions that complement your home and lifestyle</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#A7C957] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Wrench className="w-8 h-8 text-white" />
+            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:border-[#2D6A4F] transition-all hover:shadow-lg">
+              <div className="w-14 h-14 bg-[#2D6A4F] rounded-xl flex items-center justify-center mb-5">
+                <Wrench className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-[#111111] mb-2">Quality Build</h3>
-              <p className="text-[#2E2E2E]">Premium materials and expert craftsmanship on every project</p>
+              <h3 className="text-xl font-bold text-[#111111] mb-3">Quality Build</h3>
+              <p className="text-[#666666] leading-relaxed">Premium materials and expert craftsmanship on every project</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#A7C957] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-white" />
+            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:border-[#2D6A4F] transition-all hover:shadow-lg">
+              <div className="w-14 h-14 bg-[#2D6A4F] rounded-xl flex items-center justify-center mb-5">
+                <Shield className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-[#111111] mb-2">5-Year Warranty</h3>
-              <p className="text-[#2E2E2E]">Comprehensive coverage on all materials and workmanship</p>
+              <h3 className="text-xl font-bold text-[#111111] mb-3">5-Year Warranty</h3>
+              <p className="text-[#666666] leading-relaxed">Comprehensive coverage on all materials and workmanship</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#A7C957] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Check className="w-8 h-8 text-white" />
+            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:border-[#2D6A4F] transition-all hover:shadow-lg">
+              <div className="w-14 h-14 bg-[#2D6A4F] rounded-xl flex items-center justify-center mb-5">
+                <Check className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-[#111111] mb-2">Aftercare</h3>
-              <p className="text-[#2E2E2E]">Maintenance plans to keep your garden looking pristine</p>
+              <h3 className="text-xl font-bold text-[#111111] mb-3">Aftercare</h3>
+              <p className="text-[#666666] leading-relaxed">Maintenance plans to keep your garden looking pristine</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Preview */}
-      <section className="py-16 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-[#111111] text-center mb-12">Our Services</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#111111] mb-4">Our Services</h2>
+            <p className="text-xl text-[#666666] max-w-2xl mx-auto">
+              Professional landscaping solutions tailored to your space
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service) => (
-              <div key={service.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setCurrentPage('services')}>
-                <div className="relative h-48">
+              <div 
+                key={service.id} 
+                className="group bg-white border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-[#2D6A4F] hover:shadow-xl transition-all cursor-pointer"
+                onClick={() => setCurrentPage('services')}
+              >
+                <div className="relative h-56 overflow-hidden">
                   <Image
-                    src={`https://images.unsplash.com/${service.image}?w=600&q=80`}
+                    src={service.image.startsWith('/') ? service.image : `https://images.unsplash.com/${service.image}?w=600&q=80`}
                     alt={service.alt}
                     width={600}
                     height={400}
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#111111] mb-2">{service.title}</h3>
-                  <p className="text-[#2E2E2E]">{service.description.substring(0, 100)}...</p>
+                  <h3 className="text-xl font-bold text-[#111111] mb-3 group-hover:text-[#2D6A4F] transition-colors">{service.title}</h3>
+                  <p className="text-[#666666] leading-relaxed mb-4">{service.description.substring(0, 100)}...</p>
+                  <div className="flex items-center text-[#2D6A4F] font-semibold text-sm group-hover:gap-2 transition-all">
+                    Learn more
+                    <ChevronDown className="w-4 h-4 -rotate-90 ml-1" />
+                  </div>
                 </div>
               </div>
             ))}
@@ -276,32 +331,41 @@ export default function GreenFrameLandscapes() {
       </section>
 
       {/* Portfolio Preview */}
-      <section className="py-16 bg-white">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-[#111111] text-center mb-12">Recent Projects</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#111111] mb-4">Recent Projects</h2>
+            <p className="text-xl text-[#666666] max-w-2xl mx-auto">
+              See how we've transformed outdoor spaces across Surrey & Kent
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {portfolioItems.slice(0, 3).map((item) => (
-              <div key={item.id} className="relative h-80 rounded-lg overflow-hidden group cursor-pointer" onClick={() => setCurrentPage('portfolio')}>
-                <Image
-                  src={`https://images.unsplash.com/${item.image}?w=800&q=80`}
-                  alt={item.alt}
-                  width={800}
-                  height={600}
-                  className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-6 text-white">
-                    <h3 className="text-xl font-bold mb-1">{item.caption}</h3>
-                    <p className="text-sm text-white/90">{item.outcome.substring(0, 80)}...</p>
-                  </div>
+              <div 
+                key={item.id} 
+                className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#2D6A4F] hover:shadow-xl transition-all cursor-pointer" 
+                onClick={() => setCurrentPage('portfolio')}
+              >
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={item.image.startsWith('/') ? item.image : `https://images.unsplash.com/${item.image}?w=800&q=80`}
+                    alt={item.alt}
+                    width={800}
+                    height={600}
+                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-[#111111] mb-2 group-hover:text-[#2D6A4F] transition-colors">{item.caption}</h3>
+                  <p className="text-[#666666] leading-relaxed">{item.outcome.substring(0, 100)}...</p>
                 </div>
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
+          <div className="text-center mt-12">
             <button
               onClick={() => setCurrentPage('portfolio')}
-              className="bg-[#2D6A4F] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1f4a37] transition-colors min-h-[44px]"
+              className="px-8 py-4 bg-[#2D6A4F] text-white text-base font-semibold rounded-xl hover:bg-[#1f4a37] transition-all shadow-sm hover:shadow-md min-h-[44px]"
             >
               View All Projects
             </button>
@@ -310,26 +374,40 @@ export default function GreenFrameLandscapes() {
       </section>
 
       {/* FAQs */}
-      <section className="py-16 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-[#111111] text-center mb-12">Frequently Asked Questions</h2>
-          <div className="space-y-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#111111] mb-4">Common Questions</h2>
+            <p className="text-xl text-[#666666]">
+              Everything you need to know about our services
+            </p>
+          </div>
+          <div className="space-y-3">
             {faqs.map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg bg-white">
+              <div 
+                key={index} 
+                className={`border-2 rounded-2xl bg-white transition-all ${
+                  openFaq === index ? 'border-[#2D6A4F] shadow-lg' : 'border-gray-100 hover:border-gray-200'
+                }`}
+              >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-6 py-4 flex justify-between items-center text-left hover:bg-gray-50 transition-colors"
+                  className="w-full px-6 py-5 flex justify-between items-center text-left transition-all"
                 >
-                  <span className="font-semibold text-[#111111]">{faq.question}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-[#2E2E2E] transition-transform ${
-                      openFaq === index ? 'transform rotate-180' : ''
-                    }`}
-                  />
+                  <span className={`font-semibold text-lg pr-4 ${
+                    openFaq === index ? 'text-[#2D6A4F]' : 'text-[#111111]'
+                  }`}>{faq.question}</span>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all ${
+                    openFaq === index 
+                      ? 'bg-[#2D6A4F] text-white rotate-180' 
+                      : 'bg-gray-50 text-[#666666]'
+                  }`}>
+                    <ChevronDown className="w-5 h-5" />
+                  </div>
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-4">
-                    <p className="text-[#2E2E2E]">{faq.answer}</p>
+                  <div className="px-6 pb-6 pt-2">
+                    <p className="text-[#666666] leading-relaxed text-lg">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -339,22 +417,22 @@ export default function GreenFrameLandscapes() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-white border-t border-gray-200">
+      <section className="py-24 bg-[#2D6A4F]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-[#111111] mb-6">Ready to transform your garden?</h2>
-          <p className="text-xl text-[#2E2E2E] mb-8">Book a free site visit and get your detailed quote</p>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Ready to transform your garden?</h2>
+          <p className="text-xl text-white/90 mb-10">Book a free site visit and get your detailed quote</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => setCurrentPage('contact')}
-              className="bg-[#2D6A4F] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1f4a37] transition-colors min-h-[44px]"
+              className="px-8 py-4 bg-white text-[#2D6A4F] text-base font-semibold rounded-xl hover:bg-gray-50 transition-all shadow-sm hover:shadow-md min-h-[44px]"
             >
-              Book a site visit
+              Book Free Site Visit
             </button>
             <button
               onClick={() => setCurrentPage('contact')}
-              className="bg-white text-[#2D6A4F] px-8 py-3 rounded-lg font-semibold border-2 border-[#2D6A4F] hover:bg-gray-50 transition-colors min-h-[44px]"
+              className="px-8 py-4 bg-transparent text-white text-base font-semibold rounded-xl border-2 border-white hover:bg-white/10 transition-all min-h-[44px]"
             >
-              Get your free quote
+              Get Your Quote
             </button>
           </div>
         </div>
@@ -364,51 +442,53 @@ export default function GreenFrameLandscapes() {
 
   const ServicesPage = () => (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-5xl font-bold text-[#111111] text-center mb-4">Our Services</h1>
-        <p className="text-xl text-[#2E2E2E] text-center mb-16 max-w-3xl mx-auto">
-          From design to installation, we deliver exceptional outdoor spaces built to last.
-        </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center mb-20">
+          <h1 className="text-5xl sm:text-6xl font-bold text-[#111111] mb-6">Our Services</h1>
+          <p className="text-xl text-[#666666] max-w-3xl mx-auto">
+            From design to installation, we deliver exceptional outdoor spaces built to last.
+          </p>
+        </div>
 
-        <div className="space-y-16">
+        <div className="space-y-24">
           {services.map((service, index) => (
-            <div key={service.id} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 items-center`}>
+            <div key={service.id} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}>
               <div className="lg:w-1/2">
-                <div className="relative h-96 rounded-lg overflow-hidden">
+                <div className="relative h-96 rounded-2xl overflow-hidden border-2 border-gray-100 shadow-lg">
                   <Image
-                    src={`https://images.unsplash.com/${service.image}?w=1200&q=80`}
+                    src={service.image.startsWith('/') ? service.image : `https://images.unsplash.com/${service.image}?w=1200&q=80`}
                     alt={service.alt}
                     width={1200}
                     height={800}
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
               <div className="lg:w-1/2">
-                <h2 className="text-3xl font-bold text-[#111111] mb-4">{service.title}</h2>
-                <p className="text-lg text-[#2E2E2E] mb-6">{service.description}</p>
+                <h2 className="text-4xl font-bold text-[#111111] mb-5">{service.title}</h2>
+                <p className="text-lg text-[#666666] mb-8 leading-relaxed">{service.description}</p>
 
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="font-semibold text-[#111111] mb-2">Materials Used</h3>
-                    <p className="text-[#2E2E2E]">{service.materials}</p>
+                <div className="space-y-6">
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <h3 className="font-bold text-[#111111] mb-3 text-lg">Materials Used</h3>
+                    <p className="text-[#666666]">{service.materials}</p>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-[#111111] mb-2 flex items-center gap-2">
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <h3 className="font-bold text-[#111111] mb-3 flex items-center gap-2 text-lg">
                       <Clock className="w-5 h-5 text-[#2D6A4F]" />
                       Typical Timeline
                     </h3>
-                    <p className="text-[#2E2E2E]">{service.timeline}</p>
+                    <p className="text-[#666666]">{service.timeline}</p>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-[#111111] mb-2">Care Instructions</h3>
-                    <p className="text-[#2E2E2E]">{service.care}</p>
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <h3 className="font-bold text-[#111111] mb-3 text-lg">Care Instructions</h3>
+                    <p className="text-[#666666]">{service.care}</p>
                   </div>
                 </div>
 
                 <button
                   onClick={() => setCurrentPage('contact')}
-                  className="mt-6 bg-[#2D6A4F] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1f4a37] transition-colors min-h-[44px]"
+                  className="mt-8 px-8 py-4 bg-[#2D6A4F] text-white text-base font-semibold rounded-xl hover:bg-[#1f4a37] transition-all shadow-sm hover:shadow-md min-h-[44px]"
                 >
                   Get a Quote
                 </button>
@@ -541,14 +621,16 @@ export default function GreenFrameLandscapes() {
 
   const PortfolioPage = () => (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-5xl font-bold text-[#111111] text-center mb-4">Our Portfolio</h1>
-        <p className="text-xl text-[#2E2E2E] text-center mb-12">
-          Explore our recent garden transformations across Surrey and Kent.
-        </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl sm:text-6xl font-bold text-[#111111] mb-6">Our Portfolio</h1>
+          <p className="text-xl text-[#666666] max-w-2xl mx-auto">
+            Explore our recent garden transformations across Surrey and Kent.
+          </p>
+        </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
           {[
             { label: 'All Projects', value: 'all' },
             { label: 'Patios', value: 'patios' },
@@ -560,10 +642,10 @@ export default function GreenFrameLandscapes() {
             <button
               key={filter.value}
               onClick={() => setPortfolioFilter(filter.value)}
-              className={`px-6 py-2 rounded-lg font-semibold transition-colors min-h-[44px] ${
+              className={`px-6 py-3 rounded-xl font-semibold transition-all min-h-[44px] ${
                 portfolioFilter === filter.value
-                  ? 'bg-[#2D6A4F] text-white'
-                  : 'bg-white text-[#2E2E2E] border-2 border-gray-300 hover:border-[#2D6A4F]'
+                  ? 'bg-[#2D6A4F] text-white shadow-sm'
+                  : 'bg-white text-[#666666] border-2 border-gray-200 hover:border-[#2D6A4F] hover:text-[#2D6A4F]'
               }`}
             >
               {filter.label}
@@ -576,21 +658,21 @@ export default function GreenFrameLandscapes() {
           {filteredPortfolio.map((item) => (
             <div
               key={item.id}
-              className="relative h-80 rounded-lg overflow-hidden group cursor-pointer"
+              className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#2D6A4F] hover:shadow-xl transition-all cursor-pointer"
               onClick={() => setLightboxImage(item.id)}
             >
-              <Image
-                src={`https://images.unsplash.com/${item.image}?w=800&q=80`}
-                alt={item.alt}
-                width={800}
-                height={600}
-                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                <div className="p-6 text-white">
-                  <h3 className="text-xl font-bold mb-1">{item.caption}</h3>
-                  <p className="text-sm text-white/90">{item.outcome}</p>
-                </div>
+              <div className="relative h-72 overflow-hidden">
+                <Image
+                  src={item.image.startsWith('/') ? item.image : `https://images.unsplash.com/${item.image}?w=800&q=80`}
+                  alt={item.alt}
+                  width={800}
+                  height={600}
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-[#111111] mb-2 group-hover:text-[#2D6A4F] transition-colors">{item.caption}</h3>
+                <p className="text-[#666666] leading-relaxed">{item.outcome}</p>
               </div>
             </div>
           ))}
@@ -608,12 +690,17 @@ export default function GreenFrameLandscapes() {
             >
               <X className="w-8 h-8" />
             </button>
-            {portfolioItems.find(item => item.id === lightboxImage) && (
+            {portfolioItems.find(item => item.id === lightboxImage) && (() => {
+              const currentItem = portfolioItems.find(item => item.id === lightboxImage);
+              const imageSrc = currentItem?.image.startsWith('/') 
+                ? currentItem.image 
+                : `https://images.unsplash.com/${currentItem?.image}?w=1600&q=80`;
+              return (
               <div className="max-w-5xl w-full">
                 <div className="relative h-[600px] mb-4">
                   <Image
-                    src={`https://images.unsplash.com/${portfolioItems.find(item => item.id === lightboxImage)?.image}?w=1600&q=80`}
-                    alt={portfolioItems.find(item => item.id === lightboxImage)?.alt || ''}
+                    src={imageSrc}
+                    alt={currentItem?.alt || ''}
                     width={1600}
                     height={1200}
                     className="object-contain w-full h-full"
@@ -621,14 +708,15 @@ export default function GreenFrameLandscapes() {
                 </div>
                 <div className="text-center text-white">
                   <h3 className="text-2xl font-bold mb-2">
-                    {portfolioItems.find(item => item.id === lightboxImage)?.caption}
+                    {currentItem?.caption}
                   </h3>
                   <p className="text-lg">
-                    {portfolioItems.find(item => item.id === lightboxImage)?.outcome}
+                    {currentItem?.outcome}
                   </p>
                 </div>
               </div>
-            )}
+              );
+            })()}
           </div>
         )}
       </div>
@@ -853,9 +941,7 @@ export default function GreenFrameLandscapes() {
 
   return (
     <>
-      <head>
-        <title>GreenFrame Landscapes | Patios, Decking, Garden Design</title>
-        <meta name="description" content="Premium patios, decking, and garden builds. Fixed quotes on request. Book a visit." />
+      <div className="min-h-screen flex flex-col bg-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -886,9 +972,6 @@ export default function GreenFrameLandscapes() {
             })
           }}
         />
-      </head>
-
-      <div className="min-h-screen flex flex-col bg-white">
         <Header />
         <main className="flex-grow">
           {currentPage === 'home' && <HomePage />}
