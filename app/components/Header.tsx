@@ -57,8 +57,8 @@ const Header = () => {
             className="flex items-center gap-1 text-left transition-transform duration-200 hover:-translate-y-0.5"
           >
             <span className="text-2xl font-bold flex items-center gap-1">
-              <span className="gradient-text">Buzz</span>
               <Logo size={32} className="inline-block" />
+              <span className="gradient-text">Buzz</span>
               <span className="text-white">BoldMarketing</span>
             </span>
           </button>
