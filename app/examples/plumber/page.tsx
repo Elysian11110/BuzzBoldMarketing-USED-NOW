@@ -849,7 +849,7 @@ const FlowPrimePlumbing = () => {
                   <div className="bg-[#F5F7FB] rounded-lg p-8 mb-12 border border-gray-200">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
                       <Image
-                        src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1800&q=80"
+                        src="/images/plombier-travaillant-pour-reparer-des-problemes-a-la-maison-d-un-client.jpg"
                         alt="Professional plumber at work with tools and equipment"
                         width={1800}
                         height={1013}
